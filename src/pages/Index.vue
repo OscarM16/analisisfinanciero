@@ -23,6 +23,7 @@
             <q-item-label caption lines="1">Mas informacion</q-item-label>
           </q-item-section>
         </q-item>
+
       </q-intersection>
     </div>
   </div>
@@ -31,12 +32,14 @@
 </template>
 
 <script>
+import {db} from "boot/firebase"
 
 export default{
   name: 'PageIndex',
 
   data() {
     return {
+      elementos: [],
       anios: [
       {
         id: 1,
@@ -61,6 +64,25 @@ export default{
     ]
     };
   },
-
+  created () {
+    this.lsitartareas()
+  },
+  methods : {
+    async lsitartareas() {
+      try {
+        const resDB = await db.collection('periodos').get()
+        resDB.forEach(res => {
+          console.log(res.data())
+          const periodoDB = {
+            id: res.id,
+            informacion: res.data()
+          }
+          console.log(periodoDB)
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 }
 </script>
