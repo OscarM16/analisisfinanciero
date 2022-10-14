@@ -12,7 +12,7 @@ const routes = [
         component: () => import('app/src/pages/CrearNuevoPeriodo.vue') 
       },
       {
-        path: '/DetallePeriodo/:id',
+        path: '/DetallePeriodo/:id/:anioactual',
         name: 'DetallePeriodo',
         component: () => import('app/src/pages/DetallePeriodo.vue')
       },

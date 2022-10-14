@@ -5,25 +5,26 @@
       <h3>Periodos Disponibles</h3>
     </div>
     <div >
+      <p>{{this.periodos}}</p>
       <q-intersection
-        v-for="index in anios"
+        v-for="index in periodos"
         :key="index"
         transition="flip-right"
         class="example-item"
       >
       <!--:to="{ name: 'DetallePeriodo', params: { id: index.id } }-->
-        <q-item clickable v-ripple :to="{ name: 'DetallePeriodo', params: { id: index.id }}">
+        <q-item clickable v-ripple :to="{ name: 'DetallePeriodo', params: { id: index.id, anioactual: index.informacion.anio}}">
           <q-item-section avatar>
             <q-avatar color="primary" text-color="white">
               Q
             </q-avatar>
           </q-item-section>
           <q-item-section>
-            <q-item-label>Año {{ index.ani }}</q-item-label>
+            <q-item-label>Año {{ index.informacion.anio }}</q-item-label>
             <q-item-label caption lines="1">Mas informacion</q-item-label>
           </q-item-section>
         </q-item>
-
+        
       </q-intersection>
     </div>
   </div>
@@ -39,29 +40,7 @@ export default{
 
   data() {
     return {
-      elementos: [],
-      anios: [
-      {
-        id: 1,
-        ani: "2017"
-      },
-      {
-        id: 2,
-        ani: "2018"
-      },
-      {
-        id: 3,
-        ani: "2019"
-      },
-      {
-        id: 4,
-        ani: "2020"
-      },
-      {
-        id: 5,
-        ani: "2021"
-      }
-    ]
+      periodos: [],
     };
   },
   created () {
@@ -72,12 +51,11 @@ export default{
       try {
         const resDB = await db.collection('periodos').get()
         resDB.forEach(res => {
-          console.log(res.data())
           const periodoDB = {
             id: res.id,
             informacion: res.data()
           }
-          console.log(periodoDB)
+          this.periodos.push(periodoDB)
         })
       } catch (error) {
         console.log(error)
