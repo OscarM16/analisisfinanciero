@@ -4,7 +4,18 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '',
+        component: () => import('pages/Index.vue') 
+      },
+      { path: '/CrearNuevoPeriodo',
+        name: "CrearNuevoPeriodo",
+        component: () => import('app/src/pages/CrearNuevoPeriodo.vue') 
+      },
+      {
+        path: '/DetallePeriodo/:id',
+        name: 'DetallePeriodo',
+        component: () => import('app/src/pages/DetallePeriodo.vue')
+      },
     ]
   },
 

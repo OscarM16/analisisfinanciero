@@ -1,13 +1,66 @@
 <template>
-  <q-page class="flex flex-center">
-    <h1>PAGINA DE ANALISIS</h1>
+  <q-page class="q-pa-md">
+    <div class="row justify-center">
+    <div class="col-12 justify-center">
+      <h3>Periodos Disponibles</h3>
+    </div>
+    <div >
+      <q-intersection
+        v-for="index in anios"
+        :key="index"
+        transition="flip-right"
+        class="example-item"
+      >
+      <!--:to="{ name: 'DetallePeriodo', params: { id: index.id } }-->
+        <q-item clickable v-ripple :to="{ name: 'DetallePeriodo', params: { id: index.id }}">
+          <q-item-section avatar>
+            <q-avatar color="primary" text-color="white">
+              Q
+            </q-avatar>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Año {{ index.ani }}</q-item-label>
+            <q-item-label caption lines="1">Mas informacion</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-intersection>
+    </div>
+  </div>
+    
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'PageIndex'
-})
+export default{
+  name: 'PageIndex',
+
+  data() {
+    return {
+      anios: [
+      {
+        id: 1,
+        ani: "2017"
+      },
+      {
+        id: 2,
+        ani: "2018"
+      },
+      {
+        id: 3,
+        ani: "2019"
+      },
+      {
+        id: 4,
+        ani: "2020"
+      },
+      {
+        id: 5,
+        ani: "2021"
+      }
+    ]
+    };
+  },
+
+}
 </script>
