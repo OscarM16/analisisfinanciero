@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <h1>PAGINA DE ANALISIS FINANCIERO</h1>
+    <h1>PAGINA DE ANALISIS</h1>
   </q-page>
 </template>
 
