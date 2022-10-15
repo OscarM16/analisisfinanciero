@@ -51,6 +51,11 @@ const routes = [
         name: 'ReporteVerticalER',
         component: () => import('app/src/pages/ReporteVerticalER.vue')
       },
+      {
+        path: '/ReporteDupont/:id/:anioactual',
+        name: 'ReporteDupont',
+        component: () => import('app/src/pages/ReporteDupont.vue')
+      },
     ]
   },
 

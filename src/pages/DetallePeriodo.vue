@@ -42,6 +42,11 @@
       <div>Reporte Vertical del Estado Resultados</div>
     </q-btn>
         </q-item>
+        <q-item clickable v-ripple>
+          <q-btn color="teal" :to="{ name: 'ReporteDupont', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
+      <div>Reporte de Rentabilidad con Formula Dupont</div>
+    </q-btn>
+        </q-item>
         
       </q-intersection>
         </div>
