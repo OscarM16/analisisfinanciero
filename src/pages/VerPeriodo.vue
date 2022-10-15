@@ -1,13 +1,16 @@
 <template>
 <q-page class="q-pa-md">
-    <div class="row-12">
+    <div class="row" v-show="this.cargandoDatos">
+        <div class="col items-center" style="justify-content: center; margin-top: 150px;">
+            <div class="row justify-center"> <q-spinner-clock
+          color="primary"
+          size="25em"
+        /></div>
+        </div>
+    </div>
+    <div class="row-12" v-show="!this.cargandoDatos">
         <div class="col-12">
             <h3> Ver Periodo del Año {{this.$route.params.anioactual}}</h3>
-        </div>
-        <div class="q-pa-md q-gutter-xs" v-show="cargandoDatos">
-            <div class="row items-center">
-                <q-spinner-hourglass color="purple" size="4em" />
-            </div>
         </div>
         <div class="row">
             <div class="col-4"></div>
@@ -432,6 +435,7 @@ export default {
             periodo: [],
             id: String,
             cargandoDatos: true,
+            llaveCargandoDatos: false,
             verEstado: false,
             link: 'inbox',
             // Datos a mostrar
@@ -491,13 +495,18 @@ export default {
     },
     mounted() {},
     watch: {
-        cargandoDatos() {
+        llaveCargandoDatos() {
             console.log("se ocullto")
             this.generarOperaciones()
             this.generarOperacionesER()
+            this.cargandoDatoss()
         }
     },
     methods: {
+        cargandoDatoss() {
+            this.cargandoDatos = false
+            console.log(this.cargandoDatos)
+        },
         async lsitartareas() {
             const docRef = doc(db, "periodos", this.$route.params.id);
             const docSnap = await getDoc(docRef);
@@ -505,7 +514,7 @@ export default {
             if (docSnap.exists()) {
                 this.periodo.push(docSnap.data())
                 if (this.periodo.length !== 0) {
-                    this.cargandoDatos = false
+                    this.llaveCargandoDatos = true
                 }
             } else {
                 // doc.data() will be undefined in this case
