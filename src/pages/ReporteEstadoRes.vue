@@ -33,6 +33,11 @@
                 <div class="row-12">
                     <div class="col-12">
                         <q-list>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">INGRESOS</q-item-label>
+                                </q-item-section>
+                            </q-item>
                             <q-item v-show="this.ingresosporventas !== 0">
                                 <q-item-section>
                                     <q-item-label style=" font-size: 15px;">Ingresos por ventas</q-item-label>
@@ -62,6 +67,11 @@
                         <!--  FIN CORRIENTE-->
                         <!--No corriente-->
                         <q-list>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">GASTOS DE OPERACION</q-item-label>
+                                </q-item-section>
+                            </q-item>
                             <q-item v-show="this.gastosAdmin !== 0">
                                 <q-item-section>
                                     <q-item-label style=" font-size: 15px;">Gastos de administración</q-item-label>
