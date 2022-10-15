@@ -9,7 +9,7 @@
             <q-intersection>
       <!--:to="{ name: 'DetallePeriodo', params: { id: index.id } }-->
         <q-item clickable v-ripple>
-          <q-btn color="teal">
+          <q-btn color="teal" :to="{ name: 'VerPeriodo', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
       <q-icon left size="3em" name="map" />
       <div>Ver Periodo {{this.$route.params.anioactual}}</div>
     </q-btn>

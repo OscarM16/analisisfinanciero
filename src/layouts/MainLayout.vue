@@ -32,7 +32,7 @@
         </q-item-label>
         <q-item clickable to="/">
           <q-item-section avatar>
-             <q-icon name="school"></q-icon>
+             <q-icon name="home"></q-icon>
         </q-item-section>
         <q-item-section>
           <q-item-label>Inicio</q-item-label>
@@ -40,7 +40,7 @@
         </q-item>
         <q-item clickable to="/CrearNuevoPeriodo">
           <q-item-section avatar>
-             <q-icon name="school"></q-icon>
+             <q-icon name="post_add"></q-icon>
         </q-item-section>
         <q-item-section>
           <q-item-label>Crear Nuevo Periodo</q-item-label>

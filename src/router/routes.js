@@ -16,6 +16,11 @@ const routes = [
         name: 'DetallePeriodo',
         component: () => import('app/src/pages/DetallePeriodo.vue')
       },
+      {
+        path: '/VerPeriodo/:id/:anioactual',
+        name: 'VerPeriodo',
+        component: () => import('app/src/pages/VerPeriodo.vue')
+      },
     ]
   },
 
