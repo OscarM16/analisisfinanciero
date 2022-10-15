@@ -21,6 +21,36 @@ const routes = [
         name: 'VerPeriodo',
         component: () => import('app/src/pages/VerPeriodo.vue')
       },
+      {
+        path: '/ModificarPeriodo/:id/:anioactual',
+        name: 'ModificarPeriodo',
+        component: () => import('app/src/pages/ModificarPeriodo.vue')
+      },
+      {
+        path: '/MostrarRatios/:id/:anioactual',
+        name: 'MostrarRatios',
+        component: () => import('app/src/pages/MostrarRatios.vue')
+      },
+      {
+        path: '/ReporteBalance/:id/:anioactual',
+        name: 'ReporteBalance',
+        component: () => import('app/src/pages/ReporteBalance.vue')
+      },
+      {
+        path: '/ReporteEstadoRes/:id/:anioactual',
+        name: 'ReporteEstadoRes',
+        component: () => import('app/src/pages/ReporteEstadoRes.vue')
+      },
+      {
+        path: '/ReporteVerticalBG/:id/:anioactual',
+        name: 'ReporteVerticalBG',
+        component: () => import('app/src/pages/ReporteVerticalBG.vue')
+      },
+      {
+        path: '/ReporteVerticalER/:id/:anioactual',
+        name: 'ReporteVerticalER',
+        component: () => import('app/src/pages/ReporteVerticalER.vue')
+      },
     ]
   },
 

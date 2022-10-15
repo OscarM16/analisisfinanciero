@@ -15,31 +15,37 @@
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
-          <q-btn color="teal">
+          <q-btn color="teal" :to="{ name: 'ModificarPeriodo', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
       <q-icon left size="3em" name="map" />
       <div>Modificar Periodo</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
-          <q-btn color="teal">
+          <q-btn color="teal" :to="{ name: 'MostrarRatios', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
+      <q-icon left size="3em" name="map" />
+      <div>Mostrar Ratios</div>
+    </q-btn>
+        </q-item>
+        <q-item clickable v-ripple>
+          <q-btn color="teal" :to="{ name: 'ReporteBalance', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
       <q-icon left size="3em" name="map" />
       <div>Reporte Balance General</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
-          <q-btn color="teal">
+          <q-btn color="teal" :to="{ name: 'ReporteEstadoRes', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
       <q-icon left size="3em" name="map" />
       <div>Reporte Balance Estado Resultados</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
-          <q-btn color="teal">
+          <q-btn color="teal" :to="{ name: 'ReporteVerticalBG', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
       <q-icon left size="3em" name="map" />
       <div>Reporte Vertical de Balance General</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
-          <q-btn color="teal">
+          <q-btn color="teal" :to="{ name: 'ReporteVerticalER', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
       <q-icon left size="3em" name="map" />
       <div>Reporte Vertical del Estado Resultados</div>
     </q-btn>

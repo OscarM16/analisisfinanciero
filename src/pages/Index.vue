@@ -4,8 +4,7 @@
         <div class="col-12 justify-center">
             <h3>Periodos Disponibles</h3>
         </div>
-        <div>
-            <p>{{this.periodos}}</p>
+        <div class="col-12">
             <q-intersection v-for="index in periodos" :key="index" transition="flip-right" class="example-item">
                 <!--:to="{ name: 'DetallePeriodo', params: { id: index.id } }-->
                 <q-item clickable v-ripple :to="{ name: 'DetallePeriodo', params: { id: index.id, anioactual: index.informacion.anio}}">
