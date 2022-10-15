@@ -15,7 +15,6 @@
                 <q-spinner-hourglass color="purple" size="4em" />
             </div>
         </div>
-        <p>{{this.periodo}}</p>
         <div class="row-12" id="content">
             <div class="col-12" style="padding: 30px; margin: 5%;">
                 <div class="row-12">
@@ -52,7 +51,7 @@
                                         <q-item-label style=" font-size: 15px;">Efectivo y equivalentes al efectivo</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.efectivo}}</q-item-label>
+                                        <q-item-label>{{this.efectivo.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.cuentasPC !== 0">
@@ -60,7 +59,7 @@
                                         <q-item-label style="font-size: 15px;">Cuentas por cobrar a partes relacionadas</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.cuentasPC}}</q-item-label>
+                                        <q-item-label>{{this.cuentasPC.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.otrasCPC !== 0">
@@ -68,7 +67,7 @@
                                         <q-item-label style=" font-size: 15px;">Otras cuentas por cobrar</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.otrasCPC}}</q-item-label>
+                                        <q-item-label>{{this.otrasCPC.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.depositosCortoP !== 0">
@@ -76,7 +75,7 @@
                                         <q-item-label style=" font-size: 15px;">Dépositos a corto plazo</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.depositosCortoP}}</q-item-label>
+                                        <q-item-label>{{this.depositosCortoP.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.inventarios !== 0">
@@ -84,7 +83,7 @@
                                         <q-item-label style=" font-size: 15px;">Inventarios</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.inventarios}}</q-item-label>
+                                        <q-item-label>{{this.inventarios.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.gastosPagadosAnt !== 0">
@@ -92,7 +91,7 @@
                                         <q-item-label style=" font-size: 15px;">Gastos pagados por anticipado</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.gastosPagadosAnt}}</q-item-label>
+                                        <q-item-label>{{this.gastosPagadosAnt.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                             </q-list>
@@ -113,7 +112,7 @@
                                         <q-item-label style=" font-size: 15px;">Propiedad, planta y equipo (neto)</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.propiedad}}</q-item-label>
+                                        <q-item-label>{{this.propiedad.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.activosIntangibles !== 0">
@@ -121,7 +120,7 @@
                                         <q-item-label style=" font-size: 15px;">ACtivos intangibles</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.activosIntangibles}}</q-item-label>
+                                        <q-item-label>{{this.activosIntangibles.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item  v-show="this.activosBiologicos !== 0">
@@ -129,7 +128,7 @@
                                         <q-item-label style=" font-size: 15px;">Activos Biologicos</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.activosBiologicos}}</q-item-label>
+                                        <q-item-label>{{this.activosBiologicos.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.inversionFinalLP !== 0">
@@ -137,7 +136,7 @@
                                         <q-item-label style=" font-size: 15px;">Inversiones financieras a largo plazo</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.inversionFinalLP}}</q-item-label>
+                                        <q-item-label>{{this.inversionFinalLP.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                             </q-list>
@@ -173,7 +172,7 @@
                                         <q-item-label style=" font-size: 15px;">Cuentas por pagar a corto plazo</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.cuentasPP}}</q-item-label>
+                                        <q-item-label>{{this.cuentasPP.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.cuentasPPRelacionadas !== 0">
@@ -181,7 +180,7 @@
                                         <q-item-label style=" font-size: 15px;">Cuentas por pagar partes relacionadas a corto plazo</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.cuentasPPRelacionadas}}</q-item-label>
+                                        <q-item-label>{{this.cuentasPPRelacionadas.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.otrascuentasPP !== 0">
@@ -189,7 +188,7 @@
                                         <q-item-label style=" font-size: 15px;">Otras cuentas por pagar a corto plazo</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.otrascuentasPP}}</q-item-label>
+                                        <q-item-label>{{this.otrascuentasPP.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.obligacionesEmple !== 0">
@@ -197,7 +196,7 @@
                                         <q-item-label style=" font-size: 15px;">Obligaciones a corto plazo por beneficios a empleados</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.obligacionesEmple}}</q-item-label>
+                                        <q-item-label>{{this.obligacionesEmple.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.impuestosSobreRenta !== 0">
@@ -205,7 +204,7 @@
                                         <q-item-label style=" font-size: 15px;">Impuesto sobre la renta por pagar</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.impuestosSobreRenta}}</q-item-label>
+                                        <q-item-label>{{this.impuestosSobreRenta.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                             </q-list>
@@ -224,7 +223,7 @@
                                         <q-item-label style="font-size: 15px;">Cuentas por pagar partes relacionadas de Largo Plazo</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.CPPRelacionadasLP}}</q-item-label>
+                                        <q-item-label>{{this.CPPRelacionadasLP.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                             </q-list>
@@ -252,7 +251,7 @@
                                         <q-item-label style="font-size: 15px;">Capital Social</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.capitalSocial}}</q-item-label>
+                                        <q-item-label>{{this.capitalSocial.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.reservaLegal !== 0">
@@ -260,7 +259,7 @@
                                         <q-item-label style="font-size: 15px;">Reserva Legal</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.reservaLegal}}</q-item-label>
+                                        <q-item-label>{{this.reservaLegal.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.resultadosAcu !== 0">
@@ -268,7 +267,7 @@
                                         <q-item-label style=" font-size: 15px;" side bottom >Resultados acumulados</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
-                                        <q-item-label>{{this.resultadosAcu}}</q-item-label>
+                                        <q-item-label>{{this.resultadosAcu.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item v-show="this.resultadosPresEjer !== 0">
@@ -276,7 +275,7 @@
                                         <q-item-label style="font-size: 15px;">Resultados del presente ejercicio</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top style="border-bottom:5px,black,  solid;">
-                                        <q-item-label>{{this.resultadosPresEjer}}</q-item-label>
+                                        <q-item-label>{{this.resultadosPresEjer.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
                                 <q-item>
