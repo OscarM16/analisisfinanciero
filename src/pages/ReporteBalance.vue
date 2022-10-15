@@ -309,6 +309,26 @@
                             </q-list>
                     </div>
                 </div>
+                <div class="row justify-center" style="margin-top: 200px;">
+                <div class="col" style="margin-right: 40px; margin-left: 40px;">
+                    <div style=" border-bottom: solid; font-size: 30px;"></div>
+                    <div class="row justify-center">
+                        <p style="text-align: center;">Representante legal</p>
+                    </div>
+                </div>
+                <div class="col"  style="margin-right: 40px;  margin-left: 40px;">
+                    <div style=" border-bottom: solid; font-size: 30px;"></div>
+                    <div class="row justify-center">
+                        <p style="text-align: center;">Contador</p>
+                    </div>
+                </div>
+                <div class="col"  style="margin-right: 40px;  margin-left: 40px;">
+                    <div style=" border-bottom: solid; font-size: 30px;"></div>
+                    <div class="row justify-center">
+                        <p style="text-align: center;">Auditor</p>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -462,7 +482,7 @@ export default {
             html2canvas(document.querySelector("#content")).then(canvas => {
                 var imgUrl = canvas.toDataURL("image / png"); // Convertir lienzo en flujo img src
                 const doc = new jsPDF('p','mm','letter');
-                doc.addImage(imgUrl, 0, 0, 210, 250)
+                doc.addImage(imgUrl, 0, 0, 210, 280)
                 doc.save("a4.pdf"); // will save the file in the current working directory
             });
         }

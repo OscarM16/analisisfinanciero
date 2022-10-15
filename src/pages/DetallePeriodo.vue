@@ -24,12 +24,12 @@
         </q-item>
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'ReporteBalance', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <div>Reporte Balance General</div>
+      <div>Reporte de Balance General</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'ReporteEstadoRes', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <div>Reporte Balance Estado Resultados</div>
+      <div>Reporte de Estado Resultados</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
