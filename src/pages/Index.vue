@@ -67,16 +67,6 @@ export default {
                             this.periodos.push(periodoDB)
                         })
                     })
-                /*
-                const resDB = await db.collection('periodos').get()
-                resDB.forEach(res => {
-                    const periodoDB = {
-                        id: res.id,
-                        informacion: res.data()
-                    }
-                    this.periodos.push(periodoDB)
-                })
-                */
             } catch (error) {
                 console.log(error)
             }
