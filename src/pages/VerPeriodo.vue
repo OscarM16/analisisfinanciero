@@ -283,7 +283,7 @@
     } from "firebase/firestore";
     
     export default {
-        name: 'ReporteBalance',
+        name: 'VerPeriodo',
         data() {
             return {
                 periodo: [],
