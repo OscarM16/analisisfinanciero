@@ -183,6 +183,14 @@
                                         <q-item-label>{{this.cuentasPPRelacionadas.toLocaleString('en')}}</q-item-label>
                                     </q-item-section>
                                 </q-item>
+                                <q-item v-show="this.gastosAcumulados !== 0">
+                                        <q-item-section>
+                                            <q-item-label style=" font-size: 15px;">Gastos acumulados y otras cuentas por pagar</q-item-label>
+                                        </q-item-section>
+                                        <q-item-section side top>
+                                            <q-item-label>{{this.gastosAcumulados.toLocaleString('en')}}</q-item-label>
+                                        </q-item-section>
+                                    </q-item>
                                 <q-item v-show="this.otrascuentasPP !== 0">
                                     <q-item-section>
                                         <q-item-label style=" font-size: 15px;">Otras cuentas por pagar a corto plazo</q-item-label>
