@@ -1,52 +1,44 @@
 <template>
 <q-page class="q-pa-md">
-    <div class="row justify-center">
+    <div class="row">
         <div class="col-12 justify-center">
             <h3>Periodo del Año {{this.$route.params.anioactual}}</h3>
         </div>
         <div>
-            <p>{{this.periodo}}</p> 
             <q-intersection>
       <!--:to="{ name: 'DetallePeriodo', params: { id: index.id } }-->
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'VerPeriodo', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <q-icon left size="3em" name="map" />
       <div>Ver Periodo {{this.$route.params.anioactual}}</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'ModificarPeriodo', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <q-icon left size="3em" name="map" />
       <div>Modificar Periodo</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'MostrarRatios', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <q-icon left size="3em" name="map" />
       <div>Mostrar Ratios</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'ReporteBalance', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <q-icon left size="3em" name="map" />
       <div>Reporte Balance General</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'ReporteEstadoRes', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <q-icon left size="3em" name="map" />
       <div>Reporte Balance Estado Resultados</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'ReporteVerticalBG', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <q-icon left size="3em" name="map" />
       <div>Reporte Vertical de Balance General</div>
     </q-btn>
         </q-item>
         <q-item clickable v-ripple>
           <q-btn color="teal" :to="{ name: 'ReporteVerticalER', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-      <q-icon left size="3em" name="map" />
       <div>Reporte Vertical del Estado Resultados</div>
     </q-btn>
         </q-item>
@@ -79,6 +71,7 @@ export default {
     },
     methods: {
         async lsitartareas() {
+          /*
             const docRef = doc(db, "periodos", this.$route.params.id);
             const docSnap = await getDoc(docRef);
 
@@ -89,6 +82,7 @@ export default {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
+          */
         }
     }
 }

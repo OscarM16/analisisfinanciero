@@ -5,6 +5,14 @@
             <h3>Periodos Disponibles</h3>
         </div>
         <div class="col-12">
+            <q-input rounded outlined bottom-slots type="number"  v-model="barraBusqueda" v-on:keyup="buscartexto()" label="Que año desea buscar" counter>
+                <template v-slot:prepend>
+                    <q-icon name="search" />
+                </template>
+                <template v-slot:append>
+                    <q-icon v-show="this.barraBusqueda !== ''" name="close" @click="this.limpiar()" class="cursor-pointer" />
+                </template>
+            </q-input>
             <q-intersection v-for="index in periodos" :key="index" transition="flip-right" class="example-item">
                 <!--:to="{ name: 'DetallePeriodo', params: { id: index.id } }-->
                 <q-item clickable v-ripple :to="{ name: 'DetallePeriodo', params: { id: index.id, anioactual: index.informacion.anio}}">
@@ -37,15 +45,14 @@
 import {
     db
 } from "boot/firebase"
-import {
-    orderBy
-} from "firebase/firestore";
 export default {
     name: 'PageIndex',
 
     data() {
         return {
             periodos: [],
+            periodoCopia: [],
+            barraBusqueda: ""
         };
     },
     created() {
@@ -64,11 +71,28 @@ export default {
                                 informacion: item.data()
                             }
                             this.periodos.push(periodoDB)
+                            this.periodoCopia = this.periodos.slice()
                         })
                     })
             } catch (error) {
                 console.log(error)
             }
+        },
+        buscartexto() {
+            // eslint-disable-next-line eqeqeq
+            if (this.barraBusqueda == '') {
+                this.limpiar()
+            }
+            // eslint-disable-next-line array-callback-return
+            this.periodos = this.periodoCopia.filter((item) => {
+                if ((item.informacion.anio.indexOf(this.barraBusqueda) >= 0) ) {
+                    return true
+                }
+            })
+        },
+        limpiar () {
+            this.periodos = this.periodoCopia.slice()
+            this.barraBusqueda = ""
         }
     }
 }
