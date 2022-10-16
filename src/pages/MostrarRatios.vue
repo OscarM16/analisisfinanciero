@@ -222,7 +222,7 @@
                     </q-card>
                 </div>
             </div>
-            <!--RAZONES DE ACTIVIDAD-->
+            <!--RAZONES DE ACTIVIDAD BOTONES-->
             <div class="q-pa-md">
                 <q-list bordered class="rounded-borders">
                     <q-expansion-item expand-separator icon="perm_identity" v-model="expandedA" label="Razones de Actividad" :caption=opcionActividad>
@@ -285,7 +285,7 @@
                     </q-expansion-item>
                 </q-list>
             </div>
-            <!-- CARD DE RAZONES DE ACTIVIDAD-->
+            <!-- MOSTRAR CARD DE RAZONES DE ACTIVIDAD-->
             <div class="row" v-show="opcionActividad !== 'Mas informacion'">
                 <div class="col-3">
                 </div>
@@ -652,14 +652,14 @@ export default {
             razonRapidaTotal: 0,
             capitalTrabajoTotal: 0,
             nivelDependenciaTotal: 0,
-            sumatoriaDep: 0,
+            sumatoriaDep: 0, // sumatoria de (caja + bancos + cuentas por cobrar)
             //Rspuestas Razon Actividad
             rotacionInventarioTotal: 0,
-            PPCTotal: 0,
+            PPCTotal: 0, // Periodo promedio de Cobro Resultado
             CPCTotal: 0, // cuentas por cobrar totales
-            PPPTotal: 0,
+            PPPTotal: 0, // periodo promedio de pago Resultado
             CPPTotal: 0, // cuentas por pagar totales
-            RATTotal:0,  
+            RATTotal:0,   // Rotacion de los activos totales Resultado
 
         };
     },
