@@ -384,13 +384,13 @@
                         </q-list>
                         <hr>
                         <!--PATRIMONIO-->
-                        <q-list v-show="this.reservaLegal !== 0">
+                        <q-list v-show="this.reservaLegalES !== 0">
                             <q-item>
                                 <q-item-section>
                                     <q-item-label style=" font-size: 15px;">Reserva Legal</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label style="font-size: 15px;  text-decoration: underline; color: black;">{{this.reservaLegal.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style="font-size: 15px;  text-decoration: underline; color: black;">{{this.reservaLegalES.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -478,7 +478,7 @@ export default {
             ingresosporventas: 0,
             otrosGasNetos: 0,
             otrosIngresNetos: 0,
-            reservaLegal: 0,
+            reservaLegalES: 0,
             utilidadbruta: 0,
             utilidadneta: 0,
             utilidadoperativa: 0,
@@ -561,7 +561,7 @@ export default {
             this.ingresosporventas = parseFloat(this.periodo[0].estadoresultados.ingresosporventas)
             this.otrosGasNetos = parseFloat(this.periodo[0].estadoresultados.otrosGasNetos)
             this.otrosIngresNetos = parseFloat(this.periodo[0].estadoresultados.otrosIngresNetos)
-            this.reservaLegal = parseFloat(this.periodo[0].estadoresultados.reservaLegal)
+            this.reservaLegalES = parseFloat(this.periodo[0].estadoresultados.reservaLegalES)
         },
         generarPDF() {
             html2canvas(document.querySelector("#content")).then(canvas => {
