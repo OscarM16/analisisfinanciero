@@ -18,13 +18,13 @@
                     <q-item>
                         <div class="col-6">
                             <q-item clickable v-ripple :active="link === 'inbox'" @click="link = 'inbox'; this.verEstado = false" active-class="my-menu-link">
-                                <q-item-section style="text-align: center;">Datos del Balance General</q-item-section>
+                                <q-item-section style="text-align: center; font-weight: bold;">Datos del Balance General</q-item-section>
                             </q-item>
 
                         </div>
                         <div class="col-6">
                             <q-item clickable v-ripple :active="link === 'outbox'" @click="link = 'outbox' ; this.verEstado = true" active-class="my-menu-link">
-                                <q-item-section style="text-align: center;">Datos del Estado de Resultados</q-item-section>
+                                <q-item-section style="text-align: center; font-weight: bold;">Datos del Estado de Resultados</q-item-section>
                             </q-item>
                         </div>
                     </q-item>
@@ -32,7 +32,6 @@
                 </q-list>
             </div>
         </div>
-        <p>{{this.efectivo}}</p>
         <div class="row-12" id="content" v-show="!this.verEstado">
             <div class="col-12" style="padding: 30px; margin: 5%;">
                 <div class="row-12">
@@ -69,7 +68,6 @@
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label>
-                                        <p>{{this.efectivo}}</p>
                                         <!--<q-input value="0" type="number" rounded outlined v-model="this.efectivo"/>-->
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
@@ -96,7 +94,6 @@
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label>
-                                        <p>{{this.cuentasPC}}</p>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 {{ this.cuentasPC }}
@@ -122,7 +119,6 @@
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label>
-                                        <p>{{this.otrasCPC}}</p>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 {{ this.otrasCPC }}
@@ -148,7 +144,6 @@
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label>
-                                        <p>{{this.depositosCortoP}}</p>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 {{ this.depositosCortoP }}
@@ -174,7 +169,6 @@
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label>
-                                        <p>{{this.inventarios}}</p>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 {{ this.inventarios }}
@@ -200,7 +194,6 @@
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label>
-                                        <p>{{this.gastosPagadosAnt}}</p>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 {{ this.gastosPagadosAnt }}
@@ -239,7 +232,6 @@
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label>
-                                        <p>{{this.propiedad}}</p>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 {{ this.propiedad }}
@@ -358,7 +350,6 @@
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label>
-                                        <p>{{this.cuentasPP}}</p>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 {{ this.cuentasPP }}
@@ -688,7 +679,24 @@
                                     <q-item-label style=" font-size: 15px;">Ingresos por ventas</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.ingresosporventas.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.ingresosporventas }}
+                                                <q-popup-edit v-model="this.ingresosporventas">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.costodeventas !== 0">
@@ -696,7 +704,24 @@
                                     <q-item-label style="font-size: 15px;">Costos de ventas</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.costodeventas.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.costodeventas }}
+                                                <q-popup-edit v-model="this.costodeventas">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -714,7 +739,24 @@
                                     <q-item-label style=" font-size: 15px;">Gastos de administración</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.gastosAdmin.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.gastosAdmin }}
+                                                <q-popup-edit v-model="this.gastosAdmin">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.gastosVentas !== 0">
@@ -722,7 +764,24 @@
                                     <q-item-label style=" font-size: 15px;">Gastos de ventas</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.gastosVentas.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.gastosVentas }}
+                                                <q-popup-edit v-model="this.gastosVentas">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -734,7 +793,24 @@
                                     <q-item-label style=" font-size: 15px;">Otros ingresos Netos</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.otrosIngresNetos.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.otrosIngresNetos }}
+                                                <q-popup-edit v-model="this.otrosIngresNetos">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.otrosGasNetos !== 0">
@@ -742,7 +818,24 @@
                                     <q-item-label style=" font-size: 15px;">Otros gastos netos</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.otrosGasNetos.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.otrosGasNetos }}
+                                                <q-popup-edit v-model="this.otrosGasNetos">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.gastosFinan !== 0">
@@ -750,7 +843,24 @@
                                     <q-item-label style=" font-size: 15px;">Gastos financieros</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.gastosFinan.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.gastosFinan }}
+                                                <q-popup-edit v-model="this.gastosFinan">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -762,7 +872,24 @@
                                     <q-item-label style=" font-size: 15px;">Reserva Legal</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label style="font-size: 15px;  text-decoration: underline; color: black;">{{this.reservaLegalES.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.reservaLegalES }}
+                                                <q-popup-edit v-model="this.reservaLegalES">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -772,7 +899,24 @@
                                     <q-item-label style="font-size: 15px;">Impuesto sobre la renta Corriente</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label style=" font-size: 15px;  text-decoration: underline; color: black;">{{this.impuestosSobreRenta.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.impuestosSobreRenta }}
+                                                <q-popup-edit v-model="this.impuestosSobreRenta">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
