@@ -398,7 +398,9 @@ export default {
             resultadosAcu:0,
             resultadosPresEjer:0,
             // FIn
-            pasivoPatrimonio: 0
+            pasivoPatrimonio: 0,
+            // nombre del pdf
+            nombredelPDF: "BalanceGeneral"
             
         };
     },
@@ -408,6 +410,7 @@ export default {
     created() {
         this.id = this.$route.params.id
         this.lsitartareas()
+        this.nombredelPDF = "Balancegeneral"+this.$route.params.anioactual
     },
     mounted() {},
     watch: {
@@ -492,7 +495,7 @@ export default {
                 var imgUrl = canvas.toDataURL("image / png"); // Convertir lienzo en flujo img src
                 const doc = new jsPDF('p','mm','letter');
                 doc.addImage(imgUrl, 0, 0, 210, 280)
-                doc.save("a4.pdf"); // will save the file in the current working directory
+                doc.save(this.nombredelPDF); // will save the file in the current working directory
             });
         }
     }
