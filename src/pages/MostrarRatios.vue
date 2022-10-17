@@ -15,10 +15,10 @@
             <!--RAZONES DE LIQUIDEZ-->
             <div class="q-pa-md">
                 <q-list bordered class="rounded-borders">
-                    <q-expansion-item expand-separator icon="perm_identity" v-model="expanded" label="Razones de Liquidez" :caption=opcionLiquidez>
+                    <q-expansion-item expand-separator icon="list" v-model="expanded" label="Razones de Liquidez" :caption=opcionLiquidez>
                         <q-item clickable v-ripple style="width:100%" @click="this.razonCirculante()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Razon Corriente</q-item-label>
@@ -26,7 +26,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.razonRapida()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Razon rapida</q-item-label>
@@ -34,7 +34,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.capitalTrabajo()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Capital de trabajo</q-item-label>
@@ -42,7 +42,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.nivelDependencia()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Nivel de Dependencia del inventario</q-item-label>
@@ -225,10 +225,10 @@
             <!--RAZONES DE ACTIVIDAD-->
             <div class="q-pa-md">
                 <q-list bordered class="rounded-borders">
-                    <q-expansion-item expand-separator icon="perm_identity" v-model="expandedA" label="Razones de Actividad" :caption=opcionActividad>
+                    <q-expansion-item expand-separator icon="list" v-model="expandedA" label="Razones de Actividad" :caption=opcionActividad>
                         <q-item clickable v-ripple style="width:100%" @click="this.rotacionInventario()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Rotacion de Inventario</q-item-label>
@@ -236,7 +236,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.PPC()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Periodo Promedio de Cobro</q-item-label>
@@ -244,7 +244,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.PPP()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Periodo Promedio de Pago</q-item-label>
@@ -252,7 +252,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.RAT()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Rotacion de los Activos Totales</q-item-label>
@@ -260,7 +260,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.rotacionCartera()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Rotacion de Cartera</q-item-label>
@@ -268,7 +268,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.cicloOperacional()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Ciclo Operacional</q-item-label>
@@ -539,10 +539,10 @@
             <!--RAZONES DE DEUDA-->
             <div class="q-pa-md"> <!-- ESTE ES EL MENU DESPLEGABLE  -->
                 <q-list bordered class="rounded-borders">
-                    <q-expansion-item expand-separator icon="perm_identity" v-model="expandedD" label="Razones de Deuda" :caption=opcionDeuda>
+                    <q-expansion-item expand-separator icon="list" v-model="expandedD" label="Razones de Deuda" :caption=opcionDeuda>
                         <q-item clickable v-ripple style="width:100%" @click="this.indiceEndeudamiento()">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Indice de Endeudamiento</q-item-label>
@@ -551,7 +551,7 @@
                     </q-expansion-item>
                 </q-list>
             </div>
-            <!--CARDS de DEUDA-->
+            <!--CARDS de DEUDA INCLUYE Boton-->
             <div class="row" v-show="opcionDeuda !== 'Mas informacion'">
                 <div class="col-3">
                 </div>
@@ -614,10 +614,10 @@
             <!--RAZONES DE RENTABILIDAD-->
             <div class="q-pa-md">
                 <q-list bordered class="rounded-borders">
-                    <q-expansion-item expand-separator icon="perm_identity" label="Razones de Rentabilidad" caption="Mas informacion">
+                    <q-expansion-item expand-separator icon="list" label="Razones de Rentabilidad" caption="Mas informacion">
                         <q-item clickable v-ripple style="width:100%">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Margen de Utilidad Bruta</q-item-label>
@@ -625,7 +625,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Margen de Utilidad Operativa</q-item-label>
@@ -633,7 +633,7 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
                                 <q-item-label>Margen de Utilidad Neta</q-item-label>
@@ -641,49 +641,10 @@
                         </q-item>
                         <q-item clickable v-ripple style="width:100%">
                             <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
+                                <q-icon name="calculate" color="black" />
                             </q-item-section>
                             <q-item-section>
-                                <q-item-label>Ganancias por Accion</q-item-label>
-                            </q-item-section>
-                        </q-item>
-                    </q-expansion-item>
-                </q-list>
-            </div>
-            <!--RAZONES DE MERCADO-->
-            <div class="q-pa-md">
-                <q-list bordered class="rounded-borders">
-                    <q-expansion-item expand-separator icon="perm_identity" label="Razones de Mercado" caption="Mas informacion">
-                        <q-item clickable v-ripple style="width:100%">
-                            <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Razon Corriente</q-item-label>
-                            </q-item-section>
-                        </q-item>
-                        <q-item clickable v-ripple style="width:100%">
-                            <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Razon rapida</q-item-label>
-                            </q-item-section>
-                        </q-item>
-                        <q-item clickable v-ripple style="width:100%">
-                            <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Capital de trabajo</q-item-label>
-                            </q-item-section>
-                        </q-item>
-                        <q-item clickable v-ripple style="width:100%">
-                            <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Nivel de Dependencia del inventario</q-item-label>
+                                <q-item-label>Rendimiento sobre activos totales</q-item-label>
                             </q-item-section>
                         </q-item>
                     </q-expansion-item>
