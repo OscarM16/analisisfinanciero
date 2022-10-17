@@ -921,29 +921,45 @@ export default {
             this.anioComparado = this.periodoComparar[0].informacion.anio
             console.log("prueba" + this.anioComparado)
 
+            this.Cefectivo = 0
             this.Cefectivo = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.efectivo)
+            this.CcuentasPC = 0
             this.CcuentasPC = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.cuentasPC)
+            this.CotrasCPC= 0
             this.CotrasCPC = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.otrasCPC)
+            this.Cinventarios = 0
             this.Cinventarios = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.inventarios)
+            this.CgastosPagadosAnt = 0
             this.CgastosPagadosAnt = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.gastosPagadosAnt)
+            this.CdepositosCortoP = 0
             this.CdepositosCortoP = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.depositosCortoP)
 
-            this.CtotalActivoCorriente = parseFloat(this.CtotalActivoCorriente) + parseFloat(this.Cefectivo) + parseFloat(this.CcuentasPC) + parseFloat(this.CotrasCPC) + parseFloat(this.Cinventarios) + parseFloat(this.CgastosPagadosAnt) + parseFloat(this.CdepositosCortoP)
+            this.CtotalActivoCorriente = 0
+            this.CtotalActivoCorriente =  parseFloat(this.Cefectivo) + parseFloat(this.CcuentasPC) + parseFloat(this.CotrasCPC) + parseFloat(this.Cinventarios) + parseFloat(this.CgastosPagadosAnt) + parseFloat(this.CdepositosCortoP)
 
+            this.Cpropiedad = 0
             this.Cpropiedad = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.propiedad)
+            this.CactivosIntangibles = 0
             this.CactivosIntangibles = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.activosIntangibles)
+            this.CactivosBiologicos = 0
             this.CactivosBiologicos = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.activosBiologicos)
+            this.CinversionFinalLP = 0
             this.CinversionFinalLP = parseFloat(this.periodoComparar[0].informacion.balancegeneral.activos.inversionFinalLP)
 
-            this.CtotalAcrivoNoCorriente = parseFloat(this.CtotalAcrivoNoCorriente) + parseFloat(this.Cpropiedad) + parseFloat(this.CactivosIntangibles) + parseFloat(this.CactivosBiologicos) + parseFloat(this.CinversionFinalLP)
+            this.CtotalActivoNoCorriente = 0
+            this.CtotalAcrivoNoCorriente =  parseFloat(this.Cpropiedad) + parseFloat(this.CactivosIntangibles) + parseFloat(this.CactivosBiologicos) + parseFloat(this.CinversionFinalLP)
 
-            this.CtotalActivo = parseFloat(this.CtotalActivo) + parseFloat(this.CtotalActivoCorriente) + parseFloat(this.CtotalAcrivoNoCorriente)
+            this.CtotalActivo = 0
+            this.CtotalActivo = parseFloat(this.CtotalActivoCorriente) + parseFloat(this.CtotalAcrivoNoCorriente)
+            this.CtotalActivoparapor = 0
             this.CtotalActivoparapor =this.CtotalActivo
             this.CtotalActivo = this.CtotalActivo.toLocaleString('en');
 
+            this.CtotalAcrivoNoCorrienteparapor = 0
             this.CtotalAcrivoNoCorrienteparapor =this.CtotalAcrivoNoCorriente
             this.CtotalAcrivoNoCorriente = this.CtotalAcrivoNoCorriente.toLocaleString('en');
 
+            this.CtotalActivoCorrienteparapor = 0
             this.CtotalActivoCorrienteparapor =this.CtotalActivoCorriente
             this.CtotalActivoCorriente = this.CtotalActivoCorriente.toLocaleString('en');
 
@@ -990,8 +1006,8 @@ export default {
             // No corrientes
             this.CCPPRelacionadasLP = parseFloat(this.periodoComparar[0].informacion.balancegeneral.pasivos.CPPRelacionadasLP)
             // Total Pasivos
-            this.CtotalPasivoCorriente = parseFloat(this.CtotalPasivoCorriente) + parseFloat(this.CcuentasPP) + parseFloat(this.CcuentasPPRelacionadas) + parseFloat(this.CotrascuentasPP) + parseFloat(this.CobligacionesEmple) + parseFloat(this.CimpuestosSobreRenta) + parseFloat(this.CgastosAcumulados)
-            this.CtotalPasivoNoCorriente = parseFloat(this.CtotalPasivoNoCorriente) + parseFloat(this.CCPPRelacionadasLP)
+            this.CtotalPasivoCorriente = parseFloat(this.CcuentasPP) + parseFloat(this.CcuentasPPRelacionadas) + parseFloat(this.CotrascuentasPP) + parseFloat(this.CobligacionesEmple) + parseFloat(this.CimpuestosSobreRenta) + parseFloat(this.CgastosAcumulados)
+            this.CtotalPasivoNoCorriente =  parseFloat(this.CCPPRelacionadasLP)
             this.CtotalPasivo = parseFloat(this.CtotalPasivoCorriente) + parseFloat(this.CtotalPasivoNoCorriente)
             this.CtotalPasivoparapor = this.CtotalPasivo
             this.CtotalPasivo = this.CtotalPasivo.toLocaleString("en")
@@ -1006,7 +1022,7 @@ export default {
             this.CresultadosAcu = parseFloat(this.periodoComparar[0].informacion.balancegeneral.patrimonio.resultadosAcu)
             this.CresultadosPresEjer = parseFloat(this.periodoComparar[0].informacion.balancegeneral.patrimonio.resultadosPresEjer)
             // Total Patrimonio
-            this.CtotalPatrimonio = parseFloat(this.CtotalPatrimonio) + parseFloat(this.CcapitalSocial) + parseFloat(this.CreservaLegal) + parseFloat(this.CresultadosAcu) + parseFloat(this.CresultadosPresEjer)
+            this.CtotalPatrimonio = parseFloat(this.CcapitalSocial) + parseFloat(this.CreservaLegal) + parseFloat(this.CresultadosAcu) + parseFloat(this.CresultadosPresEjer)
             this.CtotalPatrimonioparapor = this.CtotalPatrimonio
             this.CpasivoPatrimonio = parseFloat(this.CtotalPatrimonioparapor) + parseFloat(this.CtotalPasivoparapor)
             this.CpasivoPatrimonioparapor = this.CpasivoPatrimonio
@@ -1052,7 +1068,7 @@ export default {
             this.CresultadosPresEjerporcentaje = this.CresultadosPresEjerporcentaje.toFixed(2)
 
             //porcentaje patrimonio total
-            this.CtotalPatrimonioporcentaje = parseFloat(this.CtotalPatrimonioporcentaje) + parseFloat(this.CcapitalSocialporcentaje) + parseFloat(this.CreservaLegalporcentaje) + parseFloat(this.CresultadosAcuporcentaje) + parseFloat(this.CresultadosPresEjerporcentaje)
+            this.CtotalPatrimonioporcentaje = parseFloat(this.CcapitalSocialporcentaje) + parseFloat(this.CreservaLegalporcentaje) + parseFloat(this.CresultadosAcuporcentaje) + parseFloat(this.CresultadosPresEjerporcentaje)
             this.CtotalPatrimonioporcentaje = this.CtotalPatrimonioporcentaje.toFixed(0)
             //FIN DE PATRIMONIO PORCENTAJES COMPARABLES
 
