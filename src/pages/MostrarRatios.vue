@@ -222,7 +222,7 @@
                     </q-card>
                 </div>
             </div>
-            <!--RAZONES DE ACTIVIDAD BOTONES-->
+            <!--RAZONES DE ACTIVIDAD-->
             <div class="q-pa-md">
                 <q-list bordered class="rounded-borders">
                     <q-expansion-item expand-separator icon="perm_identity" v-model="expandedA" label="Razones de Actividad" :caption=opcionActividad>
@@ -258,15 +258,7 @@
                                 <q-item-label>Rotacion de los Activos Totales</q-item-label>
                             </q-item-section>
                         </q-item>
-                        <q-item clickable v-ripple style="width:100%">
-                            <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Rotacion de Activo Operacional</q-item-label>
-                            </q-item-section>
-                        </q-item>
-                        <q-item clickable v-ripple style="width:100%">
+                        <q-item clickable v-ripple style="width:100%" @click="this.rotacionCartera()">
                             <q-item-section avatar>
                                 <q-icon name="directions_bus" color="black" />
                             </q-item-section>
@@ -274,7 +266,7 @@
                                 <q-item-label>Rotacion de Cartera</q-item-label>
                             </q-item-section>
                         </q-item>
-                        <q-item clickable v-ripple style="width:100%">
+                        <q-item clickable v-ripple style="width:100%" @click="this.cicloOperacional()">
                             <q-item-section avatar>
                                 <q-icon name="directions_bus" color="black" />
                             </q-item-section>
@@ -321,7 +313,7 @@
                                 <q-item-section avatar>
                                     <q-item-label>
                                         <div class="text-center">
-                                            {{this.CPCTotal}} * 365
+                                            {{(this.CPCTotal).toLocaleString('en')}} * 365
                                             <hr>{{((this.ingresosporventas)).toLocaleString('en')}}
                                         </div>
                                     </q-item-label>
@@ -339,7 +331,7 @@
                                 <q-item-section avatar>
                                     <q-item-label>
                                         <div class="text-center">
-                                            {{this.CPPTotal}}
+                                            {{(this.CPPTotal).toLocaleString('en')}} * 365
                                             <hr>0.7 * {{((this.costodeventas)).toLocaleString('en')}}
                                         </div>
                                     </q-item-label>
@@ -351,7 +343,7 @@
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
-                        <!--Razon Periodo Promedio de Pago-->
+                        <!--Razon Periodo Rotacion de los Activos Totales-->
                         <q-card-section v-show="opcionActividad === 'Rotacion de los Activos Totales'">
                             <q-item class="justify-center">
                                 <q-item-section avatar>
@@ -365,6 +357,47 @@
                                 <q-item-section avatar>
                                     <q-item-label>
                                         = {{parseFloat((this.RATTotal).toFixed(2)).toLocaleString('en')}}
+                                    </q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
+                        <!--Razon Periodo Rotacion de Cartera-->
+                        <q-card-section v-show="opcionActividad === 'Rotacion de Cartera'">
+                            <q-item class="justify-center">
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        <div class="text-center">
+                                            {{parseFloat((this.ingresosporventas).toFixed(2)).toLocaleString('en')}}
+                                            <hr>{{parseFloat((this.CPCTotal).toFixed(2)).toLocaleString('en')}}
+                                        </div>
+                                    </q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        = {{parseFloat((this.rotacionCarteraTotal).toFixed(2)).toLocaleString('en')}} veces
+                                    </q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
+                        <!--Razon Periodo Ciclo Operacional-->
+                        <q-card-section v-show="opcionActividad === 'Ciclo Operacional'">
+                            <q-item class="justify-center">
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        {{parseFloat((this.nroDiasCartera).toFixed(2)).toLocaleString('en')}} +
+                                    </q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        <div class="text-center">
+                                            {{parseFloat((this.inventarios).toFixed(2)).toLocaleString('en')}} * 365
+                                            <hr>{{parseFloat((this.costodeventas).toFixed(2)).toLocaleString('en')}}
+                                        </div>
+                                    </q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        = {{parseInt((this.cicloOperacionalTotal).toFixed(2)).toLocaleString('en')}} dias
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -453,16 +486,61 @@
                                         </q-banner>
                                     </q-popup-proxy>
                                 </q-btn>
+                                <!--Boton para Rotacion de Cartera-->
+                                <q-btn v-show="this.opcionActividad === 'Rotacion de Cartera'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="bg-positive text-black">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Ventas netas
+                                                            <hr style="border-color: black;"> Cuentas por cobrar
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
+                                <!--Boton para Ciclo Operacional-->
+                                <q-btn v-show="this.opcionActividad === 'Ciclo Operacional'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="bg-positive text-black">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        Nro. Dias de Cartera +
+                                                    </q-item-label>
+                                                </q-item-section>
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Inventario
+                                                            <hr>Costo de ventas
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
                             </div>
                         </q-card-section>
                     </q-card>
                 </div>
             </div>
             <!--RAZONES DE DEUDA-->
-            <div class="q-pa-md">
+            <div class="q-pa-md"> <!-- ESTE ES EL MENU DESPLEGABLE  -->
                 <q-list bordered class="rounded-borders">
-                    <q-expansion-item expand-separator icon="perm_identity" label="Razones de Deuda" caption="Mas informacion">
-                        <q-item clickable v-ripple style="width:100%">
+                    <q-expansion-item expand-separator icon="perm_identity" v-model="expandedD" label="Razones de Deuda" :caption=opcionDeuda>
+                        <q-item clickable v-ripple style="width:100%" @click="this.indiceEndeudamiento()">
                             <q-item-section avatar>
                                 <q-icon name="directions_bus" color="black" />
                             </q-item-section>
@@ -470,24 +548,68 @@
                                 <q-item-label>Indice de Endeudamiento</q-item-label>
                             </q-item-section>
                         </q-item>
-                        <q-item clickable v-ripple style="width:100%">
-                            <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Razon de cargo de interes fijo</q-item-label>
-                            </q-item-section>
-                        </q-item>
-                        <q-item clickable v-ripple style="width:100%">
-                            <q-item-section avatar>
-                                <q-icon name="directions_bus" color="black" />
-                            </q-item-section>
-                            <q-item-section>
-                                <q-item-label>Indice de cobertura de pagos fijos</q-item-label>
-                            </q-item-section>
-                        </q-item>
                     </q-expansion-item>
                 </q-list>
+            </div>
+            <!--CARDS de DEUDA-->
+            <div class="row" v-show="opcionDeuda !== 'Mas informacion'">
+                <div class="col-3">
+                </div>
+                <div class="col-6">
+                    <q-card>
+                        <q-card-section class="row items-center q-pb-none">
+                            <div class="text-h6">{{this.opcionDeuda}}</div>
+                            <q-space />
+                            <q-btn @click="this.cerrarRazonDeuda()" icon="close" flat round dense v-close-popup />
+                        </q-card-section>
+                        <q-separator inset />
+                        <!--Indice de Endeudamiento-->
+                        <q-card-section v-show="opcionDeuda === 'Indice de Endeudamiento'">
+                            <q-item class="justify-center">
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        <div class="text-center">
+                                            {{parseFloat((this.totalPasivo).toFixed(2)).toLocaleString('en')}}
+                                            <hr>{{parseFloat((this.totalActivo).toFixed(2)).toLocaleString('en')}}
+                                        </div>
+                                    </q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        = {{parseFloat((this.indiceEndeudamientoTotal).toFixed(2))}}
+                                    </q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
+                        <q-separator inset></q-separator>
+                        <!-------------------------BOTONES DE FORMULA-------------------->
+                        <q-card-section>
+                            <div class="q-pa-md q-gutter-md" style="font-size: 36px">
+                                <!--Boton para Indice de Endeudamiento-->
+                                <q-btn v-show="this.opcionDeuda === 'Indice de Endeudamiento'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="bg-positive text-black">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Pasivos Totales
+                                                            <hr style="border-color: black;">Activos Totales
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
+                                <!--FIN de boton de Indice de Endeudamiento-->
+                            </div>
+                        </q-card-section>
+                    </q-card>
+                </div>
             </div>
             <!--RAZONES DE RENTABILIDAD-->
             <div class="q-pa-md">
@@ -594,6 +716,8 @@ export default {
             opcionLiquidez: "Mas informacion",
             expandedA: false,
             opcionActividad: "Mas informacion",
+            expandedD: false,
+            opcionDeuda: "Mas informacion",
             // Estado de Resultado
             // Datos a mostrar
             costodeventas: 0,
@@ -659,7 +783,14 @@ export default {
             CPCTotal: 0, // cuentas por cobrar totales
             PPPTotal: 0, // periodo promedio de pago Resultado
             CPPTotal: 0, // cuentas por pagar totales
-            RATTotal:0,   // Rotacion de los activos totales Resultado
+            RATTotal: 0, // Rotacion de los activos totales Resultado
+            rotacionCarteraTotal: 0,
+            nroDiasCartera:0,
+            nroDiasInventario:0,
+            cicloOperacionalTotal: 0,
+            // Resuestas a razon de endeudamiento
+            indiceEndeudamientoTotal: 0,
+
 
         };
     },
@@ -685,6 +816,9 @@ export default {
         },
         cerrarRazonActividad() {
             this.opcionActividad = "Mas informacion"
+        },
+        cerrarRazonDeuda() {
+            this.opcionDeuda = "Mas informacion"
         },
         razonCirculante() {
             this.expanded = false
@@ -723,13 +857,35 @@ export default {
         PPP() {
             this.expandedA = false
             this.opcionActividad = "Periodo Promedio de Pago"
-            this.CPPTotal = (this.cuentasPP + this.cuentasPPRelacionadas)
+            this.CPPTotal = (this.cuentasPP + this.cuentasPPRelacionadas + this.otrascuentasPP)
             this.PPPTotal = ((this.CPPTotal) * 365) / (0.7 * this.costodeventas)
         },
-        RAT (){
+        RAT() {
             this.expandedA = false
             this.opcionActividad = "Rotacion de los Activos Totales"
             this.RATTotal = this.ingresosporventas / this.totalActivo
+        },
+        rotacionCartera() {
+            this.expandedA = false
+            this.opcionActividad = "Rotacion de Cartera"
+            this.CPCTotal = (this.cuentasPC + this.otrasCPC)
+            this.rotacionCarteraTotal = this.ingresosporventas / this.CPCTotal
+        },
+        cicloOperacional() {
+            this.expandedA = false
+            this.opcionActividad = "Ciclo Operacional"
+            this.CPCTotal = (this.cuentasPC + this.otrasCPC)
+            this.nroDiasCartera = ((this.CPCTotal) * 365)/this.ingresosporventas
+            this.nroDiasInventario = (this.inventarios * 365) / (this.costodeventas)
+            this.cicloOperacionalTotal = this.nroDiasCartera + this.nroDiasInventario
+
+
+        },
+        // RAZON DE DEUDA
+        indiceEndeudamiento(){
+            this.expandedD = false
+            this.opcionDeuda = "Indice de Endeudamiento"
+            this.indiceEndeudamientoTotal = this.totalPasivo / this.totalActivo
         },
         async lsitartareas() {
             const docRef = doc(db, "periodos", this.$route.params.id);
