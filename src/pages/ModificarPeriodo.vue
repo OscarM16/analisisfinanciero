@@ -7,9 +7,19 @@
             </div>
         </div>
     </div>
+    <q-dialog v-model="dialog" :position="position">
+        <q-card style="border-radius: 20px; background-color: #AFF1BC;;width: 300px;max-height: 100px;">
+        <q-card-section class="row items-center" style="padding: 2px;">
+          <q-avatar icon="check_circle" size="6em"/>
+          <span class="">{{this.cambioEstadoFinanciero}} Actualizado</span>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
     <div class="row-12" v-show="!this.cargandoDatos">
-        <div class="col-12">
-            <h3> Modificar Periodo del Año {{this.$route.params.anioactual}}</h3>
+        <div class="row-12">
+            <div class="col-12 justify-center">
+                <h3 style="text-align: center; font-weight: bold;"> Modificar Periodo del Año {{this.$route.params.anioactual}}</h3>
+            </div>
         </div>
         <div class="row">
             <div class="col-4"></div>
@@ -893,7 +903,7 @@
                                 </q-item-section>
                             </q-item>
                         </q-list>
-                        <q-list v-show="this.impuestosSobreRenta !== 0">
+                        <q-list v-show="this.impuestosSobreRentaES !== 0">
                             <q-item>
                                 <q-item-section>
                                     <q-item-label style="font-size: 15px;">Impuesto sobre la renta Corriente</q-item-label>
@@ -902,8 +912,8 @@
                                     <q-item-label>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
-                                                {{ this.impuestosSobreRenta }}
-                                                <q-popup-edit v-model="this.impuestosSobreRenta">
+                                                {{ this.impuestosSobreRentaES }}
+                                                <q-popup-edit v-model="this.impuestosSobreRentaES">
                                                     <template v-slot="scope">
                                                         <q-input autofocus dense v-model="scope.value" type="number">
                                                             <template v-slot:after>
@@ -960,6 +970,10 @@ export default {
             llaveCargandoDatos: false,
             verEstado: false,
             link: 'inbox',
+            //Notificacion
+            dialog: false,
+            position: 'top',
+            cambioEstadoFinanciero: "",
             // Datos a mostrar
             // ACTIVOS
             // Corrientes
@@ -996,7 +1010,7 @@ export default {
             gastosAdmin: 0,
             gastosFinan: 0,
             gastosVentas: 0,
-            impuestosSobreRenta: 0,
+            impuestosSobreRentaES: 0,
             ingresosporventas: 0,
             otrosGasNetos: 0,
             otrosIngresNetos: 0,
@@ -1025,11 +1039,25 @@ export default {
         },
         periodo(){
             console.log("se modifico el array")
-            this.generarOperaciones()
             this.generarOperacionesER()
+            this.generarOperaciones()
+            
         }
     },
     methods: {
+        open (position) {
+            this.position = position
+            this.dialog = true
+        },
+        ocultarDialogo(){
+            this.dialog = false
+        },
+        ocultarMapaTimeout () {
+            clearTimeout(this.ocultadorMapa)
+            this.ocultadorMapa = setTimeout(() => {
+                this.dialog = false
+            }, 2222)
+        },  
         cargandoDatoss() {
             this.cargandoDatos = false
             console.log(this.cargandoDatos)
@@ -1067,6 +1095,9 @@ export default {
                 }
             }).then(() => {
                 console.log('Document successfully updated!')
+                this.cambioEstadoFinanciero= "Balance General",
+                this.open('top')
+                this.ocultarMapaTimeout()
                 this.lsitartareas()
             }).catch((error) => {
                 console.error('Error updating document: ', error)
@@ -1079,7 +1110,7 @@ export default {
                     gastosAdmin: (this.gastosAdmin).toString(),
                     gastosFinan: (this.gastosFinan).toString(),
                     gastosVentas: (this.gastosVentas).toString(),
-                    impuestosSobreRenta: (this.impuestosSobreRenta).toString(),
+                    impuestosSobreRentaES: (this.impuestosSobreRentaES).toString(),
                     ingresosporventas: (this.ingresosporventas).toString(),
                     otrosGasNetos: (this.otrosGasNetos).toString(),
                     otrosIngresNetos: (this.otrosIngresNetos).toString(),
@@ -1087,6 +1118,9 @@ export default {
                 }
             }).then(() => {
                 console.log('Document successfully updated!')
+                this.cambioEstadoFinanciero= "Estado de Resultados",
+                this.open('top')
+                this.ocultarMapaTimeout()
                 this.lsitartareas()
             }).catch((error) => {
                 console.error('Error updating document: ', error)
@@ -1152,7 +1186,7 @@ export default {
             this.gastosAdmin = parseFloat(this.periodo[0].estadoresultados.gastosAdmin)
             this.gastosFinan = parseFloat(this.periodo[0].estadoresultados.gastosFinan)
             this.gastosVentas = parseFloat(this.periodo[0].estadoresultados.gastosVentas)
-            this.impuestosSobreRenta = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRenta)
+            this.impuestosSobreRentaES = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRentaES)
             this.ingresosporventas = parseFloat(this.periodo[0].estadoresultados.ingresosporventas)
             this.otrosGasNetos = parseFloat(this.periodo[0].estadoresultados.otrosGasNetos)
             this.otrosIngresNetos = parseFloat(this.periodo[0].estadoresultados.otrosIngresNetos)

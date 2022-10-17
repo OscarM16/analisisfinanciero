@@ -685,7 +685,7 @@ export default {
             gastosAdmin: 0,
             gastosFinan: 0,
             gastosVentas: 0,
-            impuestosSobreRenta: 0,
+            impuestosSobreRentaES: 0,
             ingresosporventas: 0,
             otrosGasNetos: 0,
             otrosIngresNetos: 0,
@@ -911,7 +911,7 @@ export default {
             this.gastosAdmin = parseFloat(this.periodo[0].estadoresultados.gastosAdmin)
             this.gastosFinan = parseFloat(this.periodo[0].estadoresultados.gastosFinan)
             this.gastosVentas = parseFloat(this.periodo[0].estadoresultados.gastosVentas)
-            this.impuestosSobreRenta = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRenta)
+            this.impuestosSobreRentaES = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRentaES)
             this.ingresosporventas = parseFloat(this.periodo[0].estadoresultados.ingresosporventas)
             this.otrosGasNetos = parseFloat(this.periodo[0].estadoresultados.otrosGasNetos)
             this.otrosIngresNetos = parseFloat(this.periodo[0].estadoresultados.otrosIngresNetos)
@@ -920,7 +920,7 @@ export default {
             this.utilidadbruta = parseFloat(this.utilidadbruta) + parseFloat(this.ingresosporventas) - parseFloat(this.costodeventas)
             this.utilidadoperativa = parseFloat(this.utilidadbruta) - parseFloat(this.gastosAdmin) - parseFloat(this.gastosVentas)
             this.utilidadantesreserva = parseFloat(this.utilidadoperativa) - parseFloat(this.otrosGasNetos) - parseFloat(this.gastosFinan) + parseFloat(this.otrosIngresNetos)
-            this.utilidadneta = parseFloat(this.utilidadantesreserva) - parseFloat(this.reservaLegal) - parseFloat(this.impuestosSobreRenta)
+            this.utilidadneta = parseFloat(this.utilidadantesreserva) - parseFloat(this.reservaLegal) - parseFloat(this.impuestosSobreRentaES)
         }
     }
 }

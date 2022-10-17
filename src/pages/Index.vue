@@ -1,8 +1,10 @@
 <template>
 <q-page class="q-pa-md">
     <div class="row justify-center">
-        <div class="col-12 justify-center">
-            <h3>Periodos Disponibles</h3>
+        <div class="row-12">
+            <div class="col-12 justify-center">
+                <h3 style="text-align: center; font-weight: bold;"> Periodos Disponibles{{this.$route.params.anioactual}}</h3>
+            </div>
         </div>
         <div class="col-12">
             <q-input rounded outlined bottom-slots type="number"  v-model="barraBusqueda" v-on:keyup="buscartexto()" label="Que año desea buscar" counter>

@@ -394,13 +394,13 @@
                                 </q-item-section>
                             </q-item>
                         </q-list>
-                        <q-list v-show="this.impuestosSobreRenta !== 0">
+                        <q-list v-show="this.impuestosSobreRentaES !== 0">
                             <q-item>
                                 <q-item-section>
                                     <q-item-label style="font-size: 15px;">Impuesto sobre la renta Corriente</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label style=" font-size: 15px;  text-decoration: underline; color: black;">{{this.impuestosSobreRenta.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px;  text-decoration: underline; color: black;">{{this.impuestosSobreRentaES.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -474,7 +474,7 @@ export default {
             gastosAdmin: 0,
             gastosFinan: 0,
             gastosVentas: 0,
-            impuestosSobreRenta: 0,
+            impuestosSobreRentaES: 0,
             ingresosporventas: 0,
             otrosGasNetos: 0,
             otrosIngresNetos: 0,
@@ -557,7 +557,7 @@ export default {
             this.gastosAdmin = parseFloat(this.periodo[0].estadoresultados.gastosAdmin)
             this.gastosFinan = parseFloat(this.periodo[0].estadoresultados.gastosFinan)
             this.gastosVentas = parseFloat(this.periodo[0].estadoresultados.gastosVentas)
-            this.impuestosSobreRenta = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRenta)
+            this.impuestosSobreRentaES = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRentaES)
             this.ingresosporventas = parseFloat(this.periodo[0].estadoresultados.ingresosporventas)
             this.otrosGasNetos = parseFloat(this.periodo[0].estadoresultados.otrosGasNetos)
             this.otrosIngresNetos = parseFloat(this.periodo[0].estadoresultados.otrosIngresNetos)
