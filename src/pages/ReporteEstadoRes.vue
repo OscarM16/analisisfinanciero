@@ -14,11 +14,13 @@
                 <h3 style="text-align: center; font-weight: bold;"> Reporte del Estado de Resultado del Año {{this.$route.params.anioactual}}</h3>
             </div>
         </div>
-        <div class="">
-            <q-btn color="teal" @click="this.generarPDF()">
+        <div class="row-12 q-pa-md" style="padding: 30px; margin: 5%;">
+            <div class="col">
+                <q-btn style="float: right;" color="blue" @click="this.generarPDF()">
                 <q-icon left size="3em" name="download" />
                 <div>Descargar PDF</div>
             </q-btn>
+            </div>
         </div>
         <div class="row-12" id="content">
             <div class="col-12" style="padding: 30px; margin: 5%;">
