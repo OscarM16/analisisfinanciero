@@ -9,9 +9,11 @@
     </div>
     <div class="row " v-show="!this.cargandoDatos">
         <div class="col">
+            <div class="row-12">
             <div class="col-12 justify-center">
-                <h3> Ver Ratios del Año {{this.$route.params.anioactual}}</h3>
+                <h3 style="text-align: center; font-weight: bold;"> Mostrar Ratios del Año {{this.$route.params.anioactual}}</h3>
             </div>
+        </div>
             <!--RAZONES DE LIQUIDEZ-->
             <div class="q-pa-md">
                 <q-list bordered class="rounded-borders">

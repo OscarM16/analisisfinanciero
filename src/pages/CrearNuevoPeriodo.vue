@@ -2,7 +2,11 @@
 <q-page class="q-pa-md">
     <div class="row justify-center">
         <div class="col-12 justify-center">
-            <h3>Crear Nuevo Periodo</h3>
+            <div class="row-12">
+            <div class="col-12 justify-center">
+                <h3 style="text-align: center; font-weight: bold;">Crear Nuevo Periodo</h3>
+            </div>
+        </div>
             <h4 v-show="!this.mostrarFormulario">Balance General</h4>
             <h4 v-show="this.mostrarFormulario">Estado de Resultados</h4>
             <div class="q-pa-md">

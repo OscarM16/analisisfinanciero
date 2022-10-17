@@ -9,8 +9,10 @@
         </div>
     </div>
     <div class="row-12" v-show="!this.cargandoDatos">
-        <div class="col-12">
-            <h3> Ver Periodo del Año {{this.$route.params.anioactual}}</h3>
+        <div class="row-12">
+            <div class="col-12 justify-center">
+                <h3 style="text-align: center; font-weight: bold;"> Ver Periodo del Año {{this.$route.params.anioactual}}</h3>
+            </div>
         </div>
         <div class="row">
             <div class="col-4"></div>

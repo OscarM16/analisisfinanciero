@@ -8,9 +8,11 @@
             </div>
         </div>
         <div class="row-12" v-show="!this.cargandoDatos">
+            <div class="row-12">
             <div class="col-12 justify-center">
-                <h3> Reporte Vertical del Estado de Resultado del Año {{this.$route.params.anioactual}}</h3>
+                <h3 style="text-align: center; font-weight: bold;"> Reporte Vertical del Estado de Resultado del Año {{this.$route.params.anioactual}}</h3>
             </div>
+        </div>
             <div class="q-pa-md">
                 <div class="q-gutter-sm">
                     <q-radio v-model="anioActual" :val=anioActual :label=this.$route.params.anioactual />

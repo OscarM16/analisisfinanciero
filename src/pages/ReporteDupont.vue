@@ -1,17 +1,19 @@
 <template>
 <q-page class="q-pa-md">
     <div class="row" v-show="this.cargandoDatos">
-            <div class="col items-center" style="justify-content: center; margin-top: 150px;">
-                <div class="row justify-center">
-                    <q-spinner-clock color="primary" size="25em" />
-                </div>
+        <div class="col items-center" style="justify-content: center; margin-top: 150px;">
+            <div class="row justify-center">
+                <q-spinner-clock color="primary" size="25em" />
             </div>
         </div>
+    </div>
     <div class="row" v-show="!this.cargandoDatos">
-        <div class="col-12 justify-center">
-            <h3> Reporte Dupont del Año {{this.$route.params.anioactual}}</h3>
+        <div class="row-12">
+            <div class="col-12 justify-center">
+                <h3 style="text-align: center; font-weight: bold;"> Reporte Dupont del Año {{this.$route.params.anioactual}}</h3>
+            </div>
         </div>
-        <div>
+        <div class="row">
             <p>{{this.periodo}}</p>
         </div>
     </div>
@@ -60,8 +62,8 @@ export default {
             if (docSnap.exists()) {
                 this.periodo.push(docSnap.data())
                 if (this.periodo.length !== 0) {
-                        this.llaveCargandoDatos = true
-                    }
+                    this.llaveCargandoDatos = true
+                }
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
