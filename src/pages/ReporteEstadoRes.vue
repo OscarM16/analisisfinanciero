@@ -131,6 +131,14 @@
                                     <q-item-label>{{this.gastosFinan.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
+                            <q-item v-show="this.ingresosFinan !== 0">
+                                <q-item-section>
+                                    <q-item-label style=" font-size: 15px;">Ingresos financieros</q-item-label>
+                                </q-item-section>
+                                <q-item-section side top>
+                                    <q-item-label>{{this.ingresosFinan.toLocaleString('en')}}</q-item-label>
+                                </q-item-section>
+                            </q-item>
                             <!--AGREGAR ACA EL QUE FALTA-->
                         </q-list>
                         <hr>
@@ -234,6 +242,7 @@ export default {
             costodeventas: 0,
             gastosAdmin: 0,
             gastosFinan: 0,
+            ingresosFinan: 0,
             gastosVentas: 0,
             impuestosSobreRentaES: 0,
             ingresosporventas: 0,
@@ -284,6 +293,7 @@ export default {
             this.costodeventas = parseFloat(this.periodo[0].estadoresultados.costodeventas)
             this.gastosAdmin = parseFloat(this.periodo[0].estadoresultados.gastosAdmin)
             this.gastosFinan = parseFloat(this.periodo[0].estadoresultados.gastosFinan)
+            this.ingresosFinan = parseFloat(this.periodo[0].estadoresultados.ingresosFinan)
             this.gastosVentas = parseFloat(this.periodo[0].estadoresultados.gastosVentas)
             this.impuestosSobreRentaES = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRentaES)
             this.ingresosporventas = parseFloat(this.periodo[0].estadoresultados.ingresosporventas)
@@ -293,7 +303,7 @@ export default {
 
             this.utilidadbruta = parseFloat(this.utilidadbruta) + parseFloat(this.ingresosporventas) - parseFloat(this.costodeventas)
             this.utilidadoperativa = parseFloat(this.utilidadbruta) - parseFloat(this.gastosAdmin) - parseFloat(this.gastosVentas)
-            this.utilidadantesreserva = parseFloat(this.utilidadoperativa) - parseFloat(this.otrosGasNetos) - parseFloat(this.gastosFinan) + parseFloat(this.otrosIngresNetos)
+            this.utilidadantesreserva = parseFloat(this.utilidadoperativa) - parseFloat(this.otrosGasNetos) - parseFloat(this.gastosFinan) + parseFloat(this.otrosIngresNetos)  + parseFloat(this.ingresosFinan)
             this.utilidadneta = parseFloat(this.utilidadantesreserva) - parseFloat(this.reservaLegal) - parseFloat(this.impuestosSobreRentaES)
         },
         cargandoDatoss() {

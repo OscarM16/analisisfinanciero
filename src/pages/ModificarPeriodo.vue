@@ -8,7 +8,7 @@
         </div>
     </div>
     <q-dialog v-model="dialog" :position="position">
-        <q-card style="border-radius: 20px; background-color: #AFF1BC;;width: 300px;max-height: 100px;">
+        <q-card style="border-radius: 20px; background-color: #AFF1BC;;width: 350px;max-height: 100px;">
         <q-card-section class="row items-center" style="padding: 2px;">
           <q-avatar icon="check_circle" size="6em"/>
           <span class="">{{this.cambioEstadoFinanciero}} Actualizado</span>
@@ -873,6 +873,31 @@
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
+                            <q-item v-show="this.ingresosFinan !== 0">
+                                <q-item-section>
+                                    <q-item-label style=" font-size: 15px;">Ingresos financieros</q-item-label>
+                                </q-item-section>
+                                <q-item-section side top>
+                                    <q-item-label>
+                                        <div class="q-pa-md">
+                                            <div class="cursor-pointer">
+                                                {{ this.ingresosFinan }}
+                                                <q-popup-edit v-model="this.ingresosFinan">
+                                                    <template v-slot="scope">
+                                                        <q-input autofocus dense v-model="scope.value" type="number">
+                                                            <template v-slot:after>
+                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
+
+                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
+                                                            </template>
+                                                        </q-input>
+                                                    </template>
+                                                </q-popup-edit>
+                                            </div>
+                                        </div>
+                                    </q-item-label>
+                                </q-item-section>
+                            </q-item>
                         </q-list>
                         <hr>
                         <!--PATRIMONIO-->
@@ -1009,6 +1034,7 @@ export default {
             costodeventas: 0,
             gastosAdmin: 0,
             gastosFinan: 0,
+            ingresosFinan:0,
             gastosVentas: 0,
             impuestosSobreRentaES: 0,
             ingresosporventas: 0,
@@ -1109,6 +1135,7 @@ export default {
                     costodeventas: (this.costodeventas).toString(),
                     gastosAdmin: (this.gastosAdmin).toString(),
                     gastosFinan: (this.gastosFinan).toString(),
+                    ingresosFinan: (this.ingresosFinan).toString(),
                     gastosVentas: (this.gastosVentas).toString(),
                     impuestosSobreRentaES: (this.impuestosSobreRentaES).toString(),
                     ingresosporventas: (this.ingresosporventas).toString(),
@@ -1185,6 +1212,7 @@ export default {
             this.costodeventas = parseFloat(this.periodo[0].estadoresultados.costodeventas)
             this.gastosAdmin = parseFloat(this.periodo[0].estadoresultados.gastosAdmin)
             this.gastosFinan = parseFloat(this.periodo[0].estadoresultados.gastosFinan)
+            this.ingresosFinan = parseFloat(this.periodo[0].estadoresultados.ingresosFinan)
             this.gastosVentas = parseFloat(this.periodo[0].estadoresultados.gastosVentas)
             this.impuestosSobreRentaES = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRentaES)
             this.ingresosporventas = parseFloat(this.periodo[0].estadoresultados.ingresosporventas)

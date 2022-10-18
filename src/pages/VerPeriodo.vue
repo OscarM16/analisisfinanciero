@@ -383,6 +383,14 @@
                                     <q-item-label>{{this.gastosFinan.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
+                            <q-item v-show="this.ingresosFinan !== 0">
+                                <q-item-section>
+                                    <q-item-label style=" font-size: 15px;">Ingresos financieros</q-item-label>
+                                </q-item-section>
+                                <q-item-section side top>
+                                    <q-item-label>{{this.ingresosFinan.toLocaleString('en')}}</q-item-label>
+                                </q-item-section>
+                            </q-item>
                         </q-list>
                         <hr>
                         <!--PATRIMONIO-->
@@ -475,6 +483,7 @@ export default {
             costodeventas: 0,
             gastosAdmin: 0,
             gastosFinan: 0,
+            ingresosFinan: 0,
             gastosVentas: 0,
             impuestosSobreRentaES: 0,
             ingresosporventas: 0,
@@ -558,6 +567,7 @@ export default {
             this.costodeventas = parseFloat(this.periodo[0].estadoresultados.costodeventas)
             this.gastosAdmin = parseFloat(this.periodo[0].estadoresultados.gastosAdmin)
             this.gastosFinan = parseFloat(this.periodo[0].estadoresultados.gastosFinan)
+            this.ingresosFinan = parseFloat(this.periodo[0].estadoresultados.ingresosFinan)
             this.gastosVentas = parseFloat(this.periodo[0].estadoresultados.gastosVentas)
             this.impuestosSobreRentaES = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRentaES)
             this.ingresosporventas = parseFloat(this.periodo[0].estadoresultados.ingresosporventas)
