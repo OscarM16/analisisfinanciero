@@ -15,6 +15,7 @@
     "firebase": "^9.12.1",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
+    "path": "^0.12.7",
     "quasar": "^2.0.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0",

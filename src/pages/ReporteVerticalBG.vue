@@ -11,35 +11,33 @@
       <h3 style="text-align: center; font-weight: bold;">Reporte Vertical del Balance General del Año {{this.$route.params.anioactual}}</h3>
     </div>
     <div class="row" v-show="!this.cargandoDatos" style="padding: 30px; margin: 5%;">
-        <div class="col-5">
-            <div class="" style="font-size:20px">
-                <q-radio v-model="anioActual" :val=anioActual :label=this.$route.params.anioactual />
-            </div>
-            <div class="" style="font-size:20px">
-                El año actual es: <strong>{{ anioActual }}</strong>
-            </div>
+      <div class="col-5">
+        <div class="" style="font-size:20px">
+          <q-radio v-model="anioActual" :val=anioActual :label=this.$route.params.anioactual />
         </div>
-        <div class="col-5">
-            <div class="" style="font-size:20px; margin-left: -90px;">
-              <strong> Compara el año {{this.anioActual}} con los siguientes años</strong>
-            </div>
-            <div class="" style="font-size:20px">
-                <q-radio v-for="index in aniosArray" :key="index" v-model="eleccion" :val=index :label=index />
-            </div>
-
-            <div class="" v-show="eleccion !== 'Ninguna'">
-                El año a comparar es: <strong>{{ eleccion }}</strong>
-            </div>
+        <div class="" style="font-size:20px">
+          El año actual es: <strong>{{ anioActual }}</strong>
         </div>
-        <div class="col-2" style="justify-items: right;">
-          <div class="">
-            <q-btn color="blue" @click="this.generarPDF()">
-                <q-icon left size="3em" name="download" />
-                Descargar PDF
-            </q-btn>
+      </div>
+      <div class="col-5">
+        <div class="" style="font-size:20px; margin-left: -90px;">
+          <strong> Compara el año {{this.anioActual}} con los siguientes años</strong>
         </div>
+        <div class="" style="font-size:20px">
+          <q-radio v-for="index in aniosArray" :key="index" v-model="eleccion" :val=index :label=index />
         </div>
-
+        <div class="" v-show="eleccion !== 'Ninguna'">
+          El año a comparar es: <strong>{{ eleccion }}</strong>
+        </div>
+      </div>
+      <div class="col-2" style="justify-items: right;">
+        <div class="">
+          <q-btn color="blue" @click="this.generarPDF()">
+             <q-icon left size="3em" name="download" />
+              Descargar PDF
+          </q-btn>
+        </div>
+      </div>
     </div>
     <div class="row" v-show="this.cargandoDatos">
         <div class="col items-center" style="justify-content: center; margin-top: 150px;">
