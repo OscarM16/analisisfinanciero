@@ -134,17 +134,6 @@
                                     <q-item-label>{{this.gastosVentasporcentaje}}%</q-item-label>
                                 </q-item-section>
                             </q-item>
-                            <q-item v-show="this.gastosFinan !== 0">
-                                <q-item-section>
-                                    <q-item-label style=" font-size: 15px;">Gastos financieros</q-item-label>
-                                </q-item-section>
-                                <q-item-section >
-                                    <q-item-label>{{this.gastosFinan.toLocaleString('en')}}</q-item-label>
-                                </q-item-section>
-                                <q-item-section >
-                                    <q-item-label>{{this.gastosFinanporcentaje}}%</q-item-label>
-                                </q-item-section>
-                            </q-item>
                             <q-item>
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 18px;">UTILIDAD DE OPERACION</q-item-label>
@@ -180,6 +169,28 @@
                                 </q-item-section>
                                 <q-item-section>
                                     <q-item-label>{{this.otrosGasNetosporcentaje}}%</q-item-label>
+                                </q-item-section>
+                            </q-item>
+                            <q-item v-show="this.gastosFinan !== 0">
+                                <q-item-section>
+                                    <q-item-label style=" font-size: 15px;">Gastos financieros netos</q-item-label>
+                                </q-item-section>
+                                <q-item-section >
+                                    <q-item-label>{{this.gastosFinan.toLocaleString('en')}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section >
+                                    <q-item-label>{{this.gastosFinanporcentaje}}%</q-item-label>
+                                </q-item-section>
+                            </q-item>
+                            <q-item v-show="this.ingresosFinan !== 0">
+                                <q-item-section>
+                                    <q-item-label style=" font-size: 15px;">Ingresos financieros netos</q-item-label>
+                                </q-item-section>
+                                <q-item-section >
+                                    <q-item-label>{{this.ingresosFinan.toLocaleString('en')}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section >
+                                    <q-item-label>{{this.ingresosFinanporcentaje}}%</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -309,6 +320,8 @@ export default {
             gastosVentasporcentaje:0,
             impuestosSobreRentaES: 0,
             impuestosSobreRentaESporcentaje:0,
+            ingresosFinan:0,
+            ingresosFinanporcentaje:0,
             ingresosporventas: 0,
             ingresosporventasporcentaje:0,
             otrosGasNetos: 0,
@@ -419,17 +432,21 @@ export default {
             this.gastosAdminporcentaje = (parseFloat(this.gastosAdmin)/parseFloat(this.ingresosporventas))*100
             this.gastosAdminporcentaje = this.gastosAdminporcentaje.toFixed(2)
 
-            this.gastosFinan = parseFloat(this.periodoActual[0].estadoresultados.gastosFinan)*(-1)
-            this.gastosFinanporcentaje = (parseFloat(this.gastosFinan)/parseFloat(this.ingresosporventas))*100
-            this.gastosFinanporcentaje = this.gastosFinanporcentaje.toFixed(2)
-
             this.gastosVentas = parseFloat(this.periodoActual[0].estadoresultados.gastosVentas)*(-1)
             this.gastosVentasporcentaje = (parseFloat(this.gastosVentas)/parseFloat(this.ingresosporventas))*100
             this.gastosVentasporcentaje = this.gastosVentasporcentaje.toFixed(2)
 
-            this.utilidadoperativa = parseFloat(this.utilidadbruta) + parseFloat(this.gastosAdmin) + parseFloat(this.gastosVentas) + parseFloat(this.gastosFinan)
+            this.utilidadoperativa = parseFloat(this.utilidadbruta) + parseFloat(this.gastosAdmin) + parseFloat(this.gastosVentas)
             this.utilidadoperativaporcentaje = (parseFloat(this.utilidadoperativa)/parseFloat(this.ingresosporventas))*100
             this.utilidadoperativaporcentaje = this.utilidadoperativaporcentaje.toFixed(2)
+
+            this.gastosFinan = parseFloat(this.periodoActual[0].estadoresultados.gastosFinan)*(-1)
+            this.gastosFinanporcentaje = (parseFloat(this.gastosFinan)/parseFloat(this.ingresosporventas))*100
+            this.gastosFinanporcentaje = this.gastosFinanporcentaje.toFixed(2)
+
+            this.ingresosFinan = parseFloat(this.periodoActual[0].estadoresultados.ingresosFinan)
+            this.ingresosFinanporcentaje = (parseFloat(this.ingresosFinan)/parseFloat(this.ingresosporventas))*100
+            this.ingresosFinanporcentaje = this.ingresosFinanporcentaje.toFixed(2)
 
             this.otrosGasNetos = parseFloat(this.periodoActual[0].estadoresultados.otrosGasNetos)*(-1)
             this.otrosGasNetosporcentaje = (parseFloat(this.otrosGasNetos)/parseFloat(this.ingresosporventas))*100
@@ -439,7 +456,7 @@ export default {
             this.otrosIngresNetosporcentaje = (parseFloat(this.otrosIngresNetos)/parseFloat(this.ingresosporventas))*100
             this.otrosIngresNetosporcentaje = this.otrosIngresNetosporcentaje.toFixed(2)
 
-            this.utilidadantesreserva = parseFloat(this.utilidadoperativa) + parseFloat(this.otrosGasNetos) + parseFloat(this.otrosIngresNetos)
+            this.utilidadantesreserva = parseFloat(this.utilidadoperativa) + parseFloat(this.otrosGasNetos) + parseFloat(this.otrosIngresNetos) + parseFloat(this.gastosFinan) + parseFloat(this.ingresosFinan)
             this.utilidadantesreservaporcentaje = (parseFloat(this.utilidadantesreserva)/parseFloat(this.ingresosporventas))*100
             this.utilidadantesreservaporcentaje = this.utilidadantesreservaporcentaje.toFixed(2)
 
@@ -449,10 +466,10 @@ export default {
 
             this.impuestosSobreRentaES = parseFloat(this.periodoActual[0].estadoresultados.impuestosSobreRentaES)*(-1)
             this.impuestosSobreRentaESporcentaje = (parseFloat(this.impuestosSobreRentaES)/parseFloat(this.ingresosporventas))*100
-            this.impuestosSobreRentaESporcentaje = this.impuestosSobreRentaESporcentaje.toFixed(2)
+            this.impuestosSobreRentaESporcentaje = this.impuestosSobreRentaESporcentaje.toFixed(3)
 
             this.utilidadneta = parseFloat(this.utilidadantesreserva) + parseFloat(this.reservaLegal) + parseFloat(this.impuestosSobreRentaES)
-            this.utilidadnetaporcentaje = (parseFloat(this.utilidadantesreserva)/parseFloat(this.ingresosporventas))*100
+            this.utilidadnetaporcentaje = parseFloat(this.utilidadantesreservaporcentaje) + parseFloat(this.reservaLegalporcentaje) + parseFloat(this.impuestosSobreRentaESporcentaje)
             this.utilidadnetaporcentaje = this.utilidadnetaporcentaje.toFixed(2)
 
         },

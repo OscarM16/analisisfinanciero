@@ -58,6 +58,68 @@
                     <div class="row">
 
                         <div class="col" style=" margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px; text-align: center;">
+                            Más
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style=" margin-left:15px; margin-right:15px;">
+
+                        </div>
+                    </div>
+                    <!--COMIENZA 1.5 FILA-->
+                    <div class="row">
+                        <div class="col" style="background-color: #3752EB; margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;">
+                            Ingresos
+                        </div>
+                        <div class="col" style=" margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style=";margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                    </div>
+                    <!--SEPRACION 1-->
+                    <div class="row">
+
+                        <div class="col" style=" margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px; text-align: center;">
                             Menos
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
@@ -269,10 +331,10 @@
 
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center;">
-                            
+
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: center; align-items: center; display: flex;">
-                            
+
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px; position: flex;">
 

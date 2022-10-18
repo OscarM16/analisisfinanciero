@@ -28,7 +28,7 @@
         <q-item-label
           header
         >
-         Menu 
+         Menu
         </q-item-label>
         <q-item clickable to="/">
           <q-item-section avatar>
@@ -59,7 +59,7 @@
 import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
-  
+
 ];
 
 import { defineComponent, ref } from 'vue'
