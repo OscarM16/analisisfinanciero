@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh lpR fFf">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -22,7 +22,7 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      bordered
+      overlay bordered
     >
       <q-list>
         <q-item-label
@@ -72,7 +72,7 @@ export default defineComponent({
   },
 
   setup () {
-    const leftDrawerOpen = ref(false)
+    const leftDrawerOpen = ref(true)
 
     return {
       essentialLinks: linksList,

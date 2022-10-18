@@ -497,8 +497,8 @@ export default {
         generarPDF() {
             html2canvas(document.querySelector("#content")).then(canvas => {
                 var imgUrl = canvas.toDataURL("image / png"); // Convertir lienzo en flujo img src
-                const doc = new jsPDF('p','mm','letter');
-                doc.addImage(imgUrl, 0, 0, 210, 280)
+                const doc = new jsPDF('p','mm', [297, 210]);
+                doc.addImage(imgUrl, 0, 0, 210, 297)
                 doc.save(this.nombredelPDF); // will save the file in the current working directory
             });
         }
