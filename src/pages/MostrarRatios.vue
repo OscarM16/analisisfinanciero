@@ -143,7 +143,7 @@
                                 <!--Boton para Razon Circulante-->
                                 <q-btn v-show="this.opcionLiquidez === 'Razon Circulante'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -163,7 +163,7 @@
                                 <!--Boton para Razon Rapida-->
                                 <q-btn v-show="this.opcionLiquidez === 'Razon Rapida'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -183,7 +183,7 @@
                                 <!--Boton para Capital Trabajo-->
                                 <q-btn v-show="this.opcionLiquidez === 'Capital de Trabajo'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -202,7 +202,7 @@
                                 <!--Boton para Nivel de dependencia de inventario-->
                                 <q-btn v-show="this.opcionLiquidez === 'Nivel de dependencia de inventario'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -411,7 +411,7 @@
                                 <!--Boton para Rotacion de Inventario-->
                                 <q-btn v-show="this.opcionActividad === 'Rotacion de Inventario'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -431,7 +431,7 @@
                                 <!--Boton para Periodo Promedio de Cobro-->
                                 <q-btn v-show="this.opcionActividad === 'Periodo Promedio de Cobro'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -451,7 +451,7 @@
                                 <!--Boton para Periodo Promedio de PAGO-->
                                 <q-btn v-show="this.opcionActividad === 'Periodo Promedio de Pago'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -471,7 +471,7 @@
                                 <!--Boton para Rotacion de los Activos Totales-->
                                 <q-btn v-show="this.opcionActividad === 'Rotacion de los Activos Totales'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -491,7 +491,7 @@
                                 <!--Boton para Rotacion de Cartera-->
                                 <q-btn v-show="this.opcionActividad === 'Rotacion de Cartera'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -511,7 +511,7 @@
                                 <!--Boton para Ciclo Operacional-->
                                 <q-btn v-show="this.opcionActividad === 'Ciclo Operacional'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -590,7 +590,7 @@
                                 <!--Boton para Indice de Endeudamiento-->
                                 <q-btn v-show="this.opcionDeuda === 'Indice de Endeudamiento'" color="primary" text-color="white" label="Formula">
                                     <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-                                        <q-banner class="bg-positive text-black">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
                                             <template v-slot:avatar>
 
                                             </template>
@@ -616,8 +616,8 @@
             <!--RAZONES DE RENTABILIDAD-->
             <div class="q-pa-md">
                 <q-list bordered class="rounded-borders">
-                    <q-expansion-item expand-separator icon="list" label="Razones de Rentabilidad" caption="Mas informacion">
-                        <q-item clickable v-ripple style="width:100%">
+                    <q-expansion-item expand-separator icon="list" v-model="expandedR" label="Razones de Rentabilidad" :caption=opcionRentabilidad>
+                        <q-item clickable v-ripple style="width:100%" @click="this.margenUtilidadB()">
                             <q-item-section avatar>
                                 <q-icon name="calculate" color="black" />
                             </q-item-section>
@@ -625,7 +625,7 @@
                                 <q-item-label>Margen de Utilidad Bruta</q-item-label>
                             </q-item-section>
                         </q-item>
-                        <q-item clickable v-ripple style="width:100%">
+                        <q-item clickable v-ripple style="width:100%" @click="this.margenUtilidadO()">
                             <q-item-section avatar>
                                 <q-icon name="calculate" color="black" />
                             </q-item-section>
@@ -633,7 +633,7 @@
                                 <q-item-label>Margen de Utilidad Operativa</q-item-label>
                             </q-item-section>
                         </q-item>
-                        <q-item clickable v-ripple style="width:100%">
+                        <q-item clickable v-ripple style="width:100%" @click="this.margenUtilidadN()">
                             <q-item-section avatar>
                                 <q-icon name="calculate" color="black" />
                             </q-item-section>
@@ -641,7 +641,7 @@
                                 <q-item-label>Margen de Utilidad Neta</q-item-label>
                             </q-item-section>
                         </q-item>
-                        <q-item clickable v-ripple style="width:100%">
+                        <q-item clickable v-ripple style="width:100%" @click="this.rendimientoActivoTotal()">
                             <q-item-section avatar>
                                 <q-icon name="calculate" color="black" />
                             </q-item-section>
@@ -652,6 +652,184 @@
                     </q-expansion-item>
                 </q-list>
             </div>
+            <!--CARDS de Rentabilidad INCLUYE Boton-->
+            <div class="row" v-show="opcionRentabilidad !== 'Mas informacion'">
+                <div class="col-3">
+                </div>
+                <div class="col-6">
+                    <q-card>
+                        <q-card-section class="row items-center q-pb-none">
+                            <div class="text-h6">{{this.opcionRentabilidad}}</div>
+                            <q-space />
+                            <q-btn @click="this.cerrarRazonRentabilidad()" icon="close" flat round dense v-close-popup />
+                        </q-card-section>
+                        <q-separator inset />
+                        <!--Indice de Margen de Utilidad Bruta-->
+                        <q-card-section v-show="opcionRentabilidad === 'Margen de Utilidad Bruta'">
+                            <q-item class="justify-center">
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        <div class="text-center">
+                                            Numerador
+                                            <hr>Denominador
+                                        </div>
+                                    </q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        = Respuesta
+                                    </q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
+                        <!--Indice de Margen de Utilidad Operativa-->
+                        <q-card-section v-show="opcionRentabilidad === 'Margen de Utilidad Operativa'">
+                            <q-item class="justify-center">
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        <div class="text-center">
+                                            Numerador
+                                            <hr>Denominador
+                                        </div>
+                                    </q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        = Respuesta
+                                    </q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
+                        <!--Indice de Margen de Utilidad Neta-->
+                        <q-card-section v-show="opcionRentabilidad === 'Margen de Utilidad Neta'">
+                            <q-item class="justify-center">
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        <div class="text-center">
+                                            Numerador
+                                            <hr>Denominador
+                                        </div>
+                                    </q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        = Respuesta
+                                    </q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
+                        <!--Indice de Rendimiento sobre Activo Total-->
+                        <q-card-section v-show="opcionRentabilidad === 'Rendimiento sobre Activo Total'">
+                            <q-item class="justify-center">
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        <div class="text-center">
+                                            Numerador
+                                            <hr>Denominador
+                                        </div>
+                                    </q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                    <q-item-label>
+                                        = Respuesta
+                                    </q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
+                        <q-separator inset></q-separator>
+                        <!-------------------------BOTONES DE FORMULA-------------------->
+                        <q-card-section>
+                            <div class="q-pa-md q-gutter-md" style="font-size: 36px">
+                                <!--Boton para Margen de Utilidad Bruta-->
+                                <q-btn v-show="this.opcionRentabilidad === 'Margen de Utilidad Bruta'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Numerador
+                                                            <hr style="border-color: black;">Denominador
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
+                                <!--FIN de boton de Margen de Utilidad Bruta-->
+                                <!--Boton para Margen de Utilidad Operativa-->
+                                <q-btn v-show="this.opcionRentabilidad === 'Margen de Utilidad Operativa'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Numerador
+                                                            <hr style="border-color: black;">Denominador
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
+                                <!--FIN de boton de Margen de Utilidad Operativa-->
+                                <!--Boton para Margen de Utilidad Neta-->
+                                <q-btn v-show="this.opcionRentabilidad === 'Margen de Utilidad Neta'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Numerador
+                                                            <hr style="border-color: black;">Denominador
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
+                                <!--FIN de boton de Margen de Utilidad Neta-->
+                                <!--Boton para Rendimiento sobre Activo Total-->
+                                <q-btn v-show="this.opcionRentabilidad === 'Rendimiento sobre Activo Total'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Numerador
+                                                            <hr style="border-color: black;">Denominador
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
+                                <!--FIN de boton de Rendimiento sobre Activo Total-->
+                            </div>
+                        </q-card-section>
+                    </q-card>
+                </div>
+            </div>
+            <div><p>as</p></div>
         </div>
     </div>
 
@@ -681,6 +859,8 @@ export default {
             opcionActividad: "Mas informacion",
             expandedD: false,
             opcionDeuda: "Mas informacion",
+            expandedR: false,
+            opcionRentabilidad: "Mas informacion",
             // Estado de Resultado
             // Datos a mostrar
             costodeventas: 0,
@@ -783,6 +963,9 @@ export default {
         cerrarRazonDeuda() {
             this.opcionDeuda = "Mas informacion"
         },
+        cerrarRazonRentabilidad(){
+            this.opcionRentabilidad = "Mas informacion"
+        },
         razonCirculante() {
             this.expanded = false
             this.opcionLiquidez = "Razon Circulante"
@@ -849,6 +1032,23 @@ export default {
             this.expandedD = false
             this.opcionDeuda = "Indice de Endeudamiento"
             this.indiceEndeudamientoTotal = this.totalPasivo / this.totalActivo
+        },
+        // RAZON RENTABILIDAD
+        margenUtilidadB(){
+            this.expandedR = false
+            this.opcionRentabilidad = "Margen de Utilidad Bruta"
+        },
+        margenUtilidadO(){
+            this.expandedR = false
+            this.opcionRentabilidad = "Margen de Utilidad Operativa"
+        },
+        margenUtilidadN(){
+            this.expandedR = false
+            this.opcionRentabilidad = "Margen de Utilidad Neta"
+        },
+        rendimientoActivoTotal(){
+            this.expandedR = false
+            this.opcionRentabilidad = "Rendimiento sobre Activo Total"
         },
         async lsitartareas() {
             const docRef = doc(db, "periodos", this.$route.params.id);
