@@ -24,13 +24,74 @@
             </div>
             <div class="row-12" id="content" style="; ">
                 <div class="q-pa-md">
-                    <!--COMIENZA PRIMERA FILA-->
                     <div class="row">
                         <div class="col" style="background-color: #3752EB; margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;">
                             Ventas
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px;">
+                            |
+                        </div>
+                        <div class="col" style=";margin-left:15px; margin-right:15px;">
 
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                    </div>
+                    <!--SEPRACION 0-->
+                    <div class="row">
+
+                        <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center;">
+                            Mas
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+
+                        </div>
+                        <div class="col" style=" margin-left:15px; margin-right:15px;">
+
+                        </div>
+                    </div>
+                    <!--COMIENZA PRIMERA FILA-->
+                    <div class="row">
+                        <div class="col" style="background-color: #3752EB; margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;">
+                            Otros Ingresos
+                        </div>
+                        <div class="col" style=" margin-left:15px; margin-right:15px;">
+                            |
                         </div>
                         <div class="col" style=";margin-left:15px; margin-right:15px;">
 
@@ -57,8 +118,8 @@
                     <!--SEPRACION 1-->
                     <div class="row">
 
-                        <div class="col" style=" margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px; text-align: center;">
-                            Más
+                        <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center;">
+                            Menos
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
 
@@ -89,10 +150,10 @@
                     <!--COMIENZA 1.5 FILA-->
                     <div class="row">
                         <div class="col" style="background-color: #3752EB; margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;">
-                            Ingresos
+                            Gastos Financieros
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px;">
-
+                            |
                         </div>
                         <div class="col" style=";margin-left:15px; margin-right:15px;">
 
@@ -119,7 +180,7 @@
                     <!--SEPRACION 1-->
                     <div class="row">
 
-                        <div class="col" style=" margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px; text-align: center;">
+                        <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center;">
                             Menos
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
@@ -152,7 +213,7 @@
                     <div class="row">
 
                         <div class="col" style="background-color: #3752EB; margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;">
-                            Costo de los bienes vendidos
+                            Gastos Operativos
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: center; align-items: center; display: flex;">
                             <q-img src="../assets/flecha.jpg" ratio="" />
@@ -183,7 +244,7 @@
                     <!--SEPRACION 2-->
                     <div class="row">
 
-                        <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center; border-radius: 10px; padding: 5px;">
+                        <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center;">
                             Menos
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
@@ -215,10 +276,10 @@
                     <!--COMIENZA FILA 3-->
                     <div class="row">
                         <div class="col" style="background-color: #3752EB; margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;">
-                            Gastos Operativos
+                           Costos de ventas
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
+                            |
                         </div>
                         <div class="col" style="background-color: #5168EB; margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;">
                             Ventas
@@ -286,7 +347,7 @@
                             <q-img src="../assets/flecha.jpg" ratio="" />
                         </div>
                         <div class="col" style="background-color: #95EB7E;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;">
-                            ACtivos Totales
+                            Activos Totales
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: center; align-items: center; display: flex;">
                             <q-img src="../assets/flecha.jpg" ratio="" />
@@ -346,7 +407,7 @@
                             Activos Fijos
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
+                            |
                         </div>
                         <div class="col" style="background-color: #95EB7E; margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;">
                             Ventas
@@ -378,60 +439,41 @@
                             <p></p>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
-                        </div>
-
-                        <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px;">
-
                         </div>
                     </div>
                     <!--SEPARACION-->
                     <div class="row">
-
                         <div class="col" style=" margin-left:15px; margin-right:15px; min-height: 50px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: right; align-items: center; display: flex;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: right; align-items: center; display: flex;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px;">
-
                         </div>
                     </div>
                     <!--COMIENZA FILA 6-->
@@ -459,11 +501,8 @@
                             Multiplicador del Apalancamiento
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
-
                         <div class="col" style=" margin-left:15px; margin-right:15px;">
-
                         </div>
                     </div>
                     <!--SEPRACION-->
@@ -473,29 +512,22 @@
                             Mas
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center;">
                             Mas
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center;">
                             Dividido entre
                         </div>
-
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style=" margin-left:15px; margin-right:15px;">
-
                         </div>
                     </div>
                     <!--COMIENZA FILA 7-->
@@ -505,30 +537,24 @@
                             Pasivos No Corrientes
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
+                            |
                         </div>
                         <div class="col" style="background-color: #F5765D;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;">
                             Patrimonio
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
+                            |
                         </div>
                         <div class="col" style="background-color: #F59A81;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;">
                             Activo Capital Patrimonial
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
-                        </div>
-
-                        <div class="col" style="margin-left:15px; margin-right:15px;">
-
-                        </div>
-
-                        <div class="col" style="margin-left:15px; margin-right:15px;">
-
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
+                        </div>
+                        <div class="col" style="margin-left:15px; margin-right:15px;">
                         </div>
                     </div>
                 </div>
