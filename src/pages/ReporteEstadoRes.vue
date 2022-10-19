@@ -150,7 +150,7 @@
                         <q-list>
                             <q-item>
                                 <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 18px;">UTILIDAD ANTES DE RESERVA LEGAL</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">UTILIDAD ANTES DE {{this.hayReserva}}</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
                                     <q-item-label style="font-weight: bold; font-size: 18px; text-decoration: underline; color: black;">{{this.utilidadantesreserva.toLocaleString('en')}}</q-item-label>
@@ -244,6 +244,7 @@ export default {
             cargandoDatos: true,
             llaveCargandoDatos: false,
             hayIngresos: "",
+            hayReserva:"",
             // Datos a mostrar
             costodeventas: 0,
             gastosAdmin: 0,
@@ -268,13 +269,11 @@ export default {
     created() {
         this.id = this.$route.params.id
         this.lsitartareas()
-        console.log(this.cargandoDatos)
         this.nombrePDF = "EstadoDeResultados"+this.$route.params.anioactual
     },
     mounted() {},
     watch: {
         llaveCargandoDatos() {
-            console.log("se ocullto")
             this.generarOperaciones()
             this.cargandoDatoss()
         }
@@ -315,10 +314,15 @@ export default {
             if ((this.ingresosFinan !== 0 || this.otrosIngresNetos !== 0)) {
                 this.hayIngresos = "/ INGRESOS"
             }
+            if ((this.reservaLegal !== 0 )) {
+                this.hayReserva = "RESERVA LEGAL"
+            }
+            if ((this.impuestosSobreRentaES !== 0 )) {
+                this.hayReserva = "IMPUESTOS"
+            }
         },
         cargandoDatoss() {
             this.cargandoDatos = false
-            console.log(this.cargandoDatos)
         },
         generarPDF() {
             html2canvas(document.querySelector("#content")).then(canvas => {

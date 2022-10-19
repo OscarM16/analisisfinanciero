@@ -793,7 +793,7 @@
                                                 <q-item-section avatar>
                                                     <q-item-label>
                                                         <div class="text-center">
-                                                            utilidad Neta
+                                                            Utilidad Neta
                                                             <hr style="border-color: black;">Ventas
                                                         </div>
                                                     </q-item-label>
@@ -829,7 +829,7 @@
                     </q-card>
                 </div>
             </div>
-            <div><p>as</p></div>
+            <div style="margin-top: 100px;"><p ></p></div>
         </div>
     </div>
 
