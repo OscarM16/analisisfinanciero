@@ -1050,13 +1050,11 @@ export default {
     mounted() {},
     watch: {
         llaveCargandoDatos() {
-            console.log("se ocullto")
             this.generarOperaciones()
             this.generarOperacionesER()
             this.cargandoDatoss()
         },
         periodo() {
-            console.log("se modifico el array")
             this.generarOperacionesER()
             this.generarOperaciones()
 
@@ -1078,7 +1076,6 @@ export default {
         },
         cargandoDatoss() {
             this.cargandoDatos = false
-            console.log(this.cargandoDatos)
         },
         actualizarBG() {
             this.reservaLegal = this.capitalSocial * 0.2
@@ -1148,11 +1145,9 @@ export default {
         },
         cancelarBG() {
             this.generarOperaciones()
-            console.log("Se reinicio los datos a sus valores por defectos")
         },
         cancelarER() {
             this.generarOperacionesER()
-            console.log("Se reinicio los datos a sus valores por defectos")
         },
         async lsitartareas() {
             const docRef = doc(db, "periodos", this.$route.params.id);
@@ -1163,8 +1158,6 @@ export default {
                 if (this.periodo.length !== 0) {
                     this.llaveCargandoDatos = true
                 }
-                console.log("Traido la data nueva")
-                console.log(this.periodo)
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");

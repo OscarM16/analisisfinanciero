@@ -428,7 +428,6 @@ export default {
     methods: {
         cargandoDatoss() {
             this.cargandoDatos = false
-            console.log(this.cargandoDatos)
         },
         async lsitartareas() {
             const docRef = doc(db, "periodos", this.$route.params.id);

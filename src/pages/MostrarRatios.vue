@@ -948,7 +948,6 @@ export default {
     },
     watch: {
         llaveCargandoDatos() {
-            console.log("se ocullto")
             this.cargandoDatoss()
             this.generarOperacionesBG()
             this.generarOperacionesER()
@@ -957,7 +956,6 @@ export default {
     methods: {
         cargandoDatoss() {
             this.cargandoDatos = false
-            console.log(this.cargandoDatos)
         },
         cerrarRazonLiquidez() {
             this.opcionLiquidez = "Mas informacion"
