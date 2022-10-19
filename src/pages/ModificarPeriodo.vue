@@ -584,17 +584,7 @@
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 {{ this.reservaLegal }}
-                                                <q-popup-edit v-model="this.reservaLegal">
-                                                    <template v-slot="scope">
-                                                        <q-input autofocus dense v-model="scope.value" type="number">
-                                                            <template v-slot:after>
-                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
-
-                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
-                                                            </template>
-                                                        </q-input>
-                                                    </template>
-                                                </q-popup-edit>
+                                                
                                             </div>
                                         </div>
                                     </q-item-label>
@@ -1095,6 +1085,7 @@ export default {
             console.log(this.cargandoDatos)
         },
         actualizarBG() {
+            this.reservaLegal = this.capitalSocial * 0.2
             db.collection('periodos').doc(this.$route.params.id).update({
                 balancegeneral: {
                     activos: {
