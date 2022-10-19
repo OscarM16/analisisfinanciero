@@ -107,6 +107,11 @@
                         <hr>
                         <!--PASIVOS -->
                         <q-list>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">OTROS GASTOS {{this.hayIngresos}}</q-item-label>
+                                </q-item-section>
+                            </q-item>
                             <q-item v-show="this.otrosIngresNetos !== 0">
                                 <q-item-section>
                                     <q-item-label style=" font-size: 15px;">Otros ingresos Netos</q-item-label>
@@ -238,6 +243,7 @@ export default {
             id: String,
             cargandoDatos: true,
             llaveCargandoDatos: false,
+            hayIngresos: "",
             // Datos a mostrar
             costodeventas: 0,
             gastosAdmin: 0,
@@ -305,6 +311,10 @@ export default {
             this.utilidadoperativa = parseFloat(this.utilidadbruta) - parseFloat(this.gastosAdmin) - parseFloat(this.gastosVentas)
             this.utilidadantesreserva = parseFloat(this.utilidadoperativa) - parseFloat(this.otrosGasNetos) - parseFloat(this.gastosFinan) + parseFloat(this.otrosIngresNetos)  + parseFloat(this.ingresosFinan)
             this.utilidadneta = parseFloat(this.utilidadantesreserva) - parseFloat(this.reservaLegal) - parseFloat(this.impuestosSobreRentaES)
+
+            if ((this.ingresosFinan !== 0 || this.otrosIngresNetos !== 0)) {
+                this.hayIngresos = "/ INGRESOS"
+            }
         },
         cargandoDatoss() {
             this.cargandoDatos = false

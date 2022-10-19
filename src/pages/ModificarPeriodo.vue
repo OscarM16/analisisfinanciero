@@ -798,6 +798,11 @@
                         <hr>
                         <!--PASIVOS -->
                         <q-list>
+                            <q-item>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">OTROS GASTOS {{this.hayIngresos}}</q-item-label>
+                                </q-item-section>
+                            </q-item>
                             <q-item v-show="this.otrosIngresNetos !== 0">
                                 <q-item-section>
                                     <q-item-label style=" font-size: 15px;">Otros ingresos Netos</q-item-label>
@@ -995,6 +1000,7 @@ export default {
             llaveCargandoDatos: false,
             verEstado: false,
             link: 'inbox',
+            hayIngresos: "",
             //Notificacion
             dialog: false,
             position: 'top',
@@ -1219,6 +1225,10 @@ export default {
             this.otrosGasNetos = parseFloat(this.periodo[0].estadoresultados.otrosGasNetos)
             this.otrosIngresNetos = parseFloat(this.periodo[0].estadoresultados.otrosIngresNetos)
             this.reservaLegalES = parseFloat(this.periodo[0].estadoresultados.reservaLegalES)
+
+            if ((this.ingresosFinan !== 0 || this.otrosIngresNetos !== 0)) {
+                this.hayIngresos = "/ INGRESOS"
+            }
         },
         generarPDF() {
             html2canvas(document.querySelector("#content")).then(canvas => {
