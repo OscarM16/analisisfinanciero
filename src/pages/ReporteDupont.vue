@@ -117,7 +117,7 @@
                         </div>
                     </div>
                     <!--SEPRACION 0-->
-                    <div class="row">
+                    <div class="row" v-show="this.sumaotrosGastos !== 0">
 
                         <div class="col" style=" margin-left:15px; margin-right:15px; text-align: center;">
                             Menos
@@ -410,7 +410,7 @@
                             Ventas <br> <label style="font-size: 15px;">${{(this.ingresosporventas).toLocaleString('en')}}</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: center; align-items: center; display: flex;">
-
+                            |
                         </div>
                         <div class="col" style="background-color: #728BEB ; font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
                             Margen de utilidad <br> <label style="font-size: 15px;">{{parseFloat((this.margenUtilidadN * 100).toFixed(2)).toLocaleString('en')}}%</label>
@@ -455,7 +455,7 @@
                         <div class="col" style="background-color: #8FF5ED; font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
                             <q-tooltip>
                                 Rendimiento sobre los Activos Totales
-                            </q-tooltip> RSA
+                            </q-tooltip> RSA <br> <label style="font-size: 15px;">{{parseFloat((this.RSA * 100).toFixed(2)).toLocaleString('en')}}%</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
 
@@ -474,17 +474,17 @@
                             <q-img src="../assets/flecha.jpg" ratio="" />
                         </div>
                         <div class="col" style="background-color: #95EB7E; font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Activos Totales
+                            Activos Totales <br> <label style="font-size: 15px;">${{parseFloat(this.totalActivo).toLocaleString('en')}}</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: center; align-items: center; display: flex;">
                             <q-img src="../assets/flecha.jpg" ratio="" />
                         </div>
                         <div class="col" style="background-color: #C2EBA8; font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Rotacion de Activos
+                            Rotacion de Activos   <br> <label style="font-size: 15px;">${{parseFloat((this.rotacionActivo)).toLocaleString('en')}}</label>
                         </div>
 
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
+                            
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
 
@@ -537,10 +537,10 @@
                             |
                         </div>
                         <div class="col" style="background-color: #95EB7E; font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Ventas
+                            Ventas  <br> <label style="font-size: 15px;">${{parseFloat(this.totalAcrivoNoCorriente).toLocaleString('en')}}</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
-
+                            |
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
 
@@ -557,7 +557,7 @@
                         <div class="col" style="background-color: #E4F4EC;  font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
                             <q-tooltip>
                                 Rendimiento sobre Patrimonio
-                            </q-tooltip> RSP
+                            </q-tooltip> RSP <br> <label style="font-size: 15px;">{{parseFloat((this.RSP * 100).toFixed(2)).toLocaleString('en')}}%</label>
                         </div>
 
                     </div>
@@ -609,20 +609,20 @@
                     <div class="row">
 
                         <div class="col" style="background-color: #F54B36;font-size: 12px; font-weight: bold ; margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Pasivos Corrientes
+                            Pasivos Corrientes  <br> <label style="font-size: 15px;">${{parseFloat(this.totalPasivoCorriente).toLocaleString('en')}}</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: center; align-items: center; display: flex;">
                             <q-img src="../assets/flecha.jpg" ratio="" />
                         </div>
                         <div class="col" style="background-color: #F5765D;font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Pasivos Totales
+                            Pasivos Totales  <br> <label style="font-size: 15px;">${{parseFloat(this.totalPasivo).toLocaleString('en')}}</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: center; align-items: center; display: flex;">
                             <q-img src="../assets/flecha.jpg" ratio="" />
                         </div>
                         <div class="col" style="background-color: #F59A81;font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Activo Total
-                        </div>
+                            Activo Total  <br> <label style="font-size: 15px;">${{parseFloat(this.totalActivo).toLocaleString('en')}}</label>
+                        </div> 
                         <div class="col" style="margin-left:15px; margin-right:15px; text-align: center; justify-content: center; align-items: center; display: flex;">
                             <q-img src="../assets/flecha.jpg" ratio="" />
                         </div>
@@ -630,7 +630,7 @@
                             <div>
                                 <q-tooltip>
                                     Multiplicador del Apalancamiento
-                                </q-tooltip>MAF
+                                </q-tooltip>MAF <br> <label style="font-size: 15px;">{{parseFloat((this.MAF)).toLocaleString('en')}}</label>
                             </div>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
@@ -667,19 +667,19 @@
                     <div class="row">
 
                         <div class="col" style="background-color: #F54B36;font-size: 12px; font-weight: bold ; margin-left:15px; margin-right:15px; min-height: 50px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Pasivos No Corrientes
+                            Pasivos No Corrientes  <br> <label style="font-size: 15px;">${{parseFloat(this.totalPasivoNoCorriente).toLocaleString('en')}}</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
                             |
                         </div>
                         <div class="col" style="background-color: #F5765D;font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Patrimonio
+                            Patrimonio  <br> <label style="font-size: 15px;">${{parseFloat(this.totalPatrimonio).toLocaleString('en')}}</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
                             |
                         </div>
                         <div class="col" style="background-color: #F59A81;font-size: 12px; font-weight: bold ;margin-left:15px; margin-right:15px; border-radius: 10px; padding: 5px;text-align: center;">
-                            Capital Patrimonial
+                            Capital Patrimonial  <br> <label style="font-size: 15px;">${{parseFloat(this.totalPatrimonio).toLocaleString('en')}}</label>
                         </div>
                         <div class="col" style="margin-left:15px; margin-right:15px;">
                         </div>
@@ -778,6 +778,11 @@ export default {
             sumaGastosF: 0,
             sumaGastosO: 0,
             margenUtilidadN : 0,
+            rotacionActivo: 0,
+            MAF:0,
+            RSA:0,
+            RSP:0
+
         };
     },
     created() {
@@ -786,7 +791,6 @@ export default {
     },
     watch: {
         llaveCargandoDatos() {
-            console.log("se ocullto")
             this.cargandoDatoss()
             this.generarOperaciones()
             this.generarOperacionesER()
@@ -796,7 +800,6 @@ export default {
     methods: {
         cargandoDatoss() {
             this.cargandoDatos = false
-            console.log(this.cargandoDatos)
         },
         operacionesDupont() {
             this.sumaingresos = this.otrosIngresNetos + this.ingresosFinan
@@ -805,6 +808,10 @@ export default {
             this.sumaGastosF = this.impuestosSobreRentaES + this.gastosFinan
             this.utilidadneta = this.utilidadneta + this.ingresosporventas + this.sumaingresos - this.sumaGastosF - this.sumaGastosO - this.sumaotrosGastos - this.costodeventas - this.reservaLegalES
             this.margenUtilidadN = this.utilidadneta / this.ingresosporventas
+            this.rotacionActivo = this.totalActivo / this.ingresosporventas
+            this.MAF= this.totalActivo / this.totalPatrimonio
+            this.RSA = this.margenUtilidadN / this.rotacionActivo
+            this.RSP = this.RSA * this.MAF
 
         },
         generarOperacionesER() {

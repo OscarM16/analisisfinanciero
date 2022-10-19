@@ -9,11 +9,11 @@
     </div>
     <q-dialog v-model="dialog" :position="position">
         <q-card style="border-radius: 20px; background-color: #AFF1BC;;width: 350px;max-height: 100px;">
-        <q-card-section class="row items-center" style="padding: 2px;">
-          <q-avatar icon="check_circle" size="6em"/>
-          <span class="">{{this.cambioEstadoFinanciero}} Actualizado</span>
-        </q-card-section>
-      </q-card>
+            <q-card-section class="row items-center" style="padding: 2px;">
+                <q-avatar icon="check_circle" size="6em" />
+                <span class="">{{this.cambioEstadoFinanciero}} Actualizado</span>
+            </q-card-section>
+        </q-card>
     </q-dialog>
     <div class="row-12" v-show="!this.cargandoDatos">
         <div class="row-12">
@@ -582,9 +582,12 @@
                                 <q-item-section side top>
                                     <q-item-label>
                                         <div class="q-pa-md">
+                                            <q-tooltip>
+                                                Valor Fijo, No se puede modificar
+                                            </q-tooltip>
                                             <div class="cursor-pointer">
                                                 {{ this.reservaLegal }}
-                                                
+
                                             </div>
                                         </div>
                                     </q-item-label>
@@ -905,18 +908,10 @@
                                     <q-item-label>
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
+                                                <q-tooltip>
+                               Valor Fijo, No se puede modificar
+                            </q-tooltip>
                                                 {{ this.reservaLegalES }}
-                                                <q-popup-edit v-model="this.reservaLegalES">
-                                                    <template v-slot="scope">
-                                                        <q-input autofocus dense v-model="scope.value" type="number">
-                                                            <template v-slot:after>
-                                                                <q-btn flat dense color="negative" icon="cancel" @click.stop="scope.cancel" />
-
-                                                                <q-btn flat dense color="positive" icon="check_circle" @click.stop="scope.set" :disable="scope.validate(scope.value) === false || scope.initialValue === scope.value" />
-                                                            </template>
-                                                        </q-input>
-                                                    </template>
-                                                </q-popup-edit>
                                             </div>
                                         </div>
                                     </q-item-label>
@@ -956,7 +951,7 @@
                 </div>
                 <div class="col-12" style="margin-top: 30px;">
                     <div class="q-pa-md q-gutter-sm" style="text-align: right;">
-                        <q-btn color="red"  @click="this.cancelarER()" label="Cancelar" />
+                        <q-btn color="red" @click="this.cancelarER()" label="Cancelar" />
                         <q-btn color="green" @click="this.actualizarER()" label="Actualizar" />
                     </div>
                 </div>
@@ -1030,7 +1025,7 @@ export default {
             costodeventas: 0,
             gastosAdmin: 0,
             gastosFinan: 0,
-            ingresosFinan:0,
+            ingresosFinan: 0,
             gastosVentas: 0,
             impuestosSobreRentaES: 0,
             ingresosporventas: 0,
@@ -1059,27 +1054,27 @@ export default {
             this.generarOperacionesER()
             this.cargandoDatoss()
         },
-        periodo(){
+        periodo() {
             console.log("se modifico el array")
             this.generarOperacionesER()
             this.generarOperaciones()
-            
+
         }
     },
     methods: {
-        open (position) {
+        open(position) {
             this.position = position
             this.dialog = true
         },
-        ocultarDialogo(){
+        ocultarDialogo() {
             this.dialog = false
         },
-        ocultarMapaTimeout () {
+        ocultarMapaTimeout() {
             clearTimeout(this.ocultadorMapa)
             this.ocultadorMapa = setTimeout(() => {
                 this.dialog = false
             }, 2222)
-        },  
+        },
         cargandoDatoss() {
             this.cargandoDatos = false
             console.log(this.cargandoDatos)
@@ -1098,11 +1093,11 @@ export default {
                         inventarios: (this.inventarios).toString(),
                         inversionFinalLP: (this.inversionFinalLP).toString(),
                         otrasCPC: (this.otrasCPC).toString(),
-                        propiedad: (this.propiedad).toString(),                 
+                        propiedad: (this.propiedad).toString(),
                     },
                     pasivos: {
-                        CPPRelacionadasLP : (this.CPPRelacionadasLP).toString(),
-                        cuentasPP : (this.cuentasPP).toString(),
+                        CPPRelacionadasLP: (this.CPPRelacionadasLP).toString(),
+                        cuentasPP: (this.cuentasPP).toString(),
                         cuentasPPRelacionadas: (this.cuentasPPRelacionadas).toString(),
                         gastosAcumulados: (this.gastosAcumulados).toString(),
                         impuestosSobreRenta: (this.impuestosSobreRenta).toString(),
@@ -1118,8 +1113,8 @@ export default {
                 }
             }).then(() => {
                 console.log('Document successfully updated!')
-                this.cambioEstadoFinanciero= "Balance General",
-                this.open('top')
+                this.cambioEstadoFinanciero = "Balance General",
+                    this.open('top')
                 this.ocultarMapaTimeout()
                 this.lsitartareas()
             }).catch((error) => {
@@ -1142,8 +1137,8 @@ export default {
                 }
             }).then(() => {
                 console.log('Document successfully updated!')
-                this.cambioEstadoFinanciero= "Estado de Resultados",
-                this.open('top')
+                this.cambioEstadoFinanciero = "Estado de Resultados",
+                    this.open('top')
                 this.ocultarMapaTimeout()
                 this.lsitartareas()
             }).catch((error) => {
@@ -1235,6 +1230,6 @@ export default {
 
 <style lang="sass">
 .my-menu-link
-  color: white
-  background: #3BD85A
+ color: white 
+ background: #3BD85A
 </style>
