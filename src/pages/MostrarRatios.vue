@@ -670,14 +670,14 @@
                                 <q-item-section avatar>
                                     <q-item-label>
                                         <div class="text-center">
-                                            Numerador
-                                            <hr>Denominador
+                                            {{parseFloat((this.utilidadbruta).toFixed(2)).toLocaleString('en')}}
+                                            <hr>{{parseFloat((this.ingresosporventas).toFixed(2)).toLocaleString('en')}}
                                         </div>
                                     </q-item-label>
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = Respuesta
+                                        = {{parseFloat((this.margenUB).toFixed(3)).toLocaleString('en')}}
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -688,14 +688,14 @@
                                 <q-item-section avatar>
                                     <q-item-label>
                                         <div class="text-center">
-                                            Numerador
-                                            <hr>Denominador
+                                            {{parseFloat((this.utilidadoperativa).toFixed(2)).toLocaleString('en')}}
+                                            <hr>{{parseFloat((this.ingresosporventas).toFixed(2)).toLocaleString('en')}}
                                         </div>
                                     </q-item-label>
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = Respuesta
+                                        ={{parseFloat((this.margenUO).toFixed(3)).toLocaleString('en')}}
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -706,14 +706,14 @@
                                 <q-item-section avatar>
                                     <q-item-label>
                                         <div class="text-center">
-                                            Numerador
-                                            <hr>Denominador
+                                            {{parseFloat((this.utilidadneta).toFixed(2)).toLocaleString('en')}}
+                                            <hr>{{parseFloat((this.ingresosporventas).toFixed(2)).toLocaleString('en')}}
                                         </div>
                                     </q-item-label>
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = Respuesta
+                                        = {{parseFloat((this.margenUN).toFixed(3)).toLocaleString('en')}}
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -724,14 +724,14 @@
                                 <q-item-section avatar>
                                     <q-item-label>
                                         <div class="text-center">
-                                            Numerador
-                                            <hr>Denominador
+                                            {{parseFloat((this.utilidadneta).toFixed(2)).toLocaleString('en')}}
+                                            <hr>{{parseFloat((this.totalActivo).toFixed(2)).toLocaleString('en')}}
                                         </div>
                                     </q-item-label>
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = Respuesta
+                                        = {{parseFloat((this.ROA).toFixed(3)).toLocaleString('en')}}
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -751,8 +751,8 @@
                                                 <q-item-section avatar>
                                                     <q-item-label>
                                                         <div class="text-center">
-                                                            Numerador
-                                                            <hr style="border-color: black;">Denominador
+                                                            Utilidad Bruta
+                                                            <hr style="border-color: black;">Ventas
                                                         </div>
                                                     </q-item-label>
                                                 </q-item-section>
@@ -772,8 +772,8 @@
                                                 <q-item-section avatar>
                                                     <q-item-label>
                                                         <div class="text-center">
-                                                            Numerador
-                                                            <hr style="border-color: black;">Denominador
+                                                            Utilidad Operativa
+                                                            <hr style="border-color: black;">Ventas
                                                         </div>
                                                     </q-item-label>
                                                 </q-item-section>
@@ -793,8 +793,8 @@
                                                 <q-item-section avatar>
                                                     <q-item-label>
                                                         <div class="text-center">
-                                                            Numerador
-                                                            <hr style="border-color: black;">Denominador
+                                                            utilidad Neta
+                                                            <hr style="border-color: black;">Ventas
                                                         </div>
                                                     </q-item-label>
                                                 </q-item-section>
@@ -814,8 +814,8 @@
                                                 <q-item-section avatar>
                                                     <q-item-label>
                                                         <div class="text-center">
-                                                            Numerador
-                                                            <hr style="border-color: black;">Denominador
+                                                            Utilidad Neta
+                                                            <hr style="border-color: black;">Activos Totales
                                                         </div>
                                                     </q-item-label>
                                                 </q-item-section>
@@ -933,7 +933,11 @@ export default {
             cicloOperacionalTotal: 0,
             // Resuestas a razon de endeudamiento
             indiceEndeudamientoTotal: 0,
-
+            // Respuestas de Rentabilidad
+            margenUB: 0, // margen de utilidad bruta
+            margenUO:0,
+            margenUN:0,
+            ROA:0,
 
         };
     },
@@ -1037,18 +1041,22 @@ export default {
         margenUtilidadB(){
             this.expandedR = false
             this.opcionRentabilidad = "Margen de Utilidad Bruta"
+            this.margenUB = (this.utilidadbruta)/ this.ingresosporventas
         },
         margenUtilidadO(){
             this.expandedR = false
             this.opcionRentabilidad = "Margen de Utilidad Operativa"
+            this.margenUO = this.utilidadoperativa/this.ingresosporventas
         },
         margenUtilidadN(){
             this.expandedR = false
             this.opcionRentabilidad = "Margen de Utilidad Neta"
+            this.margenUN = this.utilidadneta/this.ingresosporventas
         },
         rendimientoActivoTotal(){
             this.expandedR = false
             this.opcionRentabilidad = "Rendimiento sobre Activo Total"
+            this.ROA = this.utilidadneta/ this.totalActivo
         },
         async lsitartareas() {
             const docRef = doc(db, "periodos", this.$route.params.id);
@@ -1108,21 +1116,21 @@ export default {
             this.pasivoPatrimonio = parseFloat(this.totalPatrimonio) + parseFloat(this.totalPasivo)
         },
         generarOperacionesER() {
-            // 
             this.costodeventas = parseFloat(this.periodo[0].estadoresultados.costodeventas)
             this.gastosAdmin = parseFloat(this.periodo[0].estadoresultados.gastosAdmin)
             this.gastosFinan = parseFloat(this.periodo[0].estadoresultados.gastosFinan)
+            this.ingresosFinan = parseFloat(this.periodo[0].estadoresultados.ingresosFinan)
             this.gastosVentas = parseFloat(this.periodo[0].estadoresultados.gastosVentas)
             this.impuestosSobreRentaES = parseFloat(this.periodo[0].estadoresultados.impuestosSobreRentaES)
             this.ingresosporventas = parseFloat(this.periodo[0].estadoresultados.ingresosporventas)
             this.otrosGasNetos = parseFloat(this.periodo[0].estadoresultados.otrosGasNetos)
             this.otrosIngresNetos = parseFloat(this.periodo[0].estadoresultados.otrosIngresNetos)
-            this.reservaLegal = parseFloat(this.periodo[0].estadoresultados.reservaLegalES)
+            this.reservaLegalES = parseFloat(this.periodo[0].estadoresultados.reservaLegalES)
 
             this.utilidadbruta = parseFloat(this.utilidadbruta) + parseFloat(this.ingresosporventas) - parseFloat(this.costodeventas)
             this.utilidadoperativa = parseFloat(this.utilidadbruta) - parseFloat(this.gastosAdmin) - parseFloat(this.gastosVentas)
-            this.utilidadantesreserva = parseFloat(this.utilidadoperativa) - parseFloat(this.otrosGasNetos) - parseFloat(this.gastosFinan) + parseFloat(this.otrosIngresNetos)
-            this.utilidadneta = parseFloat(this.utilidadantesreserva) - parseFloat(this.reservaLegal) - parseFloat(this.impuestosSobreRentaES)
+            this.utilidadantesreserva = parseFloat(this.utilidadoperativa) - parseFloat(this.otrosGasNetos) - parseFloat(this.gastosFinan) + parseFloat(this.otrosIngresNetos)  + parseFloat(this.ingresosFinan)
+            this.utilidadneta = parseFloat(this.utilidadantesreserva) - parseFloat(this.reservaLegalES) - parseFloat(this.impuestosSobreRentaES)
         }
     }
 }
