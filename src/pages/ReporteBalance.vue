@@ -11,6 +11,7 @@
     <div class="row-12" v-show="!this.cargandoDatos">
         <div class="row-12">
             <div class="col-12 justify-center">
+                <q-btn round color="warning" icon="navigate_before" @click="anteriorPagina()" size="25px" style="position: absolute; top: 50px; left: 30px;"></q-btn>
                 <h3 style="text-align: center; font-weight: bold;"> Reporte del Balance General del Año {{this.$route.params.anioactual}}</h3>
             </div>
         </div>
@@ -501,7 +502,10 @@ export default {
                 doc.addImage(imgUrl, 0, 0, 210, 297)
                 doc.save(this.nombredelPDF); // will save the file in the current working directory
             });
-        }
+        },
+        anteriorPagina() {
+            this.$router.go(-1)
+        },
     }
 }
 </script>

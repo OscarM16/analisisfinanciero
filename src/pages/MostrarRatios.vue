@@ -9,8 +9,9 @@
     </div>
     <div class="row " v-show="!this.cargandoDatos">
         <div class="col">
-            <div class="row-12">
+            <div class="row-12" style="margin-bottom: 100px;">
             <div class="col-12 justify-center">
+                <q-btn round color="warning" icon="navigate_before" @click="anteriorPagina()" size="25px" style="position: absolute; top: 50px; left: 30px;"></q-btn>
                 <h3 style="text-align: center; font-weight: bold;"> Mostrar Ratios del Año {{this.$route.params.anioactual}}</h3>
             </div>
         </div>
@@ -1131,7 +1132,10 @@ export default {
             this.utilidadoperativa = parseFloat(this.utilidadbruta) - parseFloat(this.gastosAdmin) - parseFloat(this.gastosVentas)
             this.utilidadantesreserva = parseFloat(this.utilidadoperativa) - parseFloat(this.otrosGasNetos) - parseFloat(this.gastosFinan) + parseFloat(this.otrosIngresNetos)  + parseFloat(this.ingresosFinan)
             this.utilidadneta = parseFloat(this.utilidadantesreserva) - parseFloat(this.reservaLegalES) - parseFloat(this.impuestosSobreRentaES)
-        }
+        },
+        anteriorPagina() {
+            this.$router.go(-1)
+        },
     }
 }
 </script>
