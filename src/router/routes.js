@@ -56,6 +56,16 @@ const routes = [
         name: 'ReporteDupont',
         component: () => import('app/src/pages/ReporteDupont.vue')
       },
+      {
+        path: '/ReporteHorizontalBG/:id/:anioactual',
+        name: 'ReporteHorizontalBG',
+        component: () => import('app/src/pages/ReporteHorizontalBG.vue')
+      },
+      {
+        path: '/ReporteHorizontalER/:id/:anioactual',
+        name: 'ReporteHorizontalER',
+        component: () => import('app/src/pages/ReporteHorizontalER.vue')
+      },
     ]
   },
 
