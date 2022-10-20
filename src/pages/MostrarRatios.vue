@@ -211,7 +211,7 @@
                                                 <q-item-section avatar>
                                                     <q-item-label>
                                                         <div class="text-center">
-                                                            Pasivos Corrientes - (caja+bancos+cuentas por cobrar + realilzables)
+                                                            Pasivos Corrientes - (caja+bancos+cuentas por cobrar + realizables)
                                                             <hr style="border-color: black;"> Inventario
                                                         </div>
                                                     </q-item-label>
@@ -1079,7 +1079,7 @@ export default {
             this.inventarios = parseFloat(this.periodo[0].balancegeneral.activos.inventarios)
             this.gastosPagadosAnt = parseFloat(this.periodo[0].balancegeneral.activos.gastosPagadosAnt)
             this.depositosCortoP = parseFloat(this.periodo[0].balancegeneral.activos.depositosCortoP)
-            // Total Activo Corriente 
+            // Total Activo Corriente
             this.totalActivoCorriente = parseFloat(this.totalActivoCorriente) + parseFloat(this.efectivo) + parseFloat(this.cuentasPC) + parseFloat(this.otrasCPC) + parseFloat(this.inventarios) + parseFloat(this.gastosPagadosAnt) + parseFloat(this.depositosCortoP)
             // No Corrientes
             this.propiedad = parseFloat(this.periodo[0].balancegeneral.activos.propiedad)
