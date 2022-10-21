@@ -62,8 +62,8 @@
                 </div>
                 <div class="row-12">
                     <div class="col-12">
-                        <q-list>
-                            <q-item>
+                        <q-list >
+                            <q-item style="background-color: #82E082">
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 22px;">Activo</q-item-label>
                                 </q-item-section>
@@ -332,9 +332,21 @@
                         <hr>
                         <!--PASIVOS -->
                         <q-list>
-                            <q-item>
+                            <q-item style="background-color: #F79C7E">
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 22px;">Pasivos</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{this.$route.params.anioactual}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{anioComparado}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
@@ -535,9 +547,21 @@
                         <hr>
                         <!--PATRIMONIO-->
                         <q-list>
-                            <q-item>
-                                <q-item-section>
+                            <q-item style="background-color: #A5ADE0">
+                                <q-item-section >
                                     <q-item-label style="font-weight: bold; font-size: 22px;">Patrimonio</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{this.$route.params.anioactual}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{anioComparado}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.capitalSocial !== 0 || this.CcapitalSocial !== 0">
@@ -1081,7 +1105,9 @@ export default {
                             }
                             this.periodos.push(periodoDB)
                             if (periodoDB.informacion.anio !== this.$route.params.anioactual) {
+                              if (((parseFloat(periodoDB.informacion.anio)) === (parseFloat(this.$route.params.anioactual)+1)) || ((parseFloat(periodoDB.informacion.anio)) === (parseFloat(this.$route.params.anioactual)-1))) {
                                 this.aniosArray.push(periodoDB.informacion.anio)
+                              }
                             }
                             this.periodoCopia = this.periodos.slice()
                         })
