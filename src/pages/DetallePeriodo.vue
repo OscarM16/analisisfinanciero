@@ -64,12 +64,12 @@
                     </q-item>
 
                     <q-item clickable v-ripple style="min-height: 100px;" :to="{ name: 'ReporteDupont', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #D48DF0; border-radius: 15px;">Rporte DuPont</q-item-section>
+                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #D48DF0; border-radius: 15px;">Reporte DuPont</q-item-section>
                     </q-item>
                 </div>
             </div>
         </div>
-        <!-- 
+        <!--
         <div class="row-12">
             <q-intersection>
                 <q-item clickable v-ripple style="display:flex;align-items: center;justify-content:center;flex-direction: column;">
