@@ -26,11 +26,11 @@
                     </q-item>
 
                     <q-item clickable v-ripple style="min-height: 100px;" :to="{ name: 'ReporteVerticalBG', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #FAEC79; border-radius: 15px;">Vertical Balance General</q-item-section>
+                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #FAEC79; border-radius: 15px;">Balance General<q-item-label style="font-size: 18px; font-weight: bold;" caption lines="1">Analisis Vertical</q-item-label></q-item-section>
                     </q-item>
 
                     <q-item clickable v-ripple style="min-height: 100px;" :to="{ name: 'ReporteHorizontalBG', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #FAF2AB; border-radius: 15px;">Horizontal Balance General</q-item-section>
+                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #FAF2AB; border-radius: 15px;">Balance General<q-item-label style="font-size: 18px; font-weight: bold;" caption lines="1">Analisis Horizontal </q-item-label></q-item-section>
                     </q-item>
                 </div>
                 <div class="col-4">
@@ -43,11 +43,11 @@
                     </q-item>
 
                     <q-item clickable v-ripple style="min-height: 100px;" :to="{ name: 'ReporteVerticalER', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #FAB756; border-radius: 15px;">Vertical Estado Resultado</q-item-section>
+                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #FAB756; border-radius: 15px;">Estado Resultado <q-item-label style="font-size: 18px; font-weight: bold;" caption lines="1">Analisis Vertical </q-item-label></q-item-section>
                     </q-item>
 
                     <q-item clickable v-ripple style="min-height: 100px;" :to="{ name: 'ReporteHorizontalER', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #FABD72; border-radius: 15px;">Horizontal Estado Resultado</q-item-section>
+                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #FABD72; border-radius: 15px;"> Estado Resultado <q-item-label style="font-size: 18px; font-weight: bold;" caption lines="1">Analisis Horizontal </q-item-label></q-item-section>
                     </q-item>
                 </div>
                 <div class="col-4">
@@ -56,15 +56,15 @@
                     </q-item>
 
                     <q-item clickable v-ripple style="min-height: 100px;" :to="{ name: 'ModificarPeriodo', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #B144F0; border-radius: 15px;">MODIFICAR PERIODO</q-item-section>
+                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #B144F0; border-radius: 15px;">Modificar Periodo</q-item-section>
                     </q-item>
 
                     <q-item clickable v-ripple style="min-height: 100px;" :to="{ name: 'MostrarRatios', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #C76DF0; border-radius: 15px;">VER RATIOS</q-item-section>
+                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #C76DF0; border-radius: 15px;">Ver Ratios</q-item-section>
                     </q-item>
 
                     <q-item clickable v-ripple style="min-height: 100px;" :to="{ name: 'ReporteDupont', params: { id: this.id, anioactual: this.$route.params.anioactual}}">
-                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #D48DF0; border-radius: 15px;">REPORTE DUPONT</q-item-section>
+                        <q-item-section style="display:flex;align-items: center;justify-content:center;flex-direction: column; font-size: 30px; background-color: #D48DF0; border-radius: 15px;">Rporte DuPont</q-item-section>
                     </q-item>
                 </div>
             </div>

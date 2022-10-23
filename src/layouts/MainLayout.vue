@@ -5,10 +5,10 @@
             <q-btn fdense flat round icon="menu" @click="left = !left" />
 
             <q-toolbar-title>
-                Analisis Financiero
+                Empresa de Agroindustria
             </q-toolbar-title>
 
-            <div>Empresa de tipo: Industria</div>
+            <div>Analisis Financiero</div>
         </q-toolbar>
     </q-header>
 

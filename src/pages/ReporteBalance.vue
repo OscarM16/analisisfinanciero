@@ -41,7 +41,7 @@
                 <div class="row-12">
                     <div class="col-12">
                             <q-list>
-                                <q-item>
+                                <q-item style="background-color: #82E082">
                                     <q-item-section>
                                         <q-item-label style="font-weight: bold; font-size: 22px;">Activo</q-item-label>
                                     </q-item-section>
@@ -162,7 +162,7 @@
                             <hr>
                             <!--PASIVOS -->
                             <q-list>
-                                <q-item>
+                                <q-item style="background-color: #F79C7E">
                                     <q-item-section>
                                         <q-item-label style="font-weight: bold; font-size: 22px;">Pasivos</q-item-label>
                                     </q-item-section>
@@ -257,7 +257,7 @@
                             <hr>
                             <!--PATRIMONIO-->
                             <q-list>
-                                <q-item>
+                                <q-item style="background-color: #A5ADE0">
                                     <q-item-section>
                                         <q-item-label style="font-weight: bold; font-size: 22px;">Patrimonio</q-item-label>
                                     </q-item-section>

@@ -3,11 +3,11 @@
     <div class="row justify-center">
         <div class="row-12">
             <div class="col-12 justify-center">
-                <h3 style="text-align: center; font-weight: bold;"> Periodos Disponibles{{this.$route.params.anioactual}}</h3>
+                <h3 style="text-align: center; font-weight: bold;"> PERIODOS DISPONIBLES{{this.$route.params.anioactual}}</h3>
             </div>
         </div>
         <div class="col-12">
-            <q-input rounded outlined bottom-slots type="number"  v-model="barraBusqueda" v-on:keyup="buscartexto()" label="Que año desea buscar" counter>
+            <q-input rounded outlined bottom-slots type="number" v-model="barraBusqueda" v-on:keyup="buscartexto()" label="Que año desea buscar">
                 <template v-slot:prepend>
                     <q-icon name="search" />
                 </template>
@@ -15,6 +15,13 @@
                     <q-icon v-show="this.barraBusqueda !== ''" name="close" @click="this.limpiar()" class="cursor-pointer" />
                 </template>
             </q-input>
+            <q-list dense bordered padding class="rounded-borders">
+                <q-item clickable v-ripple>
+                    <q-item-section>
+                       Listado de Años
+                    </q-item-section>
+                </q-item>
+            </q-list>
             <q-intersection v-for="index in periodos" :key="index" transition="flip-right" class="example-item">
                 <!--:to="{ name: 'DetallePeriodo', params: { id: index.id } }-->
                 <q-item clickable v-ripple :to="{ name: 'DetallePeriodo', params: { id: index.id, anioactual: index.informacion.anio}}">
@@ -26,7 +33,7 @@
                         </q-avatar>
                     </q-item-section>
                     <q-item-section>
-                        <q-item-label>Año {{ index.informacion.anio }}</q-item-label>
+                        <q-item-label>{{ index.informacion.anio }}</q-item-label>
                         <q-item-label caption lines="1">Mas informacion</q-item-label>
                     </q-item-section>
                     <q-item-section side>
@@ -87,12 +94,12 @@ export default {
             }
             // eslint-disable-next-line array-callback-return
             this.periodos = this.periodoCopia.filter((item) => {
-                if ((item.informacion.anio.indexOf(this.barraBusqueda) >= 0) ) {
+                if ((item.informacion.anio.indexOf(this.barraBusqueda) >= 0)) {
                     return true
                 }
             })
         },
-        limpiar () {
+        limpiar() {
             this.periodos = this.periodoCopia.slice()
             this.barraBusqueda = ""
         }
