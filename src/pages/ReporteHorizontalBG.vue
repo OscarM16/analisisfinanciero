@@ -80,6 +80,7 @@
                                       <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 120px;">Variación relativa</q-item-label>
                                   </q-item-section>
                               </q-item>
+                              <hr>
                               <q-item style="background-color: #82E082">
                                   <q-item-section>
                                       <q-item-label style="font-weight: bold; font-size: 22px;">Activo</q-item-label>

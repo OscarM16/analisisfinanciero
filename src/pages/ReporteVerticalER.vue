@@ -54,8 +54,8 @@
                       <div class="col-12 justify-center">
                           <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">ESTADO DE RESULTADOS</h6>
                           <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">EMPRESA ANONIMA</h6>
-                          <h6 v-if="this.anioComparado !== '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Estado de Resultados del año {{this.$route.params.anioactual}} y {{anioComparado}}</h6>
-                          <h6 v-if="this.anioComparado === '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Estado de Resultados del año {{this.$route.params.anioactual}}</h6>
+                          <h6 v-if="this.anioComparado !== '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Análisis Vertical del Estado de Resultados del año {{this.$route.params.anioactual}} y {{anioComparado}}</h6>
+                          <h6 v-if="this.anioComparado === '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Análisis Vertical del Estado de Resultados del año {{this.$route.params.anioactual}}</h6>
                       </div>
                       <div class="col-12 justify-center">
 
@@ -67,7 +67,7 @@
                   <div class="row-12">
                       <div class="col-12">
                           <q-list>
-                            <q-item>
+                            <q-item >
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 22px;"></q-item-label>
                                 </q-item-section>
@@ -85,7 +85,7 @@
                                 </q-item-section>
                             </q-item>
                             <hr>
-                              <q-item>
+                              <q-item style="background-color: #82E082">
                                   <q-item-section>
                                       <q-item-label style="font-weight: bold; font-size: 18px;">INGRESOS</q-item-label>
                                   </q-item-section>
@@ -152,7 +152,7 @@
                           <!--  FIN CORRIENTE-->
                           <!--No corriente-->
                           <q-list>
-                              <q-item>
+                              <q-item style="background-color: #F79C7E">
                                   <q-item-section>
                                       <q-item-label style="font-weight: bold; font-size: 18px;">GASTOS DE OPERACION</q-item-label>
                                   </q-item-section>
@@ -218,6 +218,11 @@
                           <hr>
                           <!--PASIVOS -->
                           <q-list>
+                            <q-item style="background-color: #A5ADE0">
+                                  <q-item-section>
+                                      <q-item-label style="font-weight: bold; font-size: 18px;">OTRAS OPERACIONES</q-item-label>
+                                  </q-item-section>
+                              </q-item>
                               <q-item v-show="this.otrosIngresNetos !== 0 || this.CotrosIngresNetos !== 0">
                                   <q-item-section>
                                       <q-item-label style=" font-size: 15px;">Otros ingresos Netos</q-item-label>
@@ -292,7 +297,6 @@
                                   </q-item-section>
                               </q-item>
                           </q-list>
-                          <hr>
                           <q-list>
                               <q-item>
                                   <q-item-section>
@@ -314,7 +318,6 @@
                                   </q-item-section>
                               </q-item>
                           </q-list>
-                          <hr>
                           <!--PATRIMONIO-->
                           <q-list v-show="this.reservaLegal !== 0 || this.CreservaLegal !== 0">
                               <q-item>

@@ -50,8 +50,8 @@
                     <div class="col-12 justify-center">
                         <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">ANÁLISIS VERTICAL</h6>
                         <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">EMPRESA ANONIMA</h6>
-                        <h6 v-if="this.anioComparado !== '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Balance General del año {{this.$route.params.anioactual}} y {{anioComparado}}</h6>
-                        <h6 v-if="this.anioComparado === '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Balance General del año {{this.$route.params.anioactual}}</h6>
+                        <h6 v-if="this.anioComparado !== '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Análisis Vertical del Balance General del año {{this.$route.params.anioactual}} y {{anioComparado}}</h6>
+                        <h6 v-if="this.anioComparado === '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Análisis Vertical del Balance General del año {{this.$route.params.anioactual}}</h6>
                       </div>
                     <div class="col-12 justify-center">
 
@@ -63,9 +63,9 @@
                 <div class="row-12">
                     <div class="col-12">
                         <q-list >
-                            <q-item style="background-color: #82E082">
+                            <q-item >
                                 <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 22px;">Activo</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 22px;"></q-item-label>
                                 </q-item-section>
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{this.$route.params.anioactual}}</q-item-label>
@@ -78,6 +78,24 @@
                                 </q-item-section>
                                 <q-item-section>
                                     <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
+                                </q-item-section>
+                            </q-item>
+                            <hr>
+                            <q-item style="background-color: #82E082">
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px;">Activo</q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
+                                </q-item-section>
+                                <q-item-section>
+                                    <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
