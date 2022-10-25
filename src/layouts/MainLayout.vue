@@ -33,6 +33,14 @@
                     <q-item-label>Crear Nuevo Periodo</q-item-label>
                 </q-item-section>
             </q-item>
+            <q-item clickable to="/ratiosGeneral">
+                <q-item-section avatar>
+                    <q-icon name="post_add"></q-icon>
+                </q-item-section>
+                <q-item-section>
+                    <q-item-label>Mostrar Ratios</q-item-label>
+                </q-item-section>
+            </q-item>
         </q-list>
     </q-drawer>
 

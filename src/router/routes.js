@@ -66,6 +66,11 @@ const routes = [
         name: 'ReporteHorizontalER',
         component: () => import('app/src/pages/ReporteHorizontalER.vue')
       },
+      {
+        path: '/ratiosGeneral',
+        name: 'ratiosGeneral',
+        component: () => import('app/src/pages/ratiosGeneral.vue')
+      },
     ]
   },
 
