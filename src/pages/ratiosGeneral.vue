@@ -57,68 +57,57 @@
 
             </div>
             <div class="row" v-show="opcionLiquidez !== 'Mas informacion'">
-                <div class="col-1">
+                <div class="col-3">
                 </div>
-                <div class="col-10">
+                <div class="col-6">
                     <q-card>
                         <q-card-section class="row items-center q-pb-none">
-                            <div class="text-h6">{{this.opcionLiquidez}}</div>
+                            <div class="text-h6">{{this.opcionLiquidez}} <label style="font-size: 11px;">{{this.expresado}}</label></div>
                             <q-space />
                             <q-btn @click="this.cerrarRazonLiquidez()" icon="close" flat round dense v-close-popup />
                         </q-card-section>
                         <q-separator inset />
                         <!--Razon Circulante-->
                         <q-card-section v-show="opcionLiquidez === 'Razon Circulante'">
-                                <p>{{this.periodos[0].informacion}}</p>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px;  min-width: 60px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  text-decoration: underline; color: black;">{{(parseFloat(this.razonCorrienteT[index])).toFixed(2)}}</q-item-label>
+                                </q-item-section>
+                            </q-item>
                         </q-card-section>
                         <!--Razon Rapida-->
                         <q-card-section v-show="opcionLiquidez === 'Razon Rapida'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px;  min-width: 60px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  text-decoration: underline; color: black;">{{(parseFloat(this.razonRapidaT[index])).toFixed(2)}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Capital de Trabajo-->
                         <q-card-section v-show="opcionLiquidez === 'Capital de Trabajo'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; justify-content: center; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px;min-width: 140px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{parseFloat((parseFloat(this.capitalTrabajoT[index])).toFixed(2)).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Razon Rapida-->
                         <q-card-section v-show="opcionLiquidez === 'Nivel de dependencia de inventario'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 60px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{parseFloat((parseFloat(this.nivelDependenciaT[index])).toFixed(2)).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
@@ -272,25 +261,19 @@
                 <div class="col-6">
                     <q-card>
                         <q-card-section class="row items-center q-pb-none">
-                            <div class="text-h6">{{this.opcionActividad}}</div>
+                            <div class="text-h6">{{this.opcionActividad}} <label style="font-size: 11px;">{{this.expresadoA}}</label></div>
                             <q-space />
                             <q-btn @click="this.cerrarRazonActividad()" icon="close" flat round dense v-close-popup />
                         </q-card-section>
                         <q-separator inset />
                         <!--Razon Rotacion de Inventario-->
                         <q-card-section v-show="opcionActividad === 'Rotacion de Inventario'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 60px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{parseFloat((parseFloat(this.nivelDependenciaT[index])).toFixed(2)).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
@@ -837,8 +820,55 @@ export default {
     name: 'ratiosGeneral',
     data() {
         return {
+            periodoCopia: [{
+                id: "0",
+                informacion: {
+                    anio: "0",
+                    balancegeneral: {
+                        activos: {
+                            activosBiologicos: "0",
+                            activosIntangibles: "0",
+                            cuentasPC: "0",
+                            depositosCortoP: "0",
+                            efectivo: "0",
+                            gastosPagadosAnt: "0",
+                            inventarios: "0",
+                            inversionFinalLP: "0",
+                            otrasCPC: "0",
+                            propiedad: "0",
+                        },
+                        pasivos: {
+                            CPPRelacionadasLP: "0",
+                            cuentasPP: "0",
+                            cuentasPPRelacionadas: "0",
+                            gastosAcumulados: "0",
+                            impuestosSobreRenta: "0",
+                            obligacionesEmple: "0",
+                            otrascuentasPP: "0",
+                        },
+                        patrimonio: {
+                            capitalSocial: "0",
+                            reservaLegal: "0",
+                            resultadosAcu: "0",
+                            resultadosPresEjer: "0",
+                        }
+                    },
+                    estadoresultados: {
+                        costodeventas: "0",
+                        gastosAdmin: "0",
+                        gastosFinan: "0",
+                        ingresosFinan: "0",
+                        gastosVentas: "0",
+                        impuestosSobreRentaES: "0",
+                        ingresosporventas: "0",
+                        otrosGasNetos: "0",
+                        otrosIngresNetos: "0",
+                        reservaLegalES: "0",
+                    }
+                }
+
+            }],
             periodos: [],
-            periodoCopia: [],
             id: String,
             cargandoDatos: true,
             llaveCargandoDatos: false,
@@ -850,11 +880,24 @@ export default {
             opcionDeuda: "Mas informacion",
             expandedR: false,
             opcionRentabilidad: "Mas informacion",
+            expresado: "",
+            expresadoA: "",
+            // Variables para Razones de liquidez
+            razonCorrienteT: [],
+            razonRapidaT: [],
+            capitalTrabajoT: [],
+            nivelDependenciaT: [],
+            // Variables para Razones de Actividad
+            rotacionInventarioT: [],
+            PPCT: [],
+            PPPT: [],
+
         };
     },
     created() {
         this.id = this.$route.params.id
         this.lsitartareas()
+
     },
     watch: {
         llaveCargandoDatos() {
@@ -869,60 +912,85 @@ export default {
         },
         cerrarRazonLiquidez() {
             this.opcionLiquidez = "Mas informacion"
+            this.expresado = ""
+            this.expresadoA = ""
+            this.expresadoD = ""
+            this.expresadoR = ""
         },
         cerrarRazonActividad() {
             this.opcionActividad = "Mas informacion"
+            this.expresado = ""
+            this.expresadoA = ""
+            this.expresadoD = ""
+            this.expresadoR = ""
+
         },
         cerrarRazonDeuda() {
             this.opcionDeuda = "Mas informacion"
+            this.expresado = ""
+            this.expresadoA = ""
+            this.expresadoD = ""
+            this.expresadoR = ""
         },
         cerrarRazonRentabilidad() {
             this.opcionRentabilidad = "Mas informacion"
+            this.expresado = ""
+            this.expresadoA = ""
+            this.expresadoD = ""
+            this.expresadoR = ""
         },
         razonCirculante() {
             this.expanded = false
             this.opcionLiquidez = "Razon Circulante"
-
+            this.expresado = ""
         },
         razonRapida() {
             this.expanded = false
             this.opcionLiquidez = "Razon Rapida"
+            this.expresado = ""
 
         },
         capitalTrabajo() {
             this.expanded = false
             this.opcionLiquidez = "Capital de Trabajo"
+            this.expresado = " (Expresado en US$)"
 
         },
         nivelDependencia() {
             this.expanded = false
             this.opcionLiquidez = "Nivel de dependencia de inventario"
+            this.expresado = ""
         },
         // RAZON DE ACTIVIDAD
         rotacionInventario() {
             this.expandedA = false
             this.opcionActividad = "Rotacion de Inventario"
+            this.expresadoA = " (Expresado en veces por año)"
         },
         PPC() {
             this.expandedA = false
             this.opcionActividad = "Periodo Promedio de Cobro"
+            this.expresadoA = ""
         },
         PPP() {
             this.expandedA = false
             this.opcionActividad = "Periodo Promedio de Pago"
+            this.expresadoA = ""
         },
         RAT() {
             this.expandedA = false
             this.opcionActividad = "Rotacion de los Activos Totales"
+            this.expresadoA = ""
         },
         rotacionCartera() {
             this.expandedA = false
             this.opcionActividad = "Rotacion de Cartera"
+            this.expresadoA = ""
         },
         cicloOperacional() {
             this.expandedA = false
             this.opcionActividad = "Ciclo Operacional"
-
+            this.expresadoA = ""
         },
         // RAZON DE DEUDA
         indiceEndeudamiento() {
@@ -968,8 +1036,52 @@ export default {
                 console.log(error)
             }
         },
-        generarOperacionesBG() {},
-        generarOperacionesER() {},
+        generarOperacionesBG() {
+            // Total Activo Corriente
+            this.periodoCopia.forEach(item => {
+                // Activos
+                let efectivo = parseFloat(item.informacion.balancegeneral.activos.efectivo)
+                let cuentasPC = parseFloat(item.informacion.balancegeneral.activos.cuentasPC)
+                let otrasCPC = parseFloat(item.informacion.balancegeneral.activos.otrasCPC)
+                let inventarios = parseFloat(item.informacion.balancegeneral.activos.inventarios)
+                let gastosPagadosAnt = parseFloat(item.informacion.balancegeneral.activos.gastosPagadosAnt)
+                let depositosCortoP = parseFloat(item.informacion.balancegeneral.activos.depositosCortoP)
+                // Total Activo Corriente 
+                let totalActivoCorriente = parseFloat(efectivo) + parseFloat(cuentasPC) + parseFloat(otrasCPC) + parseFloat(inventarios) + parseFloat(gastosPagadosAnt) + parseFloat(depositosCortoP)
+
+                // PASIVOS
+                // Corrientes
+                let cuentasPP = parseFloat(item.informacion.balancegeneral.pasivos.cuentasPP)
+                let cuentasPPRelacionadas = parseFloat(item.informacion.balancegeneral.pasivos.cuentasPPRelacionadas)
+                let otrascuentasPP = parseFloat(item.informacion.balancegeneral.pasivos.otrascuentasPP)
+                let obligacionesEmple = parseFloat(item.informacion.balancegeneral.pasivos.obligacionesEmple)
+                let impuestosSobreRenta = parseFloat(item.informacion.balancegeneral.pasivos.impuestosSobreRenta)
+                let gastosAcumulados = parseFloat(item.informacion.balancegeneral.pasivos.gastosAcumulados)
+                // Total Pasivos Corriente
+                let totalPasivoCorriente = parseFloat(cuentasPP) + parseFloat(cuentasPPRelacionadas) + parseFloat(otrascuentasPP) + parseFloat(obligacionesEmple) + parseFloat(impuestosSobreRenta) + parseFloat(gastosAcumulados)
+
+                // RESULTADOS DE RAZONES DE LIQUIDEZ
+               
+                //Resultado Razon Corriente
+                let totalRazonCorriente = totalActivoCorriente / totalPasivoCorriente
+                this.razonCorrienteT.push(totalRazonCorriente)
+
+                // Resultado Razon Rapida
+                let totalRazonRapida = (totalActivoCorriente - inventarios) / (totalPasivoCorriente)
+                this.razonRapidaT.push(totalRazonRapida)
+
+                // Capital de Trabajo
+                let totalcapitalTrabajo = totalActivoCorriente - (totalPasivoCorriente)
+                this.capitalTrabajoT.push(totalcapitalTrabajo)
+
+                // Nivel de dependencia de Inventario
+                let sumatoriaDep = efectivo + cuentasPC + otrasCPC
+                let nivelDependenciaTotal = ((totalPasivoCorriente) - (sumatoriaDep)) / (inventarios)
+                this.nivelDependenciaT.push(nivelDependenciaTotal)
+
+                 // RESULTADOS DE RAZONES DE ACTIVIDAD
+            })
+        },
         anteriorPagina() {
             this.$router.go(-1)
         },

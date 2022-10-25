@@ -114,7 +114,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.capitalTrabajoTotal).toFixed(2)).toLocaleString('en')}}
+                                        = ${{parseFloat((this.capitalTrabajoTotal).toFixed(2)).toLocaleString('en')}}
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -305,7 +305,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.rotacionInventarioTotal).toFixed(2)).toLocaleString('en')}}
+                                        = {{parseFloat((this.rotacionInventarioTotal).toFixed(2)).toLocaleString('en')}} veces por año
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -323,7 +323,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.PPCTotal).toFixed(2)).toLocaleString('en')}}
+                                        = {{parseFloat((this.PPCTotal).toFixed(2)).toLocaleString('en')}} dias
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -341,7 +341,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.PPPTotal).toFixed(2)).toLocaleString('en')}}
+                                        = {{parseFloat((this.PPPTotal).toFixed(2)).toLocaleString('en')}} dias
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -359,7 +359,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.RATTotal).toFixed(2)).toLocaleString('en')}}
+                                        = {{parseFloat((this.RATTotal).toFixed(2)).toLocaleString('en')}} veces por año
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
