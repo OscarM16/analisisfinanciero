@@ -125,7 +125,7 @@
                                 </q-item>
                                 <q-item v-show="this.activosIntangibles !== 0">
                                     <q-item-section>
-                                        <q-item-label style=" font-size: 15px;">ACtivos intangibles</q-item-label>
+                                        <q-item-label style=" font-size: 15px;">Activos intangibles</q-item-label>
                                     </q-item-section>
                                     <q-item-section side top>
                                         <q-item-label>{{this.activosIntangibles.toLocaleString('en')}}</q-item-label>

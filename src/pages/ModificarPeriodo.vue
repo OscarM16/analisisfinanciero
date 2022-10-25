@@ -15,6 +15,22 @@
             </q-card-section>
         </q-card>
     </q-dialog>
+    <q-dialog v-model="noestaequilibrado">
+        <q-card style="border-radius: 20px;">
+            <q-card-section>
+                <div class="text-h6">¡ATENCION!</div>
+            </q-card-section>
+
+            <q-card-section class="q-pt-none">
+                El balance General no esta equilibrado, por favor verificar los datos. <br>
+                <label for="" style="font-weight: bold;">Error: Activos Totales ≠ Pasivos Totales + Patrimonio </label>
+            </q-card-section>
+
+            <q-card-actions align="right">
+                <q-btn flat label="OK" color="primary" v-close-popup />
+            </q-card-actions>
+        </q-card>
+    </q-dialog>
     <div class="row-12" v-show="!this.cargandoDatos">
         <div class="row-12">
             <div class="col-12 justify-center">
@@ -910,8 +926,8 @@
                                         <div class="q-pa-md">
                                             <div class="cursor-pointer">
                                                 <q-tooltip>
-                               Valor Fijo, No se puede modificar
-                            </q-tooltip>
+                                                    Valor Fijo, No se puede modificar
+                                                </q-tooltip>
                                                 {{ this.reservaLegalES }}
                                             </div>
                                         </div>
@@ -988,6 +1004,7 @@ export default {
             link: 'inbox',
             hayIngresos: "",
             //Notificacion
+            noestaequilibrado: false,
             dialog: false,
             position: 'top',
             cambioEstadoFinanciero: "",
@@ -1078,46 +1095,55 @@ export default {
             this.cargandoDatos = false
         },
         actualizarBG() {
-            this.reservaLegal = this.capitalSocial * 0.2
-            db.collection('periodos').doc(this.$route.params.id).update({
-                balancegeneral: {
-                    activos: {
-                        activosBiologicos: (this.activosBiologicos).toString(),
-                        activosIntangibles: (this.activosIntangibles).toString(),
-                        cuentasPC: (this.cuentasPC).toString(),
-                        depositosCortoP: (this.depositosCortoP).toString(),
-                        efectivo: (this.efectivo).toString(),
-                        gastosPagadosAnt: (this.gastosPagadosAnt).toString(),
-                        inventarios: (this.inventarios).toString(),
-                        inversionFinalLP: (this.inversionFinalLP).toString(),
-                        otrasCPC: (this.otrasCPC).toString(),
-                        propiedad: (this.propiedad).toString(),
-                    },
-                    pasivos: {
-                        CPPRelacionadasLP: (this.CPPRelacionadasLP).toString(),
-                        cuentasPP: (this.cuentasPP).toString(),
-                        cuentasPPRelacionadas: (this.cuentasPPRelacionadas).toString(),
-                        gastosAcumulados: (this.gastosAcumulados).toString(),
-                        impuestosSobreRenta: (this.impuestosSobreRenta).toString(),
-                        obligacionesEmple: (this.obligacionesEmple).toString(),
-                        otrascuentasPP: (this.otrascuentasPP).toString(),
-                    },
-                    patrimonio: {
-                        capitalSocial: (this.capitalSocial).toString(),
-                        reservaLegal: (this.reservaLegal).toString(),
-                        resultadosAcu: (this.resultadosAcu).toString(),
-                        resultadosPresEjer: (this.resultadosPresEjer).toString(),
+            const activoTotal = parseFloat(this.activosBiologicos) + parseFloat(this.activosIntangibles) + parseFloat(this.cuentasPC) + parseFloat(this.depositosCortoP) + parseFloat(this.efectivo) + parseFloat(this.gastosPagadosAnt) + parseFloat(this.inventarios) + parseFloat(this.inversionFinalLP) + parseFloat(this.otrasCPC) + parseFloat(this.propiedad)
+            const patrimonio = parseFloat(this.capitalSocial) + (parseFloat(this.capitalSocial) * 0.2) + parseFloat(this.resultadosAcu) + parseFloat(this.resultadosPresEjer) + parseFloat(this.impuestosSobreRenta) + parseFloat(this.obligacionesEmple) + parseFloat(this.otrascuentasPP)
+            const pasivo = parseFloat(this.cuentasPP) + parseFloat(this.cuentasPPRelacionadas) + parseFloat(this.gastosAcumulados) + parseFloat(this.CPPRelacionadasLP)
+            const paspat = patrimonio + pasivo
+            if (activoTotal === paspat) {
+                this.reservaLegal = this.capitalSocial * 0.2
+                db.collection('periodos').doc(this.$route.params.id).update({
+                    balancegeneral: {
+                        activos: {
+                            activosBiologicos: (this.activosBiologicos).toString(),
+                            activosIntangibles: (this.activosIntangibles).toString(),
+                            cuentasPC: (this.cuentasPC).toString(),
+                            depositosCortoP: (this.depositosCortoP).toString(),
+                            efectivo: (this.efectivo).toString(),
+                            gastosPagadosAnt: (this.gastosPagadosAnt).toString(),
+                            inventarios: (this.inventarios).toString(),
+                            inversionFinalLP: (this.inversionFinalLP).toString(),
+                            otrasCPC: (this.otrasCPC).toString(),
+                            propiedad: (this.propiedad).toString(),
+                        },
+                        pasivos: {
+                            CPPRelacionadasLP: (this.CPPRelacionadasLP).toString(),
+                            cuentasPP: (this.cuentasPP).toString(),
+                            cuentasPPRelacionadas: (this.cuentasPPRelacionadas).toString(),
+                            gastosAcumulados: (this.gastosAcumulados).toString(),
+                            impuestosSobreRenta: (this.impuestosSobreRenta).toString(),
+                            obligacionesEmple: (this.obligacionesEmple).toString(),
+                            otrascuentasPP: (this.otrascuentasPP).toString(),
+                        },
+                        patrimonio: {
+                            capitalSocial: (this.capitalSocial).toString(),
+                            reservaLegal: (this.reservaLegal).toString(),
+                            resultadosAcu: (this.resultadosAcu).toString(),
+                            resultadosPresEjer: (this.resultadosPresEjer).toString(),
+                        }
                     }
-                }
-            }).then(() => {
-                console.log('Document successfully updated!')
-                this.cambioEstadoFinanciero = "Balance General",
-                    this.open('top')
-                this.ocultarMapaTimeout()
-                this.lsitartareas()
-            }).catch((error) => {
-                console.error('Error updating document: ', error)
-            })
+                }).then(() => {
+                    console.log('Document successfully updated!')
+                    this.cambioEstadoFinanciero = "Balance General",
+                        this.open('top')
+                    this.ocultarMapaTimeout()
+                    this.lsitartareas()
+                }).catch((error) => {
+                    console.error('Error updating document: ', error)
+                })
+            } else {
+                console.log("No esta equilibrado")
+                this.noestaequilibrado = true
+            }
         },
         actualizarER() {
             db.collection('periodos').doc(this.$route.params.id).update({
