@@ -903,7 +903,6 @@ export default {
         llaveCargandoDatos() {
             this.cargandoDatoss()
             this.generarOperacionesBG()
-            this.generarOperacionesER()
         }
     },
     methods: {
