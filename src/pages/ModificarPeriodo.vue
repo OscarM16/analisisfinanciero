@@ -663,6 +663,45 @@
                         </q-list>
                         <!-- Final-->
                     </div>
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-6 q-pa-md">
+                            <q-list bordered padding class="rounded-borders text-primary">
+                                <q-item>
+                                    <div class="col-6">
+                                        <q-item clickable v-ripple>
+                                            <q-item-section style="text-align: center; font-weight: bold;">Actvio Total
+                                                <hr>{{this.activoFinal}}</q-item-section>
+                                        </q-item>
+
+                                    </div>
+                                    <div class="col-6">
+                                        <q-item clickable v-ripple>
+                                            <q-item-section style="text-align: center; font-weight: bold;">Pasivo Total + Patrimonio
+                                                <hr> {{this.pasivoPatriFinal}}</q-item-section>
+                                        </q-item>
+                                    </div>
+                                </q-item>
+
+                            </q-list>
+                        </div>
+                    </div>
+                    <div class="row" v-show="this.diferencia !== 0">
+                        <div class="col-3"></div>
+                        <div class="col-6 q-pa-md">
+                            <q-list bordered padding class="rounded-borders text-primary">
+                                <q-item>
+                                    <div class="col">
+                                        <q-item clickable v-ripple>
+                                            <q-item-section style="text-align: center; font-weight: bold;">{{this.sumres}} {{this.lugarsumres}}
+                                                <hr> {{parseFloat(this.diferencia) }}</q-item-section>
+                                        </q-item>
+                                    </div>
+                                </q-item>
+
+                            </q-list>
+                        </div>
+                    </div>
                     <div class="col-12" style="margin-top: 30px;">
                         <div class="q-pa-md q-gutter-sm" style="text-align: right;">
                             <q-btn color="red" @click="this.cancelarBG()" label="Cancelar" />
@@ -963,7 +1002,6 @@
                             </q-item>
                         </q-list>
                         <!-- Final-->
-
                     </div>
                 </div>
                 <div class="col-12" style="margin-top: 30px;">
@@ -1053,7 +1091,18 @@ export default {
             utilidadbruta: 0,
             utilidadneta: 0,
             utilidadoperativa: 0,
-            utilidadantesreserva: 0
+            utilidadantesreserva: 0,
+
+            // Variables totales
+            activoFinal: 0,
+            pasivoPatriFinal: 0,
+            sumres: "",
+            lugarsumres: "",
+            diferencia: 0,
+
+            // Variables de respaldo
+            activoTotalCopia: 0,
+            pasivoPatriFinalCopia: 0
 
         };
     },
@@ -1070,11 +1119,12 @@ export default {
             this.generarOperaciones()
             this.generarOperacionesER()
             this.cargandoDatoss()
+            this.verificarBalanceFinal()
         },
         periodo() {
             this.generarOperacionesER()
             this.generarOperaciones()
-
+            this.verificarBalanceFinal()
         }
     },
     methods: {
@@ -1094,11 +1144,30 @@ export default {
         cargandoDatoss() {
             this.cargandoDatos = false
         },
+        verificarBalanceFinal() {
+            const activoTotal = parseFloat(this.activosBiologicos) + parseFloat(this.activosIntangibles) + parseFloat(this.cuentasPC) + parseFloat(this.depositosCortoP) + parseFloat(this.efectivo) + parseFloat(this.gastosPagadosAnt) + parseFloat(this.inventarios) + parseFloat(this.inversionFinalLP) + parseFloat(this.otrasCPC) + parseFloat(this.propiedad)
+            const patrimonio = parseFloat(this.capitalSocial) + (parseFloat(this.capitalSocial) * 0.2) + parseFloat(this.resultadosAcu) + parseFloat(this.resultadosPresEjer) + parseFloat(this.impuestosSobreRenta) + parseFloat(this.obligacionesEmple) + parseFloat(this.otrascuentasPP)
+            const pasivo = parseFloat(this.cuentasPP) + parseFloat(this.cuentasPPRelacionadas) + parseFloat(this.gastosAcumulados) + parseFloat(this.CPPRelacionadasLP)
+            this.activoFinal = (activoTotal).toFixed(2)
+            this.pasivoPatriFinal = ((patrimonio) + (pasivo)).toFixed(2)
+            if (this.activoFinal > this.pasivoPatriFinal) {
+                console.log(this.activoTotalCopia)
+                console.log(this.activoFinal)
+                this.sumres = "Diferencia:"
+                this.lugarsumres = ""
+                this.diferencia = (((activoTotal)) - ((pasivo)) - ((patrimonio))).toFixed(2)
+            } else {
+                this.sumres = "Diferencia:"
+                this.lugarsumres = ""
+                this.diferencia = (((pasivo * 1000)) + ((patrimonio * 1000)) - ((activoTotal * 1000))) / 1000
+            }
+        },
         actualizarBG() {
             const activoTotal = parseFloat(this.activosBiologicos) + parseFloat(this.activosIntangibles) + parseFloat(this.cuentasPC) + parseFloat(this.depositosCortoP) + parseFloat(this.efectivo) + parseFloat(this.gastosPagadosAnt) + parseFloat(this.inventarios) + parseFloat(this.inversionFinalLP) + parseFloat(this.otrasCPC) + parseFloat(this.propiedad)
             const patrimonio = parseFloat(this.capitalSocial) + (parseFloat(this.capitalSocial) * 0.2) + parseFloat(this.resultadosAcu) + parseFloat(this.resultadosPresEjer) + parseFloat(this.impuestosSobreRenta) + parseFloat(this.obligacionesEmple) + parseFloat(this.otrascuentasPP)
             const pasivo = parseFloat(this.cuentasPP) + parseFloat(this.cuentasPPRelacionadas) + parseFloat(this.gastosAcumulados) + parseFloat(this.CPPRelacionadasLP)
             const paspat = patrimonio + pasivo
+            this.verificarBalanceFinal()
             if (activoTotal === paspat) {
                 this.reservaLegal = this.capitalSocial * 0.2
                 db.collection('periodos').doc(this.$route.params.id).update({
@@ -1171,6 +1240,7 @@ export default {
         },
         cancelarBG() {
             this.generarOperaciones()
+            this.verificarBalanceFinal()
         },
         cancelarER() {
             this.generarOperacionesER()
@@ -1218,6 +1288,9 @@ export default {
             this.reservaLegal = parseFloat(this.periodo[0].balancegeneral.patrimonio.reservaLegal)
             this.resultadosAcu = parseFloat(this.periodo[0].balancegeneral.patrimonio.resultadosAcu)
             this.resultadosPresEjer = parseFloat(this.periodo[0].balancegeneral.patrimonio.resultadosPresEjer)
+
+            this.activoTotalCopia = parseFloat(this.activosBiologicos) + parseFloat(this.activosIntangibles) + parseFloat(this.cuentasPC) + parseFloat(this.depositosCortoP) + parseFloat(this.efectivo) + parseFloat(this.gastosPagadosAnt) + parseFloat(this.inventarios) + parseFloat(this.inversionFinalLP) + parseFloat(this.otrasCPC) + parseFloat(this.propiedad)
+            this.pasivoPatriFinalCopia = parseFloat(this.capitalSocial) + (parseFloat(this.capitalSocial) * 0.2) + parseFloat(this.resultadosAcu) + parseFloat(this.resultadosPresEjer) + parseFloat(this.impuestosSobreRenta) + parseFloat(this.obligacionesEmple) + parseFloat(this.otrascuentasPP) + parseFloat(this.cuentasPP) + parseFloat(this.cuentasPPRelacionadas) + parseFloat(this.gastosAcumulados) + parseFloat(this.CPPRelacionadasLP)
         },
         generarOperacionesER() {
             // 
