@@ -8,12 +8,11 @@
         </div>
     </div>
     <div class="row " v-show="!this.cargandoDatos">
-        <p>{{this.periodos}}</p>
         <div class="col">
             <div class="row-12" style="margin-bottom: 100px;">
                 <div class="col-12 justify-center">
                     <q-btn round color="warning" icon="navigate_before" @click="anteriorPagina()" size="25px" style="position: absolute; top: 50px; left: 30px;"></q-btn>
-                    <h3 style="text-align: center; font-weight: bold;"> Mostrar Ratios del Año {{this.$route.params.anioactual}}</h3>
+                    <h3 style="text-align: center; font-weight: bold;"> Mostrar Ratios De Los Años</h3>
                 </div>
             </div>
             <!--RAZONES DE LIQUIDEZ-->
@@ -57,14 +56,18 @@
 
             </div>
             <div class="row" v-show="opcionLiquidez !== 'Mas informacion'">
-                <div class="col-3">
+                <div class="col-4">
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <q-card>
                         <q-card-section class="row items-center q-pb-none">
-                            <div class="text-h6">{{this.opcionLiquidez}} <label style="font-size: 11px;">{{this.expresado}}</label></div>
+                            <div class="text-h6">{{this.opcionLiquidez}}</div>
                             <q-space />
                             <q-btn @click="this.cerrarRazonLiquidez()" icon="close" flat round dense v-close-popup />
+                        </q-card-section>
+                        <q-card-section style="margin-top: -5px;padding-top: 1px;  margin-bottom: -10px;">
+                            <q-space />
+                            <div class=""><label style="font-size: 11px;">{{this.expresado}}</label></div>
                         </q-card-section>
                         <q-separator inset />
                         <!--Razon Circulante-->
@@ -256,14 +259,18 @@
             </div>
             <!-- MOSTRAR CARD DE RAZONES DE ACTIVIDAD-->
             <div class="row" v-show="opcionActividad !== 'Mas informacion'">
-                <div class="col-3">
+                <div class="col-4">
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <q-card>
                         <q-card-section class="row items-center q-pb-none">
-                            <div class="text-h6">{{this.opcionActividad}} <label style="font-size: 11px;">{{this.expresadoA}}</label></div>
+                            <div class="text-h6">{{this.opcionActividad}}</div>
                             <q-space />
-                            <q-btn @click="this.cerrarRazonActividad()" icon="close" flat round dense v-close-popup />
+                            <q-btn  @click="this.cerrarRazonActividad()" icon="close" flat round dense v-close-popup />
+                        </q-card-section>
+                        <q-card-section style="margin-top: -5px;padding-top: 1px; margin-bottom: -10px;">
+                            <q-space />
+                            <div class=""><label style="font-size: 11px;">{{this.expresadoA}}</label></div>
                         </q-card-section>
                         <q-separator inset />
                         <!--Razon Rotacion de Inventario-->
@@ -273,102 +280,62 @@
                                     <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
                                 <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 60px;">
-                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{parseFloat((parseFloat(this.nivelDependenciaT[index])).toFixed(2)).toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{parseFloat((parseFloat(this.rotacionInventarioT[index])).toFixed(2)).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Razon Periodo Promedio de Cobro-->
                         <q-card-section v-show="opcionActividad === 'Periodo Promedio de Cobro'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{Math.round(parseFloat((parseFloat(this.PPCT[index])).toFixed(2))).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Razon Periodo Promedio de Pago-->
                         <q-card-section v-show="opcionActividad === 'Periodo Promedio de Pago'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{Math.round(parseFloat((parseFloat(this.PPPT[index])).toFixed(2))).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Razon Periodo Rotacion de los Activos Totales-->
                         <q-card-section v-show="opcionActividad === 'Rotacion de los Activos Totales'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{parseFloat((parseFloat(this.RATT[index])).toFixed(2)).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Razon Periodo Rotacion de Cartera-->
                         <q-card-section v-show="opcionActividad === 'Rotacion de Cartera'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{parseFloat((parseFloat(this.rotacionCarteraT[index])).toFixed(2)).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Razon Periodo Ciclo Operacional-->
                         <q-card-section v-show="opcionActividad === 'Ciclo Operacional'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
-                                </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{Math.round(parseFloat((parseFloat(this.cicloOperacionalT[index])).toFixed(2))).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
@@ -524,31 +491,28 @@
             </div>
             <!--CARDS de DEUDA INCLUYE Boton-->
             <div class="row" v-show="opcionDeuda !== 'Mas informacion'">
-                <div class="col-3">
+                <div class="col-4">
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <q-card>
                         <q-card-section class="row items-center q-pb-none">
                             <div class="text-h6">{{this.opcionDeuda}}</div>
                             <q-space />
                             <q-btn @click="this.cerrarRazonDeuda()" icon="close" flat round dense v-close-popup />
                         </q-card-section>
+                        <q-card-section style="margin-top: -5px;padding-top: 1px; margin-bottom: -10px;">
+                            <q-space />
+                            <div class=""><label style="font-size: 11px;">{{this.expresadoD}}</label></div>
+                        </q-card-section>
                         <q-separator inset />
                         <!--Indice de Endeudamiento-->
                         <q-card-section v-show="opcionDeuda === 'Indice de Endeudamiento'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{(parseFloat((parseFloat(this.indiceEndeudamientoT[index])).toFixed(2))).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
@@ -623,85 +587,61 @@
             </div>
             <!--CARDS de Rentabilidad INCLUYE Boton-->
             <div class="row" v-show="opcionRentabilidad !== 'Mas informacion'">
-                <div class="col-3">
+                <div class="col-4">
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <q-card>
                         <q-card-section class="row items-center q-pb-none">
                             <div class="text-h6">{{this.opcionRentabilidad}}</div>
                             <q-space />
                             <q-btn @click="this.cerrarRazonRentabilidad()" icon="close" flat round dense v-close-popup />
                         </q-card-section>
+                        <q-card-section style="margin-top: -5px;padding-top: 1px; margin-bottom: -10px;">
+                            <q-space />
+                            <div class=""><label style="font-size: 11px;">{{this.expresadoR}}</label></div>
+                        </q-card-section>
                         <q-separator inset />
                         <!--Indice de Margen de Utilidad Bruta-->
                         <q-card-section v-show="opcionRentabilidad === 'Margen de Utilidad Bruta'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{(parseFloat((parseFloat(this.margenUtilidadBT[index] *100)).toFixed(2)))}} %</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Indice de Margen de Utilidad Operativa-->
                         <q-card-section v-show="opcionRentabilidad === 'Margen de Utilidad Operativa'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{(parseFloat((parseFloat(this.margenUtilidadOT[index] *100)).toFixed(2)))}} %</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Indice de Margen de Utilidad Neta-->
                         <q-card-section v-show="opcionRentabilidad === 'Margen de Utilidad Neta'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{(parseFloat((parseFloat(this.margenUtilidadNT[index] *100)).toFixed(2)))}} %</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
                         <!--Indice de Rendimiento sobre Activo Total-->
                         <q-card-section v-show="opcionRentabilidad === 'Rendimiento sobre Activo Total'">
-                            <q-item class="justify-center">
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        <div class="text-center">
-
-                                            <hr>
-                                        </div>
-                                    </q-item-label>
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section avatar>
-                                    <q-item-label>
-                                        =
-                                    </q-item-label>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{(parseFloat((parseFloat(this.rendimientoActivoTotalT[index] *100)).toFixed(2)))}} %</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
@@ -882,6 +822,8 @@ export default {
             opcionRentabilidad: "Mas informacion",
             expresado: "",
             expresadoA: "",
+            expresadoD: "",
+            expresadoR: "",
             // Variables para Razones de liquidez
             razonCorrienteT: [],
             razonRapidaT: [],
@@ -891,6 +833,16 @@ export default {
             rotacionInventarioT: [],
             PPCT: [],
             PPPT: [],
+            RATT: [],
+            rotacionCarteraT: [],
+            cicloOperacionalT: [],
+            // Variables para Razones de Deuda 
+            indiceEndeudamientoT: [],
+            // Variables para Razones de rentabilidad 
+            margenUtilidadBT: [],
+            margenUtilidadOT: [],
+            margenUtilidadNT: [],
+            rendimientoActivoTotalT: []
 
         };
     },
@@ -912,30 +864,19 @@ export default {
         cerrarRazonLiquidez() {
             this.opcionLiquidez = "Mas informacion"
             this.expresado = ""
-            this.expresadoA = ""
-            this.expresadoD = ""
-            this.expresadoR = ""
         },
         cerrarRazonActividad() {
             this.opcionActividad = "Mas informacion"
-            this.expresado = ""
             this.expresadoA = ""
-            this.expresadoD = ""
-            this.expresadoR = ""
+
 
         },
         cerrarRazonDeuda() {
             this.opcionDeuda = "Mas informacion"
-            this.expresado = ""
-            this.expresadoA = ""
             this.expresadoD = ""
-            this.expresadoR = ""
         },
         cerrarRazonRentabilidad() {
             this.opcionRentabilidad = "Mas informacion"
-            this.expresado = ""
-            this.expresadoA = ""
-            this.expresadoD = ""
             this.expresadoR = ""
         },
         razonCirculante() {
@@ -969,49 +910,55 @@ export default {
         PPC() {
             this.expandedA = false
             this.opcionActividad = "Periodo Promedio de Cobro"
-            this.expresadoA = ""
+            this.expresadoA = " (Expresado en dias)"
         },
         PPP() {
             this.expandedA = false
             this.opcionActividad = "Periodo Promedio de Pago"
-            this.expresadoA = ""
+            this.expresadoA = " (Expresado en dias)"
         },
         RAT() {
             this.expandedA = false
             this.opcionActividad = "Rotacion de los Activos Totales"
-            this.expresadoA = ""
+            this.expresadoA = " (Expresado en veces por año)"
         },
         rotacionCartera() {
             this.expandedA = false
             this.opcionActividad = "Rotacion de Cartera"
             this.expresadoA = ""
+            this.expresadoA = " (Expresado en veces)"
         },
         cicloOperacional() {
             this.expandedA = false
             this.opcionActividad = "Ciclo Operacional"
-            this.expresadoA = ""
+            this.expresadoA = " (Expresado en dias)"
         },
         // RAZON DE DEUDA
         indiceEndeudamiento() {
             this.expandedD = false
             this.opcionDeuda = "Indice de Endeudamiento"
+            this.expresadoD= ""
         },
         // RAZON RENTABILIDAD
         margenUtilidadB() {
             this.expandedR = false
             this.opcionRentabilidad = "Margen de Utilidad Bruta"
+            this.expresadoR= ""
         },
         margenUtilidadO() {
             this.expandedR = false
             this.opcionRentabilidad = "Margen de Utilidad Operativa"
+            this.expresadoR= ""
         },
         margenUtilidadN() {
             this.expandedR = false
             this.opcionRentabilidad = "Margen de Utilidad Neta"
+            this.expresadoR= ""
         },
         rendimientoActivoTotal() {
             this.expandedR = false
             this.opcionRentabilidad = "Rendimiento sobre Activo Total"
+            this.expresadoR= ""
         },
         async lsitartareas() {
             try {
@@ -1047,7 +994,15 @@ export default {
                 let depositosCortoP = parseFloat(item.informacion.balancegeneral.activos.depositosCortoP)
                 // Total Activo Corriente 
                 let totalActivoCorriente = parseFloat(efectivo) + parseFloat(cuentasPC) + parseFloat(otrasCPC) + parseFloat(inventarios) + parseFloat(gastosPagadosAnt) + parseFloat(depositosCortoP)
-
+                // No Corrientes
+                let propiedad = parseFloat(item.informacion.balancegeneral.activos.propiedad)
+                let activosIntangibles = parseFloat(item.informacion.balancegeneral.activos.activosIntangibles)
+                let activosBiologicos = parseFloat(item.informacion.balancegeneral.activos.activosBiologicos)
+                let inversionFinalLP = parseFloat(item.informacion.balancegeneral.activos.inversionFinalLP)
+                // Total Activo No corriente
+                let totalActivoNoCorriente = parseFloat(propiedad) + parseFloat(activosIntangibles) + parseFloat(activosBiologicos) + parseFloat(inversionFinalLP)
+                //TOTAL ACTIVO
+                let totalActivo = parseFloat(totalActivoCorriente) + parseFloat(totalActivoNoCorriente)
                 // PASIVOS
                 // Corrientes
                 let cuentasPP = parseFloat(item.informacion.balancegeneral.pasivos.cuentasPP)
@@ -1058,9 +1013,42 @@ export default {
                 let gastosAcumulados = parseFloat(item.informacion.balancegeneral.pasivos.gastosAcumulados)
                 // Total Pasivos Corriente
                 let totalPasivoCorriente = parseFloat(cuentasPP) + parseFloat(cuentasPPRelacionadas) + parseFloat(otrascuentasPP) + parseFloat(obligacionesEmple) + parseFloat(impuestosSobreRenta) + parseFloat(gastosAcumulados)
+                // No corrientes
+                let CPPRelacionadasLP = parseFloat(item.informacion.balancegeneral.pasivos.CPPRelacionadasLP)
+                // Total Pasivos
+                let totalPasivoNoCorriente = parseFloat(CPPRelacionadasLP)
+                // TOTAL PASIVO
+                let totalPasivo = parseFloat(totalPasivoCorriente) + parseFloat(totalPasivoNoCorriente)
+                // PATRIMONIO
+                let capitalSocial = parseFloat(item.informacion.balancegeneral.patrimonio.capitalSocial)
+                let reservaLegal = parseFloat(item.informacion.balancegeneral.patrimonio.reservaLegal)
+                let resultadosAcu = parseFloat(item.informacion.balancegeneral.patrimonio.resultadosAcu)
+                let resultadosPresEjer = parseFloat(item.informacion.balancegeneral.patrimonio.resultadosPresEjer)
+                // TOTAL PATRIMONIO
+                let totalPatrimonio = parseFloat(capitalSocial) + parseFloat(reservaLegal) + parseFloat(resultadosAcu) + parseFloat(resultadosPresEjer)
+                //
+                //
+                //
+                // ESTADO DE RESULTADOS
+                let costodeventas = parseFloat(item.informacion.estadoresultados.costodeventas)
+                let gastosAdmin = parseFloat(item.informacion.estadoresultados.gastosAdmin)
+                let gastosFinan = parseFloat(item.informacion.estadoresultados.gastosFinan)
+                let ingresosFinan = parseFloat(item.informacion.estadoresultados.ingresosFinan)
+                let gastosVentas = parseFloat(item.informacion.estadoresultados.gastosVentas)
+                let impuestosSobreRentaES = parseFloat(item.informacion.estadoresultados.impuestosSobreRentaES)
+                let ingresosporventas = parseFloat(item.informacion.estadoresultados.ingresosporventas)
+                let otrosGasNetos = parseFloat(item.informacion.estadoresultados.otrosGasNetos)
+                let otrosIngresNetos = parseFloat(item.informacion.estadoresultados.otrosIngresNetos)
+                let reservaLegalES = parseFloat(item.informacion.estadoresultados.reservaLegalES)
 
+                let utilidadbruta = parseFloat(ingresosporventas) - parseFloat(costodeventas)
+                let utilidadoperativa = parseFloat(utilidadbruta) - parseFloat(gastosAdmin) - parseFloat(gastosVentas)
+                let utilidadantesreserva = parseFloat(utilidadoperativa) - parseFloat(otrosGasNetos) - parseFloat(gastosFinan) + parseFloat(otrosIngresNetos) + parseFloat(ingresosFinan)
+                let utilidadneta = parseFloat(utilidadantesreserva) - parseFloat(reservaLegalES) - parseFloat(impuestosSobreRentaES)
+                //
+                //
                 // RESULTADOS DE RAZONES DE LIQUIDEZ
-               
+
                 //Resultado Razon Corriente
                 let totalRazonCorriente = totalActivoCorriente / totalPasivoCorriente
                 this.razonCorrienteT.push(totalRazonCorriente)
@@ -1078,7 +1066,57 @@ export default {
                 let nivelDependenciaTotal = ((totalPasivoCorriente) - (sumatoriaDep)) / (inventarios)
                 this.nivelDependenciaT.push(nivelDependenciaTotal)
 
-                 // RESULTADOS DE RAZONES DE ACTIVIDAD
+                // RESULTADOS DE RAZONES DE ACTIVIDAD
+
+                // Rotacion de inventario
+                let rotacionInventarioTotal = (costodeventas) / (inventarios)
+                this.rotacionInventarioT.push(rotacionInventarioTotal)
+
+                // Periodo Promedio de Cobro
+                let CPCTotal = (cuentasPC + otrasCPC)
+                let PPCTotal = ((CPCTotal) * 365) / (ingresosporventas)
+                this.PPCT.push(PPCTotal)
+
+                // Periodo Promedio De Pago
+                let CPPTotal = (cuentasPP + cuentasPPRelacionadas + otrascuentasPP)
+                let PPPTotal = ((CPPTotal) * 365) / (0.7 * costodeventas)
+                this.PPPT.push(PPPTotal)
+
+                // Rotacion de los activos Totales
+                let RATTotal = ingresosporventas / totalActivo
+                this.RATT.push(RATTotal)
+
+                // Rotacion de cartera
+                let rotacionCarteraTotal = ingresosporventas / CPCTotal
+                this.rotacionCarteraT.push(rotacionCarteraTotal)
+
+                // Ciclo Operacional
+                let nroDiasCartera = ((CPCTotal) * 365) / ingresosporventas
+                let nroDiasInventario = (inventarios * 365) / (costodeventas)
+                let cicloOperacionalTotal = nroDiasCartera + nroDiasInventario
+                this.cicloOperacionalT.push(cicloOperacionalTotal)
+
+
+                // Variables para Razon de Endeudamiento
+
+                let indiceEndeudamientoTotal = totalPasivo / totalActivo
+                this.indiceEndeudamientoT.push(indiceEndeudamientoTotal)
+
+                // Razon de utilidad Bruta
+                let margenUB = (utilidadbruta)/ ingresosporventas
+                this.margenUtilidadBT.push(margenUB)
+
+                // Razon de Utilidad Operativa
+                let margenUO = utilidadoperativa/ingresosporventas
+                this.margenUtilidadOT.push(margenUO)
+
+                // Razon de Utilidad Neta
+                let margenUN = utilidadneta/ingresosporventas
+                this.margenUtilidadNT.push(margenUN)
+
+                // Rendimiento sobre Activo Total ROA
+                let ROA = utilidadneta/ totalActivo
+                this.rendimientoActivoTotalT.push(ROA)
             })
         },
         anteriorPagina() {

@@ -678,7 +678,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.margenUB).toFixed(3)).toLocaleString('en')}}
+                                        = {{parseFloat((this.margenUB * 100).toFixed(2)).toLocaleString('en')}} %
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -696,7 +696,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        ={{parseFloat((this.margenUO).toFixed(3)).toLocaleString('en')}}
+                                        ={{parseFloat((this.margenUO * 100).toFixed(2)).toLocaleString('en')}} %
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -714,7 +714,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.margenUN).toFixed(3)).toLocaleString('en')}}
+                                        = {{parseFloat((this.margenUN*100).toFixed(2)).toLocaleString('en')}} %
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -732,7 +732,7 @@
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.ROA).toFixed(3)).toLocaleString('en')}}
+                                        = {{parseFloat((this.ROA * 100).toFixed(2)).toLocaleString('en')}} %
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
