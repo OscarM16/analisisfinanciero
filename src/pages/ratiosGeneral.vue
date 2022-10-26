@@ -59,7 +59,7 @@
                 <div class="col-4">
                 </div>
                 <div class="col-4">
-                    <q-card>
+                    <q-card style="margin-top: 15px; margin-bottom: 80px;">
                         <q-card-section class="row items-center q-pb-none">
                             <div class="text-h6">{{this.opcionLiquidez}}</div>
                             <q-space />
@@ -262,7 +262,7 @@
                 <div class="col-4">
                 </div>
                 <div class="col-4">
-                    <q-card>
+                    <q-card style="margin-top: 15px; margin-bottom: 80px;">
                         <q-card-section class="row items-center q-pb-none">
                             <div class="text-h6">{{this.opcionActividad}}</div>
                             <q-space />
@@ -494,7 +494,7 @@
                 <div class="col-4">
                 </div>
                 <div class="col-4">
-                    <q-card>
+                    <q-card style="margin-top: 15px; margin-bottom: 80px;">
                         <q-card-section class="row items-center q-pb-none">
                             <div class="text-h6">{{this.opcionDeuda}}</div>
                             <q-space />
@@ -590,7 +590,7 @@
                 <div class="col-4">
                 </div>
                 <div class="col-4">
-                    <q-card>
+                    <q-card style="margin-top: 15px; margin-bottom: 80px;">
                         <q-card-section class="row items-center q-pb-none">
                             <div class="text-h6">{{this.opcionRentabilidad}}</div>
                             <q-space />
