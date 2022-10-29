@@ -12,7 +12,7 @@
             <div class="row-12" style="margin-bottom: 100px;">
                 <div class="col-12 justify-center">
                     <q-btn round color="warning" icon="navigate_before" @click="anteriorPagina()" size="25px" style="position: absolute; top: 50px; left: 30px;"></q-btn>
-                    <h3 style="text-align: center; font-weight: bold;"> Mostrar Ratios De Los Años</h3>
+                    <h3 style="text-align: center; font-weight: bold;"> Comparacion de los Ratios por Año</h3>
                 </div>
             </div>
             <!--RAZONES DE LIQUIDEZ-->
