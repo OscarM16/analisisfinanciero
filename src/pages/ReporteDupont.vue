@@ -24,6 +24,19 @@
                 </div>
             </div>
             <div class="row-12" id="content" style="; ">
+                <div class="row-12">
+                    <div class="col-12 justify-center">
+                        <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">REPORTE DUPONT</h6>
+                        <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">EMPRESA RED FOX LAS MERCEDES S.A. DE C.V.</h6>
+                        <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">AL 31 DE DICIEMBRE DE {{this.$route.params.anioactual}}</h6>
+                    </div>
+                    <div class="col-12 justify-center">
+
+                    </div>
+                    <div class="col-12 justify-center">
+
+                    </div>
+                </div>
                 <div class="q-pa-md">
                     <!--PRIMERA FILA-->
                     <div class="row">
@@ -718,6 +731,7 @@ export default {
         return {
             periodo: [],
             id: String,
+            nombredelPDF: "",
             cargandoDatos: true,
             llaveCargandoDatos: false,
             // Datos a mostrar
@@ -789,6 +803,7 @@ export default {
     created() {
         this.id = this.$route.params.id
         this.lsitartareas()
+        this.nombredelPDF = "ReporteDuPont_Año-"+this.$route.params.anioactual
     },
     watch: {
         llaveCargandoDatos() {
