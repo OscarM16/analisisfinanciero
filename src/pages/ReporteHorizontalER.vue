@@ -53,10 +53,10 @@
               <div class="col-12" style="padding: 30px; margin: 5%;">
                   <div class="row-12">
                       <div class="col-12 justify-center">
-                          <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">ESTADO DE RESULTADOS</h6>
-                          <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">EMPRESA ANONIMA</h6>
-                          <h6 v-if="this.anioComparado !== '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Análisis Horizontal del Estado de Resultados del año {{this.$route.params.anioactual}} y {{anioComparado}}</h6>
-                          <h6 v-if="this.anioComparado === '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Análisis Horizontal del Estado de Resultados del año {{this.$route.params.anioactual}}</h6>
+                          <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">ANÁLISIS HORIZONTAL DEL ESTADO DE RESULTADOS</h6>
+                          <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">EMPRESA RED FOX LAS MERCEDES S.A. DE C.V.</h6>
+                          <h6 v-if="this.anioComparado !== '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Al 31 de diciembre de {{this.$route.params.anioactual}} y {{anioComparado}}</h6>
+                          <h6 v-if="this.anioComparado === '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Al 31 de diciembre de {{this.$route.params.anioactual}}</h6>
                       </div>
                       <div class="col-12 justify-center">
 
