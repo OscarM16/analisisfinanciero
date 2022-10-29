@@ -28,8 +28,9 @@
                 <div class="row-12">
                     <div class="col-12 justify-center">
                         <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;" >BALANCE GENERAL</h6>
-                        <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">EMPRESA ANONIMA</h6>
-                        <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Balance General del año {{this.$route.params.anioactual}}</h6>
+                        <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">EMPRESA RED FOX LAS MERCEDES S.A. DE C.V.</h6>
+                        <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">AL 31 DE DICIEMBRE DE {{this.$route.params.anioactual}}</h6>
+                        <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">(Expresado en US$ dolares de los Estados Unidos de America)</h6>
                     </div>
                     <div class="col-12 justify-center">
                        
