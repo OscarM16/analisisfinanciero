@@ -1150,6 +1150,7 @@ export default {
             const pasivo = parseFloat(this.cuentasPP) + parseFloat(this.cuentasPPRelacionadas) + parseFloat(this.gastosAcumulados) + parseFloat(this.CPPRelacionadasLP)
             this.activoFinal = (activoTotal).toFixed(2)
             this.pasivoPatriFinal = ((patrimonio) + (pasivo)).toFixed(2)
+            this.reservaLegal = this.capitalSocial * 0.2
             if (this.activoFinal > this.pasivoPatriFinal) {
                 console.log(this.activoTotalCopia)
                 console.log(this.activoFinal)
