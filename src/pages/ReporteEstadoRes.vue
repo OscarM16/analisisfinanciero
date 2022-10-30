@@ -42,7 +42,7 @@
                 <div class="row-12">
                     <div class="col-12">
                         <q-list>
-                            <q-item>
+                            <q-item style="background-color: #82E082">
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 18px;">INGRESOS</q-item-label>
                                 </q-item-section>
@@ -76,7 +76,7 @@
                         <!--  FIN CORRIENTE-->
                         <!--No corriente-->
                         <q-list>
-                            <q-item>
+                            <q-item style="background-color: #F79C7E">
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 18px;">GASTOS DE OPERACION</q-item-label>
                                 </q-item-section>
@@ -109,7 +109,7 @@
                         <hr>
                         <!--PASIVOS -->
                         <q-list>
-                            <q-item>
+                            <q-item style="background-color: #A5ADE0">
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 18px;">OTROS GASTOS {{this.hayIngresos}}</q-item-label>
                                 </q-item-section>
