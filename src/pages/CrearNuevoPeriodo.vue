@@ -10,7 +10,7 @@
           </div>
         </div>
 
-        <div class="q-pa-md" id="content1" v-show="!this.mostrarFormulario">
+        <div class="q-pa-md"  style="margin: 50px;" id="content1" v-show="!this.mostrarFormulario">
           <q-list>
             <q-item >
                 <q-item-section>
@@ -63,12 +63,16 @@
               </q-item>
           </q-list>
         </div>
-        <h4 v-show="!this.mostrarFormulario">Balance General</h4>
-        <h4 v-show="this.mostrarFormulario">Estado de Resultados</h4>
-        <div class="q-pa-md" id="content1" v-show="!this.mostrarFormulario">
+        <div class="row-12">
+        <div class="col-12 justify-center">
+        <h4 style="text-align: center; font-weight: bold; text-decoration: underline" v-show="!this.mostrarFormulario">Balance General</h4>
+        <h4 style="text-align: center; font-weight: bold; text-decoration: underline" v-show="this.mostrarFormulario">Estado de Resultados</h4>
+        </div>
+      </div>
+        <div class="q-pa-md" style="margin: 50px;" id="content1" v-show="!this.mostrarFormulario">
           <q-list>
             <q-list>
-              <q-item>
+              <q-item style="background-color: #82E082">
                 <q-item-section>
                   <q-item-label style="font-weight: bold; font-size: 22px"
                     >Activo</q-item-label
@@ -610,7 +614,7 @@
             </q-item>
           </q-list>
           <q-list>
-            <q-item>
+            <q-item  style="background-color: #F79C7E">
               <q-item-section>
                 <q-item-label style="font-weight: bold; font-size: 22px"
                   >Pasivos</q-item-label
@@ -1016,7 +1020,7 @@
             </q-item>
           </q-list>
           <q-list>
-            <q-item>
+            <q-item  style="background-color: #A5ADE0">
               <q-item-section>
                 <q-item-label style="font-weight: bold; font-size: 22px"
                   >Patrimonio</q-item-label
@@ -1226,9 +1230,9 @@
           </q-list>
         </div>
         <!---Estado de Resultados--->
-        <div class="q-pa-md" id="content2" v-show="this.mostrarFormulario">
+        <div class="q-pa-md" style="margin: 50px;" id="content2" v-show="this.mostrarFormulario">
           <q-list>
-            <q-item>
+            <q-item  style="background-color: #82E082">
               <q-item-section>
                 <q-item-label style="font-weight: bold; font-size: 18px"
                   >INGRESOS</q-item-label
@@ -1339,7 +1343,7 @@
             </q-item>
           </q-list>
           <q-list>
-            <q-item>
+            <q-item style="background-color: #F79C7E">
               <q-item-section>
                 <q-item-label style="font-weight: bold; font-size: 18px"
                   >GASTOS DE OPERACION</q-item-label
@@ -1444,7 +1448,7 @@
             </q-item>
           </q-list>
           <q-list>
-            <q-item>
+            <q-item style="background-color: #A5ADE0">
               <q-item-section>
                 <q-item-label style="font-weight: bold; font-size: 18px"
                   >OTROS GASTOS</q-item-label>
@@ -1649,6 +1653,7 @@
               </q-item-section>
             </q-item>
           </q-list>
+          <hr>
           <q-list v-show="this.reservaLegalES !== 0 || this.reservaLegalES == 0">
             <q-item>
               <q-item-section>
