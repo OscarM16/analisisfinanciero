@@ -52,7 +52,7 @@
                                     <q-item-label style=" font-size: 15px;">Ingresos por ventas</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.ingresosporventas.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.ingresosporventas.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.costodeventas !== 0">
@@ -60,7 +60,7 @@
                                     <q-item-label style="font-size: 15px;">Costos de ventas</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.costodeventas.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.costodeventas.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
@@ -86,7 +86,7 @@
                                     <q-item-label style=" font-size: 15px;">Gastos de administración</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.gastosAdmin.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.gastosAdmin.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.gastosVentas !== 0">
@@ -94,7 +94,7 @@
                                     <q-item-label style=" font-size: 15px;">Gastos de ventas</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.gastosVentas.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.gastosVentas.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
@@ -119,31 +119,31 @@
                                     <q-item-label style=" font-size: 15px;">Otros ingresos Netos</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.otrosIngresNetos.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.otrosIngresNetos.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.otrosGasNetos !== 0">
                                 <q-item-section>
-                                    <q-item-label style=" font-size: 15px;">Otros gastos netos</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">Otros gastos netos</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.otrosGasNetos.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.otrosGasNetos.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.gastosFinan !== 0">
                                 <q-item-section>
-                                    <q-item-label style=" font-size: 15px;">Gastos financieros</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">Gastos financieros</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.gastosFinan.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.gastosFinan.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.ingresosFinan !== 0">
                                 <q-item-section>
-                                    <q-item-label style=" font-size: 15px;">Ingresos financieros</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">Ingresos financieros</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label>{{this.ingresosFinan.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.ingresosFinan.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                             <!--AGREGAR ACA EL QUE FALTA-->
@@ -164,20 +164,20 @@
                         <q-list v-show="this.reservaLegal !== 0">
                             <q-item>
                                 <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 18px;">RESERVA LEGAL</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 15px;">Reserva legal</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label style="font-weight: bold; font-size: 18px;  text-decoration: underline; color: black;">{{this.reservaLegal.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 15px;  text-decoration: underline; color: black;">{{this.reservaLegal.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
                         <q-list v-show="this.impuestosSobreRentaES !== 0">
                             <q-item>
                                 <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 18px;">IMPUESTOS SOBRE LA RENTA CORRIENTE</q-item-label>
+                                    <q-item-label style=" font-size: 15px;">Impuestos sobre la renta corriente</q-item-label>
                                 </q-item-section>
                                 <q-item-section side top>
-                                    <q-item-label style="font-weight: bold; font-size: 18px;  text-decoration: underline; color: black;">{{this.impuestosSobreRentaES.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style=" font-size: 15px; color: black;">{{this.impuestosSobreRentaES.toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-list>
@@ -193,7 +193,7 @@
                                 </q-item-section>
                             </q-item>
                         </q-list>
-                        
+
                     </div>
                 </div>
                 <div class="row justify-center" style="margin-top: 200px;">
@@ -223,7 +223,7 @@
 </q-page>
 </template>
 
-    
+
 <script>
 import html2canvas from 'html2canvas';
 import {
@@ -296,7 +296,7 @@ export default {
             }
         },
         generarOperaciones() {
-            // 
+            //
             this.costodeventas = parseFloat(this.periodo[0].estadoresultados.costodeventas)
             this.gastosAdmin = parseFloat(this.periodo[0].estadoresultados.gastosAdmin)
             this.gastosFinan = parseFloat(this.periodo[0].estadoresultados.gastosFinan)

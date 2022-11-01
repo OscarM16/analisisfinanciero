@@ -12,6 +12,7 @@
         <h3 style="text-align: center; font-weight: bold;">Reporte Horizontal del Estado de Resultados </h3>
         <h3 style="text-align: center; font-weight: bold;">del Año {{this.$route.params.anioactual}}</h3>
 
+
       </div>
       <div class="row" v-show="!this.cargandoDatos" style="padding: 30px; margin: 5%;">
           <div class="col-5">
@@ -57,6 +58,7 @@
                           <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">EMPRESA RED FOX LAS MERCEDES S.A. DE C.V.</h6>
                           <h6 v-if="this.anioComparado !== '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Al 31 de diciembre de {{this.$route.params.anioactual}} y {{anioComparado}}</h6>
                           <h6 v-if="this.anioComparado === '' " style="text-align: center; margin-top: 5px; margin-bottom: 8px;">Al 31 de diciembre de {{this.$route.params.anioactual}}</h6>
+                          <h6 style="text-align: center; margin-top: 5px; margin-bottom: 8px;">(Expresado en US$ dolares de los Estados Unidos de America)</h6>
                       </div>
                       <div class="col-12 justify-center">
 
@@ -294,6 +296,10 @@
                               <q-item v-show="this.ingresosFinan !== 0 || this.CingresosFinan !== 0">
                                   <q-item-section>
                                       <q-item-label style=" font-size: 15px;">Ingresos financieros netos</q-item-label>
+                                  </q-item-section>
+                                  <q-item-section >
+                                    <q-item-label v-if="this.ingresosFinan !== 0 || this.anioComparado!==''" style="padding-left: 150px;">{{this.ingresosFinan.toLocaleString('en')}}</q-item-label>
+                                    <q-item-label v-if="this.anioComparado==''" style="padding-left: 150px;"></q-item-label>
                                   </q-item-section>
                                   <q-item-section >
                                     <q-item-label v-if="this.CingresosFinan !== 0 || this.anioComparado!==''" style="padding-left: 120px;">{{this.CingresosFinan.toLocaleString('en')}}</q-item-label>
@@ -812,7 +818,7 @@
               this.impuestosSobreRentaESporcentaje = (parseFloat(this.impuestosSobreRentaES)/parseFloat(this.ingresosporventas))*100
               this.impuestosSobreRentaESporcentaje = this.impuestosSobreRentaESporcentaje.toFixed(3)
 
-              this.utilidadneta = parseFloat(this.utilidadantesreserva) + parseFloat(this.reservaLegal) + parseFloat(this.impuestosSobreRentaES)
+              this.utilidadneta = parseFloat(this.utilidadantesreserva) - parseFloat(this.reservaLegal) - parseFloat(this.impuestosSobreRentaES)
               this.utilidadnetaporcentaje = parseFloat(this.utilidadantesreservaporcentaje) + parseFloat(this.reservaLegalporcentaje) + parseFloat(this.impuestosSobreRentaESporcentaje)
               this.utilidadnetaporcentaje = this.utilidadnetaporcentaje.toFixed(2)
 
