@@ -10,7 +10,7 @@
           </div>
         </div>
 
-        <div class="q-pa-md"  style="margin: 30px;" id="content1" v-show="!this.mostrarFormulario">
+        <div class="q-pa-md"  style="margin: 50px;" id="content1" v-show="!this.mostrarFormulario">
           <q-list>
             <q-item >
                 <q-item-section>
