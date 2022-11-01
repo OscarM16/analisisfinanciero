@@ -74,10 +74,10 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{anioComparado}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -96,7 +96,7 @@
                                     <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
                                 <q-item-section>
-                                    <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
@@ -109,10 +109,10 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 16px; color: black; padding-left: 200px;">{{this.totalActivoCorrienteporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 16px; padding-left: 200px;">{{this.CtotalActivoCorriente}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !== ''"  style="font-weight: bold; font-size: 16px; padding-left: 200px;">{{this.CtotalActivoCorrienteporcentaje}}%</q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -126,11 +126,11 @@
                                 <q-item-section>
                                     <q-item-label style=" padding-left: 200px;">{{this.efectivoporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.Cefectivo !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.Cefectivo.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                   </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.Cefectivoporcentaje !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.Cefectivoporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -145,11 +145,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.cuentasPCporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                   <q-item-label v-if="this.CcuentasPC !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CcuentasPC.toLocaleString("en")}}</q-item-label>
                                   <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
-                                </q-item-section>
-                                <q-item-section>
+                                </q-item-section >
+                                <q-item-section v-show="this.anioComparado !== ''">
                                   <q-item-label v-if="this.CcuentasPCporcentaje !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CcuentasPCporcentaje}}%</q-item-label>
                                   <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -164,11 +164,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.otrasCPCporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                   <q-item-label v-if="this.CotrasCPC !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CotrasCPC.toLocaleString("en")}}</q-item-label>
                                   <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                   <q-item-label v-if="this.CotrasCPCporcentaje !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CotrasCPCporcentaje}}%</q-item-label>
                                   <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -183,11 +183,11 @@
                                 <q-item-section>
                                     <q-item-label style=" padding-left: 200px;">{{this.depositosCortoPporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CdepositosCortoP !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CdepositosCortoP.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                   </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CdepositosCortoPporcentaje !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CdepositosCortoPporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -202,11 +202,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.inventariosporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.Cinventarios !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.Cinventarios.toLocaleString('en')}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                   </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.Cinventariosporcentaje !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.Cinventariosporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -221,11 +221,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.gastosPagadosAntporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CgastosPagadosAnt !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CgastosPagadosAnt.toLocaleString('en')}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CgastosPagadosAntporcentaje !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CgastosPagadosAntporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -244,10 +244,10 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 16px; padding-left: 200px;">{{this.totalAcrivoNoCorrienteporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 16px; padding-left: 200px;">{{this.CtotalAcrivoNoCorriente}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !== ''"  style="font-weight: bold; font-size: 16px; padding-left: 200px;">{{this.CtotalAcrivoNoCorrienteporcentaje}}%</q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -261,11 +261,11 @@
                                 <q-item-section>
                                     <q-item-label style=" padding-left: 200px;">{{this.propiedadporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.Cpropiedad !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.Cpropiedad.toLocaleString('en')}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.Cpropiedadporcentaje !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.Cpropiedadporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -280,11 +280,11 @@
                                 <q-item-section>
                                     <q-item-label style=" padding-left: 200px;">{{this.activosIntangiblesporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CactivosIntangibles !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CactivosIntangibles.toLocaleString('en')}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CactivosIntangiblesporcentaje !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CactivosIntangiblesporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -299,11 +299,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.activosBiologicosporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CactivosBiologicos !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CactivosBiologicos.toLocaleString('en')}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CactivosBiologicosporcentaje !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CactivosBiologicosporcentaje.toLocaleString('en')}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -318,11 +318,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.inversionFinalLPporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CinversionFinalLP !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CinversionFinalLP.toLocaleString('en')}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                   <q-item-label v-if="this.CinversionFinalLPporcentaje !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CinversionFinalLPporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -340,10 +340,10 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 18px; text-decoration: underline; color: black; padding-left: 200px;">{{this.totalActivoporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 18px;  text-decoration: underline; color: black; padding-left: 200px;">{{this.CtotalActivo}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 18px;  text-decoration: underline; color: black; padding-left: 200px;">{{this.CtotalActivoporcentaje}}%</q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -356,16 +356,16 @@
                                     <q-item-label style="font-weight: bold; font-size: 22px;">Pasivos</q-item-label>
                                 </q-item-section>
                                 <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{this.$route.params.anioactual}}</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
                                 <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{anioComparado}}</q-item-label>
+                                <q-item-section v-show="this.anioComparado !== ''">
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
-                                    <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
+                                <q-item-section v-show="this.anioComparado !== ''">
+                                    <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item>
@@ -378,10 +378,10 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 16px; color: black; padding-left: 200px;">{{this.totalPasivoCorrienteporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !==''" style="font-weight: bold; font-size: 16px; color: black; padding-left: 200px;">{{this.CtotalPasivoCorriente}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado !==''" style="font-weight: bold; font-size: 16px; color: black; padding-left: 200px;">{{this.CtotalPasivoCorrienteporcentaje}}%</q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -395,11 +395,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.cuentasPPporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CcuentasPP !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CcuentasPP.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CcuentasPP !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CcuentasPPporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -414,11 +414,11 @@
                                 <q-item-section>
                                     <q-item-label style=" padding-left: 200px;">{{this.cuentasPPRelacionadasporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CcuentasPPRelacionadas !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CcuentasPPRelacionadas.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CcuentasPPRelacionadas !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CcuentasPPRelacionadasporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -433,11 +433,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.gastosAcumuladosporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CgastosAcumulados !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CgastosAcumulados.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CgastosAcumulados !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CgastosAcumuladosporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -452,11 +452,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.otrascuentasPPporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CotrascuentasPP !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CotrascuentasPP.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CotrascuentasPP !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CotrascuentasPPporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -471,11 +471,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.obligacionesEmpleporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CobligacionesEmple !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CobligacionesEmple.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CobligacionesEmple !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CobligacionesEmpleporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -490,11 +490,11 @@
                                 <q-item-section>
                                     <q-item-label style=" padding-left: 200px;">{{this.impuestosSobreRentaporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CimpuestosSobreRenta !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CimpuestosSobreRenta.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CimpuestosSobreRenta !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CimpuestosSobreRentaporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -512,11 +512,11 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 16px; color: black; padding-left: 200px;">{{this.totalPasivoNoCorrienteporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CtotalPasivoNoCorriente !== 0 || this.anioComparado !== ''" style=" font-weight: bold; font-size: 16px; color: black;  padding-left: 200px;">{{this.CtotalPasivoNoCorriente.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" font-weight: bold; font-size: 16px; color: black ; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CtotalPasivoNoCorriente !== 0 || this.anioComparado !== ''" style=" font-weight: bold; font-size: 16px; color: black; padding-left: 200px;">{{this.CtotalPasivoNoCorrienteporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style=" font-weight: bold; font-size: 16px; color: black; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -531,11 +531,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.CPPRelacionadasLPporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''" >
                                     <q-item-label v-if="this.CCPPRelacionadasLP !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CCPPRelacionadasLP.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CCPPRelacionadasLP !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CCPPRelacionadasLPporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -553,11 +553,11 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 18px; text-decoration: underline; color: black; padding-left: 200px;">{{this.totalPasivoporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.anioComparado !== ''" style="font-weight: bold; font-size: 18px; text-decoration: underline; color: black; padding-left: 200px;">{{this.CtotalPasivo.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.anioComparado !== ''" style="font-weight: bold; font-size: 18px; text-decoration: underline; color: black; padding-left: 200px;">{{this.CtotalPasivoporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -571,16 +571,16 @@
                                     <q-item-label style="font-weight: bold; font-size: 22px;">Patrimonio</q-item-label>
                                 </q-item-section>
                                 <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{this.$route.params.anioactual}}</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
                                 <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
-                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;">{{anioComparado}}</q-item-label>
+                                <q-item-section v-show="this.anioComparado !== ''">
+                                    <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
-                                    <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;">%</q-item-label>
+                                <q-item-section v-show="this.anioComparado !== ''">
+                                    <q-item-label v-show="this.anioComparado !== ''" style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
                             </q-item>
                             <q-item v-show="this.capitalSocial !== 0 || this.CcapitalSocial !== 0">
@@ -593,11 +593,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.capitalSocialporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CcapitalSocial !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CcapitalSocial.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CcapitalSocial !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CcapitalSocialporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -612,11 +612,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.reservaLegalporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CreservaLegal !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CreservaLegal.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CreservaLegal !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CreservaLegalporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -631,11 +631,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.resultadosAcuporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CresultadosAcu !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CresultadosAcu.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CresultadosAcu !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CresultadosAcuporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -650,11 +650,11 @@
                                 <q-item-section>
                                     <q-item-label style="padding-left: 200px;">{{this.resultadosPresEjerporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CresultadosPresEjer !== 0 || this.anioComparado !== ''" style="padding-left: 200px;">{{this.CresultadosPresEjer.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CresultadosPresEjer !== 0 || this.anioComparado !== ''" style=" padding-left: 200px;">{{this.CresultadosPresEjerporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -669,11 +669,11 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 18px; text-decoration: underline; color: black; padding-left: 200px;">{{this.totalPatrimonioporcentaje}}%</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CtotalPatrimonio !== 0 || this.anioComparado !== ''" style=" font-weight: bold; font-size: 18px; text-decoration: underline; color: black; padding-left:  200px;">{{this.CtotalPatrimonio.toLocaleString("en")}}</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-if="this.CtotalPatrimonio !== 0 || this.anioComparado !== ''" style="font-weight: bold; font-size: 18px; text-decoration: underline; color: black; padding-left: 200px;">{{this.CtotalPatrimonioporcentaje}}%</q-item-label>
                                     <q-item-label v-if="this.anioComparado == ''" style="padding-left: 200px;"></q-item-label>
                                 </q-item-section>
@@ -692,10 +692,10 @@
                                 <q-item-section>
                                     <q-item-label style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado!==''"  style="font-weight: bold; font-size: 18px; text-decoration: underline; color: black; padding-left: 200px;">{{this.CpasivoPatrimonio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section>
+                                <q-item-section v-show="this.anioComparado !== ''">
                                     <q-item-label v-show="this.anioComparado!==''" style="font-weight: bold; font-size: 22px; padding-left: 200px;"></q-item-label>
                                 </q-item-section>
                             </q-item>
