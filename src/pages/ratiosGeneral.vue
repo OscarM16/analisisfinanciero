@@ -214,6 +214,14 @@
                                 <q-item-label>Rotacion de Inventario</q-item-label>
                             </q-item-section>
                         </q-item>
+                        <q-item clickable v-ripple style="width:100%" @click="this.NDI()">
+                            <q-item-section avatar>
+                                <q-icon name="calculate" color="black" />
+                            </q-item-section>
+                            <q-item-section>
+                                <q-item-label>Nro dias de Inventario</q-item-label>
+                            </q-item-section>
+                        </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.PPC()">
                             <q-item-section avatar>
                                 <q-icon name="calculate" color="black" />
@@ -246,6 +254,14 @@
                                 <q-item-label>Rotacion de Cartera</q-item-label>
                             </q-item-section>
                         </q-item>
+                        <q-item clickable v-ripple style="width:100%" @click="this.NDC()">
+                            <q-item-section avatar>
+                                <q-icon name="calculate" color="black" />
+                            </q-item-section>
+                            <q-item-section>
+                                <q-item-label>Nro de dias de Cartera</q-item-label>
+                            </q-item-section>
+                        </q-item>
                         <q-item clickable v-ripple style="width:100%" @click="this.cicloOperacional()">
                             <q-item-section avatar>
                                 <q-icon name="calculate" color="black" />
@@ -273,7 +289,7 @@
                             <div class=""><label style="font-size: 11px;">{{this.expresadoA}}</label></div>
                         </q-card-section>
                         <q-separator inset />
-                        <!--Razon Rotacion de Inventario-->
+                        <!--Razon Rotacion de Inventario -->
                         <q-card-section v-show="opcionActividad === 'Rotacion de Inventario'">
                             <q-item v-for=" (item, index) of periodoCopia" :key="index">
                                 <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
@@ -281,6 +297,17 @@
                                 </q-item-section>
                                 <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 60px;">
                                     <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{parseFloat((parseFloat(this.rotacionInventarioT[index])).toFixed(2)).toLocaleString('en')}}</q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
+                        <!--Razon Nro dias de Inventario -->
+                        <q-card-section v-show="opcionActividad === 'Nro de dias de Inventario'">
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 60px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{Math.round(parseFloat((parseFloat(this.NDIT[index])).toFixed(2))).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
@@ -328,13 +355,24 @@
                                 </q-item-section>
                             </q-item>
                         </q-card-section>
+                        <!--Razon Nro dias de Cartera -->
+                        <q-card-section v-show="opcionActividad === 'Nro de dias de Cartera'">
+                            <q-item v-for=" (item, index) of periodoCopia" :key="index">
+                                <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
+                                </q-item-section>
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 60px;">
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{Math.round(parseFloat((parseFloat(this.NDCT[index])).toFixed(2))).toLocaleString('en')}}</q-item-label>
+                                </q-item-section>
+                            </q-item>
+                        </q-card-section>
                         <!--Razon Periodo Ciclo Operacional-->
                         <q-card-section v-show="opcionActividad === 'Ciclo Operacional'">
                             <q-item v-for=" (item, index) of periodoCopia" :key="index">
                                 <q-item-section style=" margin-left:5px; margin-right:5px;padding: 5px;">
                                     <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
-                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
+                                <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 60px;">
                                     <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{Math.round(parseFloat((parseFloat(this.cicloOperacionalT[index])).toFixed(2))).toLocaleString('en')}}</q-item-label>
                                 </q-item-section>
                             </q-item>
@@ -356,6 +394,46 @@
                                                         <div class="text-center">
                                                             Costo de ventas
                                                             <hr style="border-color: black;">Inventario
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
+                                <!--Boton Nro de dias de Inventario-->
+                                <q-btn v-show="this.opcionActividad === 'Nro de dias de Inventario'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Inventario * 365
+                                                            <hr style="border-color: black;">Costo de Ventas
+                                                        </div>
+                                                    </q-item-label>
+                                                </q-item-section>
+                                            </q-item>
+                                        </q-banner>
+                                    </q-popup-proxy>
+                                </q-btn>
+                                <!--Boton Nro de dias de Cartera-->
+                                <q-btn v-show="this.opcionActividad === 'Nro de dias de Cartera'" color="primary" text-color="white" label="Formula">
+                                    <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+                                        <q-banner class="text-black" style="background-color: #7be38f;">
+                                            <template v-slot:avatar>
+
+                                            </template>
+                                            <q-item class="justify-center">
+                                                <q-item-section avatar>
+                                                    <q-item-label>
+                                                        <div class="text-center">
+                                                            Cuentas por Cobrar * 365
+                                                            <hr style="border-color: black;">Total de Ventas
                                                         </div>
                                                     </q-item-label>
                                                 </q-item-section>
@@ -453,17 +531,10 @@
                                             <q-item class="justify-center">
                                                 <q-item-section avatar>
                                                     <q-item-label>
-                                                        Nro. Dias de Cartera +
+                                                        Nro. Dias de Cartera + Nro. Dias de Inventario
                                                     </q-item-label>
                                                 </q-item-section>
-                                                <q-item-section avatar>
-                                                    <q-item-label>
-                                                        <div class="text-center">
-                                                            Inventario
-                                                            <hr>Costo de ventas
-                                                        </div>
-                                                    </q-item-label>
-                                                </q-item-section>
+                                                
                                             </q-item>
                                         </q-banner>
                                     </q-popup-proxy>
@@ -835,10 +906,12 @@ export default {
             nivelDependenciaT: [],
             // Variables para Razones de Actividad
             rotacionInventarioT: [],
+            NDIT: [],
             PPCT: [],
             PPPT: [],
             RATT: [],
             rotacionCarteraT: [],
+            NDCT:[],
             cicloOperacionalT: [],
             // Variables para Razones de Deuda 
             indiceEndeudamientoT: [],
@@ -910,6 +983,16 @@ export default {
             this.expandedA = false
             this.opcionActividad = "Rotacion de Inventario"
             this.expresadoA = " (Expresado en veces por año)"
+        },
+        NDI() {
+            this.expandedA = false
+            this.opcionActividad = "Nro de dias de Inventario"
+            this.expresadoA = " (Expresado en dias)"
+        },
+        NDC() {
+            this.expandedA = false
+            this.opcionActividad = "Nro de dias de Cartera"
+            this.expresadoA = " (Expresado en dias)"
         },
         PPC() {
             this.expandedA = false
@@ -1096,7 +1179,9 @@ export default {
 
                 // Ciclo Operacional
                 let nroDiasCartera = ((CPCTotal) * 365) / ingresosporventas
+                this.NDCT.push(nroDiasCartera)
                 let nroDiasInventario = (inventarios * 365) / (costodeventas)
+                this.NDIT.push(nroDiasInventario)
                 let cicloOperacionalTotal = nroDiasCartera + nroDiasInventario
                 this.cicloOperacionalT.push(cicloOperacionalTotal)
 
