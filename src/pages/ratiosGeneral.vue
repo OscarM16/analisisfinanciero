@@ -502,6 +502,10 @@
                         </q-card-section>
                         <q-card-section style="margin-top: -5px;padding-top: 1px; margin-bottom: -10px;">
                             <q-space />
+                            <div class=""><label style="font-size: 11px;">Expresado en porcentaje (%)</label></div>
+                        </q-card-section>
+                        <q-card-section style="margin-top: -5px;padding-top: 1px; margin-bottom: -10px;">
+                            <q-space />
                             <div class=""><label style="font-size: 11px;">{{this.expresadoD}}</label></div>
                         </q-card-section>
                         <q-separator inset />
@@ -512,7 +516,7 @@
                                     <q-item-label style="font-weight: bold; font-size: 18px;">Año {{item.informacion.anio}}</q-item-label>
                                 </q-item-section>
                                 <q-item-section side center style="background-color: #7be38f; text-align: center;  margin-left:5px; margin-right:5px;padding: 5px; border-radius: 8px; min-width: 80px;">
-                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{(parseFloat((parseFloat(this.indiceEndeudamientoT[index])).toFixed(2))).toLocaleString('en')}}</q-item-label>
+                                    <q-item-label style="font-weight: bold; font-size: 18px;  color: black;">{{(parseFloat((parseFloat(this.indiceEndeudamientoT[index] * 100)).toFixed(2)))}} %</q-item-label>
                                 </q-item-section>
                             </q-item>
                         </q-card-section>

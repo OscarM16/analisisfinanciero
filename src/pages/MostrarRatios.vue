@@ -572,14 +572,14 @@
                                 <q-item-section avatar>
                                     <q-item-label>
                                         <div class="text-center">
-                                            {{parseFloat((this.totalPasivo).toFixed(2)).toLocaleString('en')}}
+                                            {{parseFloat((this.totalPasivo).toFixed(2)).toLocaleString('en')}} * 100
                                             <hr>{{parseFloat((this.totalActivo).toFixed(2)).toLocaleString('en')}}
                                         </div>
                                     </q-item-label>
                                 </q-item-section>
                                 <q-item-section avatar>
                                     <q-item-label>
-                                        = {{parseFloat((this.indiceEndeudamientoTotal).toFixed(2))}}
+                                        = {{parseFloat((this.indiceEndeudamientoTotal * 100).toFixed(2))}} %
                                     </q-item-label>
                                 </q-item-section>
                             </q-item>
