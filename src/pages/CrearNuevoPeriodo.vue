@@ -9,7 +9,14 @@
             </h3>
           </div>
         </div>
-
+        <q-dialog v-model="dialog" :position="position">
+        <q-card style="border-radius: 20px; background-color: #AFF1BC;;width: 350px;max-height: 100px;">
+            <q-card-section class="row items-center" style="padding: 2px;">
+                <q-avatar icon="check_circle" size="6em" />
+                <span class="">{{this.addEstadoFinanciero}}</span>
+            </q-card-section>
+        </q-card>
+    </q-dialog>
         <div class="q-pa-md"  style="margin: 50px;" id="content1" v-show="!this.mostrarFormulario">
           <q-list>
             <q-item >
@@ -82,12 +89,7 @@
               <q-item>
                 <q-item-section>
                   <q-item-label
-                    style="
-                      font-weight: bold;
-                      text-decoration: underline;
-                      font-size: 18px;
-                    "
-                    >Corriente</q-item-label
+                    style="font-weight: bold; text-decoration: underline;font-size: 18px;">Corriente</q-item-label
                   >
                 </q-item-section>
                 <q-item-section side top>
@@ -1761,14 +1763,27 @@
         </div>
         <div class="col-12" style="margin-top: 30px">
           <div class="q-pa-md q-gutter-sm" style="text-align: right">
-            <q-form
-              @reset="this.cancelarFormulario"
-              class="q-gutter-md"
-            >
+            <q-form>
               <div>
                 <q-btn
+                  @click="this.retrocederFormulario"
+                  v-show="this.mostrarFormulario"
+                  label="Retroceder"
+                  color="primary"
+                  flat
+                  class="q-ml-sm"
+                />
+                <q-btn
                   @click="this.siguiente"
-                  :label="this.estadoForm"
+                  label="siguiente"
+                  v-show="!this.mostrarFormulario"
+                  type="submit"
+                  color="primary"
+                />
+                <q-btn
+                  @click="this.guardar"
+                  v-show="this.mostrarFormulario"
+                  label="guardar"
                   type="submit"
                   color="primary"
                 />
@@ -1802,7 +1817,6 @@ export default {
       text: "",
       ph: ref(""),
       dense: ref(false),
-      estadoForm: "Siguiente",
       periodo: [],
       id: String,
       cargandoDatos: true,
@@ -1812,9 +1826,10 @@ export default {
       //Notificacion
       dialog: false,
       position: "top",
-      cambioEstadoFinanciero: "",
+      addEstadoFinanciero: "",
       // Datos a mostrar
       anio: 0,
+      anioValido: false,
       // ACTIVOS
       // Corrientes
       efectivo: 0,
@@ -1863,126 +1878,70 @@ export default {
     };
   },
   methods: {
+    open(position) {
+            this.position = position
+            this.dialog = true
+        },
+        ocultarDialogo() {
+            this.dialog = false
+          },
     siguiente() {
-      if (this.formularioBalanceGeneral === false) {
-        // Aca solo entra la primera vez al darle siguieente
-        // estando en el Balance General
-        this.formularioBalanceGeneral = true;
-        this.estadoForm = "Guardar";
         this.mostrarFormulario = !this.mostrarFormulario;
-      } else {
-        // AQUI vas a enviar todo a firebase
-        this.crearBG()
-      }
+
     },
-    cancelarFormulario() {
+    guardar(){
+      this.crearBG()
+    },
+    retrocederFormulario() {
       // Limpiamos todas las variables
       this.mostrarFormulario = false;
-      this.formularioBalanceGeneral = false;
+    },
+    cancelarFormulario(){
+      this.mostrarFormulario = false;
       this.estadoForm = "Siguiente";
+      this.addEstadoFinanciero = "Periodo Cancelado";
       this.text = "";
+      this.open('top')
+      this.icon = '';
+      //activos
+      this.efectivo= parseFloat(0);
+      this.activosBiologicos = parseFloat(0);
+      this.activosIntangibles = parseFloat(0);
+      this.cuentasPC = parseFloat(0);
+      this.depositosCortoP = parseFloat(0);
+      this.gastosPagadosAnt = parseFloat(0);
+      this.inventarios = parseFloat(0);
+      this.inversionFinalLP = parseFloat(0);
+      this.otrasCPC = parseFloat(0);
+      this.propiedad = parseFloat(0);
+      //pasivos
+      this.CPPRelacionadasLP = parseFloat(0);
+      this.cuentasPP = parseFloat(0);
+      this.cuentasPPRelacionadas = parseFloat(0);
+      this.gastosAcumulados = parseFloat(0);
+      this.impuestosSobreRenta = parseFloat(0);
+      this.obligacionesEmple = parseFloat(0);
+      this.otrascuentasPP = parseFloat(0);
+      //patrimonio
+      this.capitalSocial = parseFloat(0);
+      this.reservaLegal = parseFloat(0);
+      this.resultadosAcu = parseFloat(0);
+      this.resultadosPresEjer = parseFloat(0);
+      //estado de resultados
+      this.costodeventas = parseFloat(0);
+      this.gastosAdmin = parseFloat(0);
+      this.gastosFinan = parseFloat(0);
+      this.gastosVentas = parseFloat(0);
+      this.impuestosSobreRentaES = parseFloat(0);
+      this.ingresosFinan = parseFloat(0);
+      this.ingresosporventas = parseFloat(0);
+      this.otrosGasNetos = parseFloat(0);
+      this.otrosIngresNetos = parseFloat(0);
+      this.reservaLegalES = parseFloat(0);
+
     },
-    generarOperaciones() {
-      // Activos
-      this.efectivo = parseFloat(
-        this.periodo[0].balancegeneral.activos.efectivo
-      );
-      this.cuentasPC = parseFloat(
-        this.periodo[0].balancegeneral.activos.cuentasPC
-      );
-      this.otrasCPC = parseFloat(
-        this.periodo[0].balancegeneral.activos.otrasCPC
-      );
-      this.inventarios = parseFloat(
-        this.periodo[0].balancegeneral.activos.inventarios
-      );
-      this.gastosPagadosAnt = parseFloat(
-        this.periodo[0].balancegeneral.activos.gastosPagadosAnt
-      );
-      this.depositosCortoP = parseFloat(
-        this.periodo[0].balancegeneral.activos.depositosCortoP
-      );
-      // No Corrientes
-      this.propiedad = parseFloat(
-        this.periodo[0].balancegeneral.activos.propiedad
-      );
-      this.activosIntangibles = parseFloat(
-        this.periodo[0].balancegeneral.activos.activosIntangibles
-      );
-      this.activosBiologicos = parseFloat(
-        this.periodo[0].balancegeneral.activos.activosBiologicos
-      );
-      this.inversionFinalLP = parseFloat(
-        this.periodo[0].balancegeneral.activos.inversionFinalLP
-      );
-      // PASIVOS
-      // Corrientes
-      this.cuentasPP = parseFloat(
-        this.periodo[0].balancegeneral.pasivos.cuentasPP
-      );
-      this.cuentasPPRelacionadas = parseFloat(
-        this.periodo[0].balancegeneral.pasivos.cuentasPPRelacionadas
-      );
-      this.otrascuentasPP = parseFloat(
-        this.periodo[0].balancegeneral.pasivos.otrascuentasPP
-      );
-      this.obligacionesEmple = parseFloat(
-        this.periodo[0].balancegeneral.pasivos.obligacionesEmple
-      );
-      this.impuestosSobreRenta = parseFloat(
-        this.periodo[0].balancegeneral.pasivos.impuestosSobreRenta
-      );
-      this.gastosAcumulados = parseFloat(
-        this.periodo[0].balancegeneral.pasivos.gastosAcumulados
-      );
-      // No corrientes
-      this.CPPRelacionadasLP = parseFloat(
-        this.periodo[0].balancegeneral.pasivos.CPPRelacionadasLP
-      );
-      // PATRIMONIO
-      //
-      this.capitalSocial = parseFloat(
-        this.periodo[0].balancegeneral.patrimonio.capitalSocial
-      );
-      this.reservaLegal = parseFloat(
-        this.periodo[0].balancegeneral.patrimonio.reservaLegal
-      );
-      this.resultadosAcu = parseFloat(
-        this.periodo[0].balancegeneral.patrimonio.resultadosAcu
-      );
-      this.resultadosPresEjer = parseFloat(
-        this.periodo[0].balancegeneral.patrimonio.resultadosPresEjer
-      );
-    },
-    generarOperacionesER() {
-      //
-      this.costodeventas = parseFloat(
-        this.periodo[0].estadoresultados.costodeventas
-      );
-      this.gastosAdmin = parseFloat(
-        this.periodo[0].estadoresultados.gastosAdmin
-      );
-      this.gastosFinan = parseFloat(
-        this.periodo[0].estadoresultados.gastosFinan
-      );
-      this.gastosVentas = parseFloat(
-        this.periodo[0].estadoresultados.gastosVentas
-      );
-      this.impuestosSobreRentaES = parseFloat(
-        this.periodo[0].estadoresultados.impuestosSobreRentaES
-      );
-      this.ingresosporventas = parseFloat(
-        this.periodo[0].estadoresultados.ingresosporventas
-      );
-      this.otrosGasNetos = parseFloat(
-        this.periodo[0].estadoresultados.otrosGasNetos
-      );
-      this.otrosIngresNetos = parseFloat(
-        this.periodo[0].estadoresultados.otrosIngresNetos
-      );
-      this.reservaLegalES = parseFloat(
-        this.periodo[0].estadoresultados.reservaLegalES
-      );
+    verificarAnio(){
+      this.anio = parseFloat(this.periodo[0].anio)
     },
     verificarBalanceFinal() {
       const activoTotal =
@@ -2100,13 +2059,16 @@ export default {
           })
           .then(() => {
             console.log("Document successfully updated!");
+            this.addEstadoFinanciero = "Periodo Agregado";
+            this.open('top');
           })
           .catch((error) => {
             console.error("Error updating document: ", error);
           });
       } else {
         console.log("No esta equilibrado");
-        this.noestaequilibrado = true;
+        this.addEstadoFinanciero = "El balance no esta equilibrado";
+        this.open('top');
       }
     },
   },
