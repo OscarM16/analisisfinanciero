@@ -1891,6 +1891,42 @@ export default {
     },
     guardar(){
       this.crearBG()
+      //activos
+      this.efectivo= parseFloat(0);
+      this.activosBiologicos = parseFloat(0);
+      this.activosIntangibles = parseFloat(0);
+      this.cuentasPC = parseFloat(0);
+      this.depositosCortoP = parseFloat(0);
+      this.gastosPagadosAnt = parseFloat(0);
+      this.inventarios = parseFloat(0);
+      this.inversionFinalLP = parseFloat(0);
+      this.otrasCPC = parseFloat(0);
+      this.propiedad = parseFloat(0);
+      //pasivos
+      this.CPPRelacionadasLP = parseFloat(0);
+      this.cuentasPP = parseFloat(0);
+      this.cuentasPPRelacionadas = parseFloat(0);
+      this.gastosAcumulados = parseFloat(0);
+      this.impuestosSobreRenta = parseFloat(0);
+      this.obligacionesEmple = parseFloat(0);
+      this.otrascuentasPP = parseFloat(0);
+      //patrimonio
+      this.capitalSocial = parseFloat(0);
+      this.reservaLegal = parseFloat(0);
+      this.resultadosAcu = parseFloat(0);
+      this.resultadosPresEjer = parseFloat(0);
+      //estado de resultados
+      this.costodeventas = parseFloat(0);
+      this.gastosAdmin = parseFloat(0);
+      this.gastosFinan = parseFloat(0);
+      this.gastosVentas = parseFloat(0);
+      this.impuestosSobreRentaES = parseFloat(0);
+      this.ingresosFinan = parseFloat(0);
+      this.ingresosporventas = parseFloat(0);
+      this.otrosGasNetos = parseFloat(0);
+      this.otrosIngresNetos = parseFloat(0);
+      this.reservaLegalES = parseFloat(0);
+      this.mostrarFormulario = !this.mostrarFormulario
     },
     retrocederFormulario() {
       // Limpiamos todas las variables
