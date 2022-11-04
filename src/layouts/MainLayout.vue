@@ -12,7 +12,7 @@
         </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="left" side="left" overlay bordered>
+    <q-drawer v-model="left" side="left" overlay bordered class="bg-grey-3">
         <q-list>
             <q-item-label style="font-size: 22px; color: black" header>
                 Menu
@@ -22,7 +22,7 @@
                     <q-icon size="lg" name="home"></q-icon>
                 </q-item-section>
                 <q-item-section>
-                    <q-item-label style="font-size: 22px">Inicio</q-item-label>
+                    <q-item-label style="font-size: 18px">Inicio</q-item-label>
                 </q-item-section>
             </q-item>
             <q-item clickable to="/CrearNuevoPeriodo">
@@ -30,7 +30,7 @@
                     <q-icon size="lg" name="post_add"></q-icon>
                 </q-item-section>
                 <q-item-section>
-                    <q-item-label style="font-size: 22px">Crear Nuevo Periodo</q-item-label>
+                    <q-item-label style="font-size: 18px">Crear Nuevo Periodo</q-item-label>
                 </q-item-section>
             </q-item>
             <q-item clickable to="/ratiosGeneral">
@@ -38,7 +38,7 @@
                     <q-icon size="lg" name="manage_search"></q-icon>
                 </q-item-section>
                 <q-item-section>
-                    <q-item-label style="font-size: 22px">Mostrar Ratios</q-item-label>
+                    <q-item-label style="font-size: 18px">Mostrar Ratios</q-item-label>
                 </q-item-section>
             </q-item>
         </q-list>

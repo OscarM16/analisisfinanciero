@@ -25,7 +25,7 @@
                     >Año del Periodo</q-item-label
                   >
                 </q-item-section>
-                <q-item-section side top>
+                <q-item-section>
                   <q-item-label>
 
                     <div class="q-pa-md">
@@ -67,6 +67,9 @@
                     </div>
                   </q-item-label>
                 </q-item-section>
+                <q-item-section></q-item-section>
+                <q-item-section></q-item-section>
+                <q-item-section></q-item-section>
               </q-item>
           </q-list>
         </div>
@@ -2011,7 +2014,7 @@ export default {
         parseFloat(this.CPPRelacionadasLP);
       const paspat = patrimonio + pasivo;
       this.verificarBalanceFinal();
-      if (activoTotal === paspat) {
+      if (activoTotal.toFixed(2) === paspat.toFixed(2)) {
         this.reservaLegal = this.capitalSocial * 0.2;
         db.collection("periodos").add({
             anio: this.anio.toString(),
