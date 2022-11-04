@@ -5,7 +5,7 @@
             <q-btn fdense flat round icon="menu" @click="left = !left" />
 
             <q-toolbar-title style="font-size: 26px">
-                Empresa de Agroindustria
+                Empresa Red Fox Las Mercedes S.A. de C.V.
             </q-toolbar-title>
 
             <div style="font-size: 22px">Analisis Financiero</div>
