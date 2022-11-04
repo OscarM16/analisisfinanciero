@@ -332,7 +332,7 @@
                                       <q-item-label v-if=" this.anioComparado == ''" style="padding-left: 150px; font-weight: bold; font-size: 18px; text-decoration: underline; color: black;"></q-item-label>
                                   </q-item-section>
                                   <q-item-section >
-                                      <q-item-label v-if="this.Cutilidadantesreserva!==0 || this.anioComparado !== ''" style="padding-left: 120px; font-weight: bold; font-size: 18px; text-decoration: underline; color: black;">{{this.VAutilidadantesreservaporcentaje.toLocaleString('en')}}</q-item-label>
+                                      <q-item-label v-if="this.Cutilidadantesreserva!==0 || this.anioComparado !== ''" style="padding-left: 120px; font-weight: bold; font-size: 18px; text-decoration: underline; color: black;">{{this.VAutilidadantesreservaporcentaje.toLocaleString('en')}}%</q-item-label>
                                       <q-item-label v-if=" this.anioComparado == ''" style="padding-left: 150px; font-weight: bold; font-size: 18px; text-decoration: underline; color: black;"></q-item-label>
                                   </q-item-section>
                               </q-item>
