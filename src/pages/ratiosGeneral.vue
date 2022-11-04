@@ -12,7 +12,7 @@
             <div class="row-12" style="margin-bottom: 100px;">
                 <div class="col-12 justify-center">
                     <q-btn round color="warning" icon="navigate_before" @click="anteriorPagina()" size="25px" style="position: absolute; top: 50px; left: 30px;"></q-btn>
-                    <h3 style="text-align: center; font-weight: bold;"> Comparacion de los Ratios por Año</h3>
+                    <h3 style="text-align: center; font-weight: bold;"> Ratios financieros de la empresa Red Fox</h3>
                 </div>
             </div>
             <!--RAZONES DE LIQUIDEZ-->
@@ -534,7 +534,7 @@
                                                         Nro. Dias de Cartera + Nro. Dias de Inventario
                                                     </q-item-label>
                                                 </q-item-section>
-                                                
+
                                             </q-item>
                                         </q-banner>
                                     </q-popup-proxy>
@@ -913,9 +913,9 @@ export default {
             rotacionCarteraT: [],
             NDCT:[],
             cicloOperacionalT: [],
-            // Variables para Razones de Deuda 
+            // Variables para Razones de Deuda
             indiceEndeudamientoT: [],
-            // Variables para Razones de rentabilidad 
+            // Variables para Razones de rentabilidad
             margenUtilidadBT: [],
             margenUtilidadOT: [],
             margenUtilidadNT: [],
@@ -1079,7 +1079,7 @@ export default {
                 let inventarios = parseFloat(item.informacion.balancegeneral.activos.inventarios)
                 let gastosPagadosAnt = parseFloat(item.informacion.balancegeneral.activos.gastosPagadosAnt)
                 let depositosCortoP = parseFloat(item.informacion.balancegeneral.activos.depositosCortoP)
-                // Total Activo Corriente 
+                // Total Activo Corriente
                 let totalActivoCorriente = parseFloat(efectivo) + parseFloat(cuentasPC) + parseFloat(otrasCPC) + parseFloat(inventarios) + parseFloat(gastosPagadosAnt) + parseFloat(depositosCortoP)
                 // No Corrientes
                 let propiedad = parseFloat(item.informacion.balancegeneral.activos.propiedad)
