@@ -670,7 +670,7 @@
                                 <q-item>
                                     <div class="col-6">
                                         <q-item clickable v-ripple>
-                                            <q-item-section style="text-align: center; font-weight: bold;">Actvio Total
+                                            <q-item-section style="text-align: center; font-weight: bold;">Activo Total
                                                 <hr>{{this.activoFinal}}</q-item-section>
                                         </q-item>
 
@@ -694,7 +694,7 @@
                                     <div class="col">
                                         <q-item clickable v-ripple>
                                             <q-item-section style="text-align: center; font-weight: bold;">{{this.sumres}} {{this.lugarsumres}}
-                                                <hr> {{parseFloat(this.diferencia) }}</q-item-section>
+                                                <hr> {{parseFloat(this.diferencia).toFixed(2) }}</q-item-section>
                                         </q-item>
                                     </div>
                                 </q-item>
