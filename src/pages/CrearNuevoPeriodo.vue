@@ -10,9 +10,11 @@
           </div>
         </div>
         <q-dialog v-model="dialog" :position="position">
-        <q-card style="border-radius: 20px; background-color: #AFF1BC;;width: 350px;max-height: 100px;">
+        <q-card style="border-radius: 20px; background-color: #B8B8B8;;width: 350px;max-height: 100px;">
             <q-card-section class="row items-center" style="padding: 2px;">
-                <q-avatar icon="check_circle" size="6em" />
+              <q-avatar v-show="this.addEstadoFinanciero === 'Periodo Agregado'" icon="check_circle" size="6em" />
+                <q-avatar v-show="this.addEstadoFinanciero === 'Periodo Cancelado'" icon="cancel" size="6em" />
+                <q-avatar v-show="this.addEstadoFinanciero === 'El balance no esta equilibrado'" icon="money_off" size="6em" />
                 <span class="">{{this.addEstadoFinanciero}}</span>
             </q-card-section>
         </q-card>
